@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Jordan/Scene_Jordan.unity
     guid: 71424d357c282bd46bbdcd07312fb8c9
   - enabled: 1
-    path: Assets/Peter/Scene_Peter.unity
+    path: Assets/Peter/Scenes/Scene_Peter.unity
     guid: 9f2ca1e1662e5a24badb72ae3a20654b
   - enabled: 1
     path: Assets/Shane/Scene_Shane.unity
