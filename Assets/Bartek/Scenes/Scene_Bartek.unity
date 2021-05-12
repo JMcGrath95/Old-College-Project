@@ -173,7 +173,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -199,13 +199,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131945786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &633401879
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,8 +374,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1201023959}
+  - component: {fileID: 1201023960}
   m_Layer: 0
-  m_Name: RoomGenerator
+  m_Name: LevelGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,6 +396,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1201023960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201023958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86e89de8b7402c4f96bf7c4456f6260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms_TRBL:
+  - {fileID: -8223778227229998680, guid: d2ef12b7056300b4e91d35673bc6df4f, type: 3}
+  rooms_T:
+  - {fileID: -6833693137338889511, guid: bd94b46cab5a5834390e95364a8e4421, type: 3}
+  - {fileID: 956775660299912227, guid: d0d26acce9b4bbf4ba861219a2c99d95, type: 3}
+  - {fileID: -4624683089458054599, guid: e7fbe13d8ae892342903814545979417, type: 3}
+  - {fileID: -2357351236133566875, guid: 82c92d37949573540a60ab41bc6d0167, type: 3}
+  - {fileID: 223296649921940631, guid: 36735870279facc4ca5242a31e6643d4, type: 3}
+  - {fileID: -8949340204130895736, guid: 7f1b6f3183026d54c82327e6d0ad0608, type: 3}
+  - {fileID: -8223778227229998680, guid: d2ef12b7056300b4e91d35673bc6df4f, type: 3}
+  - {fileID: 2805547426135310267, guid: d2541227251587d41ba0f9ca8f1c3207, type: 3}
+  rooms_R:
+  - {fileID: 1529769184022461688, guid: 2edbbbca80da04e4392209419c5966a7, type: 3}
+  - {fileID: -5473238411131587707, guid: 4f8aa1d482084a748990f0de3882c741, type: 3}
+  - {fileID: -5595220845781240158, guid: 3c58a18bda70d054daa10490d5e71213, type: 3}
+  - {fileID: 2983689080321017065, guid: 98f1331b5eaa4454e997daba31873405, type: 3}
+  - {fileID: 223296649921940631, guid: 36735870279facc4ca5242a31e6643d4, type: 3}
+  - {fileID: -8949340204130895736, guid: 7f1b6f3183026d54c82327e6d0ad0608, type: 3}
+  - {fileID: 2805547426135310267, guid: d2541227251587d41ba0f9ca8f1c3207, type: 3}
+  - {fileID: -8223778227229998680, guid: d2ef12b7056300b4e91d35673bc6df4f, type: 3}
+  rooms_B:
+  - {fileID: 333435633462811707, guid: ba6ae455877ae124ea38ce4d752f20d3, type: 3}
+  - {fileID: 5222638919594160467, guid: a24ab68bfa0766045af363617cc8194b, type: 3}
+  - {fileID: -5473238411131587707, guid: 4f8aa1d482084a748990f0de3882c741, type: 3}
+  - {fileID: 2983689080321017065, guid: 98f1331b5eaa4454e997daba31873405, type: 3}
+  - {fileID: 956775660299912227, guid: d0d26acce9b4bbf4ba861219a2c99d95, type: 3}
+  - {fileID: -4624683089458054599, guid: e7fbe13d8ae892342903814545979417, type: 3}
+  - {fileID: -8949340204130895736, guid: 7f1b6f3183026d54c82327e6d0ad0608, type: 3}
+  - {fileID: -8223778227229998680, guid: d2ef12b7056300b4e91d35673bc6df4f, type: 3}
+  rooms_L:
+  - {fileID: 5222638919594160467, guid: a24ab68bfa0766045af363617cc8194b, type: 3}
+  - {fileID: -5139448650797481767, guid: af4565457e7bfdd4090cc1f9a59cdb5f, type: 3}
+  - {fileID: 2983689080321017065, guid: 98f1331b5eaa4454e997daba31873405, type: 3}
+  - {fileID: -5595220845781240158, guid: 3c58a18bda70d054daa10490d5e71213, type: 3}
+  - {fileID: -4624683089458054599, guid: e7fbe13d8ae892342903814545979417, type: 3}
+  - {fileID: -2357351236133566875, guid: 82c92d37949573540a60ab41bc6d0167, type: 3}
+  - {fileID: 2805547426135310267, guid: d2541227251587d41ba0f9ca8f1c3207, type: 3}
 --- !u!1 &1899430367
 GameObject:
   m_ObjectHideFlags: 0
