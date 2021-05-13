@@ -5,6 +5,8 @@ using UnityEngine;
 public class Hallway : MonoBehaviour
 {
     public GameObject door;
+
+    //1 = up, 2 = right, 3 = down, 4 = left
     public int direction;
 
     public void OpenDoor()
