@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c7d6e49baec3c42bbbbb516982048a, type: 3}
+  m_Name: Enemies
+  m_EditorClassIdentifier: 
+  enemies:
+  - ID: 0
+    Health: 10
+    Speed: 10
+    Attack: 10
+    AttackSpeed: 10
+    AttackRange: 10
+    Name: Werewolf
+    prefab: {fileID: 3327239811954624554, guid: 542c9b85c3a26f44f9449fea8c2f73a8, type: 3}
+    enemyType: 0
