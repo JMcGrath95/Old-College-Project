@@ -22,6 +22,7 @@ public class LevelGenerator : MonoBehaviour
 
     int roomsUp, roomsRight, roomsDown, roomsLeft;
 
+    List<Vector3> RoomPositions = new List<Vector3>();
 
     private void Start()
     {
@@ -47,25 +48,26 @@ public class LevelGenerator : MonoBehaviour
 
         Room startRoom;
         startRoom = RandomizeRoom(r.ToArray());
-        startRoom.positionToSpawnIn = Vector3.zero;
+        RoomPositions.Add(Vector3.zero);
         AddRoom(startRoom);
 
         GenerateRooms();
     }
 
     List<Vector3> PositionsToPlaceRoomsIn = new List<Vector3>();
-    int x = 0;
+
+
     void GenerateRooms()
     {
         PositionsToPlaceRoomsIn.Clear();
 
-        foreach (Room room in rooms)
+        for (int i = 0; i < rooms.Count; i++)
         {
-            Vector3 pos = room.transform.position;
+            Vector3 pos = RoomPositions[i];
 
-            foreach (Hallway hallway in room.hallways)
+            foreach (Hallway hallway in rooms[i].hallways)
             {
-                Vector3 posToSpawn = GetPosition(hallway.direction, room.transform.position);
+                Vector3 posToSpawn = GetPosition(hallway.direction, pos);
 
                 if (IsPositionFree(posToSpawn))
                 {
@@ -78,21 +80,38 @@ public class LevelGenerator : MonoBehaviour
         {
             List<Room> r = new List<Room>();
             r = CheckAdjacentPositions(position);
-
+            foreach (Room room1 in r)
+            {
+                print(room1.name);
+            }
             Room room = RandomizeRoom(r.ToArray());
-            room.positionToSpawnIn = position;
+            RoomPositions.Add(position);
 
             AddRoom(room);
         }
 
-        foreach (Room room1 in rooms)
+        if (rooms.Count < maxRoomCount)
         {
-            print(room1.name + " " + room1.positionToSpawnIn);
-            Instantiate(room1, room1.positionToSpawnIn, Quaternion.identity);
+            GenerateRooms();
+        }
+        else
+        {
+            InvokeRepeating("Test", 0.3f, 0.3f);
         }
     }
 
-    int i = 0;
+    int x = 0;
+    void Test()
+    {
+        Instantiate(rooms[x], RoomPositions[x], Quaternion.identity);
+        x++;
+        if (x >= rooms.Count)
+        {
+            CancelInvoke("Test");
+        }
+    }
+
+    int p = 0;
     void CreateRooms()
     {
         //need tweaking
@@ -100,10 +119,10 @@ public class LevelGenerator : MonoBehaviour
         {
             GenerateRooms();
         }
-        else if (i < rooms.Count)
+        else if (p < rooms.Count)
         {
-            Instantiate(rooms[i], rooms[i].positionToSpawnIn, Quaternion.identity);
-            i++;
+            Instantiate(rooms[p], RoomPositions[p], Quaternion.identity);
+            p++;
             Invoke("CreateRooms", 0.2f);
         }
     }
@@ -112,11 +131,10 @@ public class LevelGenerator : MonoBehaviour
     {
         List<Room> returnList = new List<Room>();
 
+        returnList.Clear();
+
         //bool to check what hallways are required for new room
         bool topHall = false, rightHall = false, bottomHall = false, leftHall = false;
-
-        //bool to check whether there is a wall in that direction
-        bool topWall = false, rightWall = false, bottomWall = false, leftWall = false;
 
         //Adjacent Positions
         Vector3 topPos, rightPos, bottomPos, leftPos;
@@ -129,65 +147,60 @@ public class LevelGenerator : MonoBehaviour
 
         /*loops through all rooms and assigns bools based on whether 
         the room has a hallway in that position*/
-        foreach (Room room in rooms)
+        for (int i = 0; i < rooms.Count; i++)
         {
             //check if new room requires top hallway, if there is a wall in that direction or is the spot empty
-            if (topPos == room.transform.position)
+            if (topPos == RoomPositions[i])
             {
-                if (room.bottomHallway)
+                if (rooms[i].bottomHallway)
                 {
-                    topWall = false;
                     topHall = true;
                 }
                 else
                 {
                     topHall = false;
-                    topWall = true;
                 }
             }
 
             //check if new room requires right hallway, if there is a wall in that direction or is the spot empty
-            if (rightPos == room.transform.position)
+            if (rightPos == RoomPositions[i])
             {
-                if (room.leftHallway)
+
+                if (rooms[i].leftHallway)
                 {
-                    rightWall = false;
                     rightHall = true;
                 }
                 else
                 {
                     rightHall = false;
-                    rightWall = true;
                 }
             }
 
             //check if new room requires bottom hallway, if there is a wall in that direction or is the spot empty
-            if (bottomPos == room.transform.position)
+            if (bottomPos == RoomPositions[i])
             {
-                if (room.topHallway)
+
+                if (rooms[i].topHallway)
                 {
-                    bottomWall = false;
                     bottomHall = true;
                 }
                 else
                 {
                     bottomHall = false;
-                    bottomWall = true;
                 }
             }
 
             //check if new room requires left hallway, if there is a wall in that direction or is the spot empty
-            if (leftPos == room.transform.position)
+            if (leftPos == RoomPositions[i])
             {
-                if (room.rightHallway)
+
+                if (rooms[i].rightHallway)
                 {
-                    leftWall = false;
                     leftHall = true;
                 }
                 else
                 {
                     leftHall = false;
-                    leftWall = true;
                 }
             }
         }
@@ -344,20 +357,23 @@ public class LevelGenerator : MonoBehaviour
     Room RandomizeRoom(Room[] roomsToChooseFrom)
     {
         rand = Random.Range(0, roomsToChooseFrom.Length);
+        print(rand);
+        print(roomsToChooseFrom.Length);
         return roomsToChooseFrom[rand];
     }
 
     void AddRoom(Room roomToAdd)
     {
         rooms.Add(roomToAdd);
+        roomToAdd.GetHallways();
         //print("Room Name : " + roomToAdd.name + ", Position : " + roomToAdd.transform.position + ", Hallways : " + roomToAdd.hallways.Count);
     }
 
     bool IsPositionFree(Vector3 position)
     {
-        foreach (Room room in rooms)
+        for (int i = 0; i < RoomPositions.Count; i++)
         {
-            if (room.positionToSpawnIn == position)
+            if (RoomPositions[i] == position)
                 return false;
         }
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public List<Hallway> hallways = new List<Hallway>();
-    public Vector3 positionToSpawnIn;
     //might change to enum. 0 is normal, 1 is start, 2 is exit/boss.
     public int roomType;
 
