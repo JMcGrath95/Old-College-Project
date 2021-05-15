@@ -15,6 +15,7 @@ public class LevelGenerator : MonoBehaviour
     Room exitRoom;
     List<Room> potentialExitRooms = new List<Room>();
     List<Room> rooms = new List<Room>();
+    List<Room> createdRooms = new List<Room>();
 
     Room currentRoom;
 
@@ -69,7 +70,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 Vector3 posToSpawn = GetPosition(hallway.direction, pos);
 
-                if (IsPositionFree(posToSpawn))
+                if (IsPositionFree(posToSpawn) && rooms.Count < maxRoomCount)
                 {
                     PositionsToPlaceRoomsIn.Add(posToSpawn);
                 }
@@ -80,10 +81,7 @@ public class LevelGenerator : MonoBehaviour
         {
             List<Room> r = new List<Room>();
             r = CheckAdjacentPositions(position);
-            foreach (Room room1 in r)
-            {
-                print(room1.name);
-            }
+
             Room room = RandomizeRoom(r.ToArray());
             RoomPositions.Add(position);
 
@@ -96,37 +94,177 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            InvokeRepeating("Test", 0.3f, 0.3f);
+            InvokeRepeating("CreateRooms", 0.3f, 0.3f);
         }
     }
 
     int x = 0;
-    void Test()
+    void CreateRooms()
     {
-        Instantiate(rooms[x], RoomPositions[x], Quaternion.identity);
+        createdRooms.Add(Instantiate(rooms[x], RoomPositions[x], Quaternion.identity));
         x++;
         if (x >= rooms.Count)
         {
-            CancelInvoke("Test");
+            CancelInvoke("CreateRooms");
+            FixRoomsWithUnconnectedHallways();
         }
     }
 
-    int p = 0;
-    void CreateRooms()
+    void FixRoomsWithUnconnectedHallways()
     {
-        //need tweaking
-        if (rooms.Count < maxRoomCount)
+        for (int i = 0; i < RoomPositions.Count; i++)
         {
-            GenerateRooms();
+            List<Room> t = new List<Room>();
+            t.Clear();
+            t.AddRange(allRooms);
+            bool change = false;
+            int hallwaysNeeded = 0;
+
+            foreach (Hallway hallway in rooms[i].hallways)
+            {
+                Vector3 pos = GetPosition(hallway.direction, RoomPositions[i]);
+                
+                Debug.Log(rooms[i].name + " " + RoomPositions[i] + " " + hallway.direction);
+
+                if (IsHallwayAtPosition(hallway.direction, pos) == false)
+                {
+                    change = true;
+                    foreach (Room room in allRooms)
+                    {
+                        foreach (Hallway hall in room.hallways)
+                        {
+                            if (hall.direction == hallway.direction)
+                            {
+                                if (t.Contains(room))
+                                {
+                                    Debug.Log("room to remove : " + room.name);
+                                    t.Remove(room);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    hallwaysNeeded++;
+                }
+            }
+
+            foreach (Room room in allRooms)
+            {
+                if (rooms[i].topHallway == false && room.topHallway == true)
+                {
+                    if (t.Contains(room))
+                    {
+                        Debug.Log("room to remove : " + room.name);
+                        t.Remove(room);
+                    }
+                }
+
+                if (rooms[i].rightHallway == false && room.rightHallway == true)
+                {
+                    if (t.Contains(room))
+                    {
+                        Debug.Log("room to remove : " + room.name);
+                        t.Remove(room);
+                    }
+                }
+
+                if (rooms[i].bottomHallway == false && room.bottomHallway == true)
+                {
+                    if (t.Contains(room))
+                    {
+                        Debug.Log("room to remove : " + room.name);
+                        t.Remove(room);
+                    }
+                }
+
+                if (rooms[i].leftHallway == false && room.leftHallway == true)
+                {
+                    if (t.Contains(room))
+                    {
+                        Debug.Log("room to remove : " + room.name);
+                        t.Remove(room);
+                    }
+                }
+
+                if (room.hallways.Count != hallwaysNeeded)
+                {
+                    if (t.Contains(room))
+                    {
+                        Debug.Log("room to remove : " + room.name);
+                        t.Remove(room);
+                    }
+                }
+            }
+
+
+
+            if (change)
+            {
+                Destroy(createdRooms[i].gameObject);
+                Instantiate(RandomizeRoom(t.ToArray()), RoomPositions[i], Quaternion.identity);
+                /*print(createdRooms[i].name);
+                foreach (Room o in t)
+                {
+                    print(o.name);
+                }
+                print(t.Count);
+                Destroy(createdRooms[i].gameObject);
+                createdRooms.RemoveAt(i);
+
+                Room newRoom = Instantiate(RandomizeRoom(t.ToArray()), RoomPositions[i], Quaternion.identity);
+                print(newRoom.name);
+                createdRooms.Insert(i, newRoom);*/
+            }
+
         }
-        else if (p < rooms.Count)
+
+        /*rooms.Clear();
+        rooms.AddRange(createdRooms);
+        print(rooms.Count);
+        print(RoomPositions.Count);
+        foreach (Room room1 in rooms)
         {
-            Instantiate(rooms[p], RoomPositions[p], Quaternion.identity);
-            p++;
-            Invoke("CreateRooms", 0.2f);
-        }
+            print(room1.name);
+        }*/
     }
 
+    bool IsHallwayAtPosition(int dir, Vector3 pos)
+    {
+        if (IsPositionFree(pos))
+            return false;
+
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            if (pos == RoomPositions[i])
+            {
+                switch (dir)
+                {
+                    case 1:
+                        if (rooms[i].bottomHallway)
+                            return true;
+                        break;
+                    case 2:
+                        if (rooms[i].leftHallway)
+                            return true;
+                        break;
+                    case 3:
+                        if (rooms[i].topHallway)
+                            return true;
+                        break;
+                    case 4:
+                        if (rooms[i].rightHallway)
+                            return true;
+                        break;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    //checks adjacent positions and returns list of rooms that can be spawned in that position
     List<Room> CheckAdjacentPositions(Vector3 posToCheckFrom)
     {
         List<Room> returnList = new List<Room>();
@@ -206,7 +344,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         //gotta change to take walls into account
-        //checks based on bools what rooms can be spawned and assigns returnlist
+        //checks based on hall bools what rooms can be spawned and assigns returnlist
         if (topHall)
         {
             if (rightHall)
@@ -349,16 +487,13 @@ public class LevelGenerator : MonoBehaviour
             returnList.AddRange(rooms_TRBL);
         }
 
-        //print(returnList.Count);
-
         return returnList;
     }
 
     Room RandomizeRoom(Room[] roomsToChooseFrom)
     {
+        //print(roomsToChooseFrom.Length);
         rand = Random.Range(0, roomsToChooseFrom.Length);
-        print(rand);
-        print(roomsToChooseFrom.Length);
         return roomsToChooseFrom[rand];
     }
 
@@ -366,7 +501,6 @@ public class LevelGenerator : MonoBehaviour
     {
         rooms.Add(roomToAdd);
         roomToAdd.GetHallways();
-        //print("Room Name : " + roomToAdd.name + ", Position : " + roomToAdd.transform.position + ", Hallways : " + roomToAdd.hallways.Count);
     }
 
     bool IsPositionFree(Vector3 position)
