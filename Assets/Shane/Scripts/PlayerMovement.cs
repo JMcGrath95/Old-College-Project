@@ -4,7 +4,6 @@ using UnityEngine;
 
 //[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     //Components.
@@ -19,15 +18,24 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastMoveDirection;
 
 
+    //Animation transitions.
+    private bool IsGrounded;
+
+
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
         mainCamera = Camera.main;
+
+        animator.SetBool("Walking", true);
+        //animator.setf
+        //animator.Play("rig|Idle");
     }
 
     private void Update()
@@ -35,12 +43,12 @@ public class PlayerMovement : MonoBehaviour
         directionToMoveThisFrame = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         directionToMoveThisFrame = mainCamera.transform.TransformDirection(directionToMoveThisFrame);
         directionToMoveThisFrame = new Vector3(directionToMoveThisFrame.x, 0, directionToMoveThisFrame.z).normalized * movementSpeed;
-
+        IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
 
         if (directionToMoveThisFrame != Vector3.zero)
         {
-            characterController.SimpleMove(directionToMoveThisFrame);
             transform.forward = directionToMoveThisFrame;
+            print(IsGrounded);
         }
     }
 }

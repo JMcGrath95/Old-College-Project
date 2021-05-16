@@ -673,8 +673,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1744253198}
   - component: {fileID: 1744253200}
-  - component: {fileID: 1744253202}
   - component: {fileID: 1744253199}
+  - component: {fileID: 1744253201}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -728,25 +728,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.93, z: 0}
---- !u!95 &1744253202
-Animator:
-  serializedVersion: 3
+--- !u!114 &1744253201
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744253197}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 745d26cd1ae92fa4a985a3eb7ce0745c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067797a23d838dd4083c3d11b61e8e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
 --- !u!1 &1923959598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,6 +3571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6419393484732596751}
+  - component: {fileID: 5935063644340607158}
   m_Layer: 0
   m_Name: Placement_Project_Character_TheSecond
   m_TagString: Untagged
@@ -3583,6 +3579,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &5935063644340607158
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935063644340607157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 745d26cd1ae92fa4a985a3eb7ce0745c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &5967143351699088994
 Transform:
   m_ObjectHideFlags: 0
