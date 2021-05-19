@@ -9,7 +9,7 @@ public class AI_Pawn : MonoBehaviour
     public NavMeshAgent NavMeshAgent;
     private void Start()
     {
-        NavMeshAgent = GetComponent<NavMeshAgent>();
+        
     }
     public void Awake()
     {

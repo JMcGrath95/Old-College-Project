@@ -13,13 +13,23 @@ public class AI_Manager : MonoBehaviour
     
 
     public List<AI_Pawn> list_of_melee_pawns;
+    public List<AI_Pawn> list_of_range_pawns;
 
 
     
     void Start()
     {
-        spawner.Spawn("0,0,0,0,0,0,0");
+        StartCoroutine(SpawnEnemiesTemp());
         Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    
+    void Update()
+    {
+
+    }
+    public void AddToBeManaged() 
+    {
         list_of_pawns = GetComponentsInChildren<AI_Pawn>().ToList();
         if (list_of_pawns != null)
         {
@@ -30,6 +40,10 @@ public class AI_Manager : MonoBehaviour
                 {
                     list_of_melee_pawns.Add(enemy);
                 }
+                else if (enemy.GetComponent<Enemy_Stats>().enemyType == EnemyType.Range)
+                {
+                    list_of_range_pawns.Add(enemy);
+                }
             }
         }
 
@@ -38,16 +52,10 @@ public class AI_Manager : MonoBehaviour
         {
             MoveAllGeneric(list_of_melee_pawns);
         }
-    }
-
-    
-    void Update()
-    {
-
-    }
-    public void AddToBeManaged() 
-    {
-         
+        if (Player != null && list_of_range_pawns != null)
+        {
+            MoveAllGeneric(list_of_range_pawns);
+        }
     }
     public void MoveAllGeneric(List<AI_Pawn> enemy_list)
     {
@@ -55,5 +63,11 @@ public class AI_Manager : MonoBehaviour
         {
             pawn.NavMeshAgent.SetDestination(Player.transform.position);
         }
+    }
+    IEnumerator SpawnEnemiesTemp() 
+    {
+        spawner.Spawn(10);
+        yield return new WaitUntil(()=>spawner.AreSpawned==true);
+        AddToBeManaged();
     }
 }
