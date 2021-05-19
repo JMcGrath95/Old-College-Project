@@ -9,24 +9,20 @@ public class CameraMovement : MonoBehaviour
     private Vector3 startingPosition;
     private Vector3 amountPlayerMovedThisFrame;
     private Vector3 lastPlayerPosition;
+    private Vector3 offset;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         startingPosition = transform.position;
-    }
 
-    private void Update()
-    {
-        amountPlayerMovedThisFrame = player.transform.position - lastPlayerPosition;
-
-        lastPlayerPosition = player.transform.position;
+        offset = transform.position - player.position;
     }
 
     private void LateUpdate()
     {
-        transform.position += amountPlayerMovedThisFrame;
+        transform.position = player.position + offset;
     }
 
 }
