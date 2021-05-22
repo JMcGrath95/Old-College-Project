@@ -5,10 +5,27 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public List<Hallway> hallways = new List<Hallway>();
+
     //might change to enum. 0 is normal, 1 is start, 2 is exit/boss.
     public int roomType;
 
+    public GameObject Floor;
+
+    //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;
+
+    //loops through children and assigns floor object if it fins an object named Floor
+    public void GetFloor()
+    {
+        foreach (Transform t in transform)
+        {
+            if (t.gameObject.name == "Floor")
+            {
+                Floor = t.gameObject;
+                return;
+            }
+        }
+    }
 
     public void GetHallways()
     {

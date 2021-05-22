@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    //prefab rooms to choose from in the generator
     public Room[] rooms_TRBL;
     public Room[] rooms_T;
     public Room[] rooms_R;
@@ -11,20 +12,26 @@ public class LevelGenerator : MonoBehaviour
     public Room[] rooms_L;
     public Room[] allRooms;
 
+    //variables for the first and last room for player spawn and boss spawn
     Room startRoom;
     Room exitRoom;
-    List<Room> potentialExitRooms = new List<Room>();
+
+    //lsit of rooms use in the generator
     List<Room> rooms = new List<Room>();
+
+    //list of final rooms created by the generator
     List<Room> createdRooms = new List<Room>();
 
-    Room currentRoom;
+    //value for randomisation and a value for limit of rooms to have
+    int rand, roomLimit;
 
-    int rand, maxRoomCount;
+    //values to randomise betwenn to set roomLimit
+    public int minRoomCount, maxRoomCount;
 
-    int roomsUp, roomsRight, roomsDown, roomsLeft;
-
+    //list of all the room positions
     List<Vector3> RoomPositions = new List<Vector3>();
 
+    //calls starting method for generator
     private void Start()
     {
         GenerateStartingRoom();
@@ -33,7 +40,7 @@ public class LevelGenerator : MonoBehaviour
     void GenerateStartingRoom()
     {
         //maxRoomCount can be between 15-20 rooms minus start room
-        maxRoomCount = Random.Range(15, 21);
+        roomLimit = Random.Range(minRoomCount, maxRoomCount + 1);
 
         //list of rooms with more then one hallway so start has more options
         List<Room> r = new List<Room>();
@@ -47,21 +54,25 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        //chooses first room and assigns it to startroom and lists
         Room startRoom;
         startRoom = RandomizeRoom(r.ToArray());
         RoomPositions.Add(Vector3.zero);
         AddRoom(startRoom);
 
+        //starts the generator
         GenerateRooms();
     }
 
+    //list to use for storing free positions for a room to be placed in. only used in method below
     List<Vector3> PositionsToPlaceRoomsIn = new List<Vector3>();
-
-
     void GenerateRooms()
     {
+        //clears list each cycle to prevent rooms being made in a position that is already taken
         PositionsToPlaceRoomsIn.Clear();
 
+        //loops and checks that decide whether a position is free to be used for a room 
+        //if it is assigns it to PositionsToPlaceRoomsIn list
         for (int i = 0; i < rooms.Count; i++)
         {
             Vector3 pos = RoomPositions[i];
@@ -70,13 +81,16 @@ public class LevelGenerator : MonoBehaviour
             {
                 Vector3 posToSpawn = GetPosition(hallway.direction, pos);
 
-                if (IsPositionFree(posToSpawn) && rooms.Count < maxRoomCount)
+                if (IsPositionFree(posToSpawn) && rooms.Count < roomLimit)
                 {
                     PositionsToPlaceRoomsIn.Add(posToSpawn);
                 }
             }
         }
 
+        //checks adjacent positions for each position in PositionsToPlaceRoomsIn list
+        //checks what rooms can be spawned in those adjacent positions and assings them to r
+        //then randomises a room in that list and add it to the rooms list
         foreach (Vector3 position in PositionsToPlaceRoomsIn)
         {
             List<Room> r = new List<Room>();
@@ -88,10 +102,12 @@ public class LevelGenerator : MonoBehaviour
             AddRoom(room);
         }
 
-        if (rooms.Count < maxRoomCount)
+        //if the room limit is not reached repeat the method
+        if (rooms.Count < roomLimit)
         {
             GenerateRooms();
         }
+        //if the room limit is reached invoke create rooms to keep creating rooms every 0.3seconds
         else
         {
             InvokeRepeating("CreateRooms", 0.3f, 0.3f);
@@ -101,8 +117,16 @@ public class LevelGenerator : MonoBehaviour
     int x = 0;
     void CreateRooms()
     {
+        //creates the room object in the game and assigns it to createdrooms list
         createdRooms.Add(Instantiate(rooms[x], RoomPositions[x], Quaternion.identity));
+
+        //gets the floor of the room and assigns it to a value in room script
+        createdRooms[x].GetFloor();
+
+        //increments count
         x++;
+
+        //if max rooms is hit stop invoke of this method and call to fix broken hallways
         if (x >= rooms.Count)
         {
             CancelInvoke("CreateRooms");
@@ -110,22 +134,36 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    //method loops through all the rooms and checks if the hallways are pointing to emptiness or not
+    //if they are remove those options from a list of rooms until a room that suits the position can be used
     void FixRoomsWithUnconnectedHallways()
     {
         for (int i = 0; i < RoomPositions.Count; i++)
         {
+            //each loop resets values tso next loop wont have extra/broken values
+
+            //list of rooms to chop down for what room to change the room into
             List<Room> t = new List<Room>();
             t.Clear();
             t.AddRange(allRooms);
+
+            //bool for whether or not this rooms needs to change/has a hallway pointed to emptiness
             bool change = false;
+
+            //int for how many hallways the new room will need
             int hallwaysNeeded = 0;
 
+            //loops through all the hallways in the room being checked
             foreach (Hallway hallway in rooms[i].hallways)
             {
+                //gets the positions the hallway is facing 
                 Vector3 pos = GetPosition(hallway.direction, RoomPositions[i]);
-                
+
                 Debug.Log(rooms[i].name + " " + RoomPositions[i] + " " + hallway.direction);
 
+                //checks if there is a hallway at that position facing this hallway
+                //if false the room needs to be changed so it doesnt have this hallway
+                //so it will cut down t list that has any hallway with a matching direction
                 if (IsHallwayAtPosition(hallway.direction, pos) == false)
                 {
                     change = true;
@@ -144,14 +182,19 @@ public class LevelGenerator : MonoBehaviour
                         }
                     }
                 }
+                //if the previous statement is true that means that this room
+                //needs this hallway and adds 1 to the hallways needed counter
                 else
                 {
                     hallwaysNeeded++;
                 }
             }
-
+            
+            //loops through all the room presets
+            //checks room being checked against them and removes any that have a hallway that this room doesn't
             foreach (Room room in allRooms)
             {
+                //if room being checked doesn't have a hallway going up and this room does removes it
                 if (rooms[i].topHallway == false && room.topHallway == true)
                 {
                     if (t.Contains(room))
@@ -161,6 +204,7 @@ public class LevelGenerator : MonoBehaviour
                     }
                 }
 
+                //if room being checked doesn't have a hallway going right and this room does removes it
                 if (rooms[i].rightHallway == false && room.rightHallway == true)
                 {
                     if (t.Contains(room))
@@ -170,6 +214,7 @@ public class LevelGenerator : MonoBehaviour
                     }
                 }
 
+                //if room being checked doesn't have a hallway going down and this room does removes it
                 if (rooms[i].bottomHallway == false && room.bottomHallway == true)
                 {
                     if (t.Contains(room))
@@ -179,6 +224,7 @@ public class LevelGenerator : MonoBehaviour
                     }
                 }
 
+                //if room being checked doesn't have a hallway going left and this room does removes it
                 if (rooms[i].leftHallway == false && room.leftHallway == true)
                 {
                     if (t.Contains(room))
@@ -188,6 +234,7 @@ public class LevelGenerator : MonoBehaviour
                     }
                 }
 
+                //if this  room has a number of hallways that doesn't match the hallwaysNeeded counter remove it from the list 
                 if (room.hallways.Count != hallwaysNeeded)
                 {
                     if (t.Contains(room))
@@ -198,43 +245,64 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
 
-
-
+            //if this room has to be changed
             if (change)
             {
-                Destroy(createdRooms[i].gameObject);
-                Instantiate(RandomizeRoom(t.ToArray()), RoomPositions[i], Quaternion.identity);
-                /*print(createdRooms[i].name);
-                foreach (Room o in t)
-                {
-                    print(o.name);
-                }
-                print(t.Count);
+                //destroy the room and remove it from the list
                 Destroy(createdRooms[i].gameObject);
                 createdRooms.RemoveAt(i);
 
+                //create the new room and run its methods
                 Room newRoom = Instantiate(RandomizeRoom(t.ToArray()), RoomPositions[i], Quaternion.identity);
-                print(newRoom.name);
-                createdRooms.Insert(i, newRoom);*/
-            }
+                newRoom.GetFloor();
+                newRoom.GetHallways();
 
+                //insert new room into the postion of the list where the old room was
+                print(newRoom.name + " " + newRoom.transform.position);
+                createdRooms.Insert(i, newRoom);
+            }
         }
 
-        /*rooms.Clear();
+        //clears old room list and assigns created rooms to it
+        rooms.Clear();
         rooms.AddRange(createdRooms);
-        print(rooms.Count);
-        print(RoomPositions.Count);
-        foreach (Room room1 in rooms)
+
+
+        for (int i = 0; i < createdRooms.Count; i++)
         {
-            print(room1.name);
-        }*/
+            if(i == 0)
+            {
+                //changes color of last room made to green to show it as start room, assigns it to startroom and sets its room type
+                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.green;
+                createdRooms[i].roomType = 1;
+                startRoom = createdRooms[i];
+            }
+            else if(i == createdRooms.Count - 1)
+            {
+                //changes color of last room made to red to show it as exit room, assigns it to exitroom and sets its room type
+                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.red;
+                createdRooms[i].roomType = 2;
+                exitRoom = createdRooms[i];
+            }
+            else
+            {   
+                //changes color of the room made to white to show it as a normal room and sets its room type
+                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                createdRooms[i].roomType = 0;
+            }
+        }
+
     }
 
+    //checks if there is a hallway facing the position passed in and opposite the direction passed in
     bool IsHallwayAtPosition(int dir, Vector3 pos)
     {
+        //first checks if there is a room at that position otherwise returns false
         if (IsPositionFree(pos))
             return false;
 
+        //loops through all rooms and their hallways to check id there is a hallway with the direction opposite to the one passed in
+        //this sees if there is a hallway connected to another hallway or if it is going into emptiness
         for (int i = 0; i < rooms.Count; i++)
         {
             if (pos == RoomPositions[i])
@@ -490,6 +558,7 @@ public class LevelGenerator : MonoBehaviour
         return returnList;
     }
 
+    //put in list of rooms and it returns a random room from the list passed in
     Room RandomizeRoom(Room[] roomsToChooseFrom)
     {
         //print(roomsToChooseFrom.Length);
@@ -497,29 +566,36 @@ public class LevelGenerator : MonoBehaviour
         return roomsToChooseFrom[rand];
     }
 
+    //adds room to the lsit and runs its methods
     void AddRoom(Room roomToAdd)
     {
         rooms.Add(roomToAdd);
         roomToAdd.GetHallways();
     }
 
+    //checks if position passed in is not already occupied and not looking to be occupied when method GenerateRooms is running
     bool IsPositionFree(Vector3 position)
     {
+        //returns false if position passed doesn't exist in RoomPositions list
         for (int i = 0; i < RoomPositions.Count; i++)
         {
             if (RoomPositions[i] == position)
                 return false;
         }
 
+        //returns false if position passed doesn't exist in PositionsToPlaceRoomsIn list 
         foreach (Vector3 item in PositionsToPlaceRoomsIn)
         {
             if (item == position)
                 return false;
         }
 
+        //if both checks fail that means position is free and returns true for that position
         return true;
     }
 
+    //Gets the position based on position of room and direction of hallway
+    //if room is at (0,0,0) and hallway is to the right returns (x = 30, y = 0, z = 0)
     Vector3 GetPosition(int direction, Vector3 pos)
     {
         Vector3 returnPos = new Vector3();

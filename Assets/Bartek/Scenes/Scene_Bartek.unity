@@ -462,6 +462,8 @@ MonoBehaviour:
   - {fileID: -5139448650797481767, guid: af4565457e7bfdd4090cc1f9a59cdb5f, type: 3}
   - {fileID: 5222638919594160467, guid: a24ab68bfa0766045af363617cc8194b, type: 3}
   - {fileID: 333435633462811707, guid: ba6ae455877ae124ea38ce4d752f20d3, type: 3}
+  minRoomCount: 15
+  maxRoomCount: 20
 --- !u!1 &1899430367
 GameObject:
   m_ObjectHideFlags: 0
