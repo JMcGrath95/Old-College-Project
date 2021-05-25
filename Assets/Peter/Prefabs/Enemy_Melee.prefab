@@ -132,5 +132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026c253c346541f44b8cb64d8c89c441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy_type: 0
   NavMeshAgent: {fileID: 0}
+  Enemy:
+    ID: 0
+    Health: 0
+    Speed: 0
+    Attack: 0
+    AttackSpeed: 0
+    AttackRange: 0
+    Name: 
+    prefab: {fileID: 0}
+    enemyType: 0

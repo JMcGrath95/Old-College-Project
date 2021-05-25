@@ -27,4 +27,5 @@ public class Enemy
     public string Name;
     public GameObject prefab;
     public EnemyType enemyType;
+    public GameObject projectile_prefab;
 }
