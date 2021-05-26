@@ -9,6 +9,7 @@ public class AI_Pawn : MonoBehaviour
     public NavMeshAgent NavMeshAgent;
     public Enemy Enemy;
     public Transform Player;
+    public Animator animator;
     float timeleft = 0f;
     private void Start()
     {
@@ -16,10 +17,14 @@ public class AI_Pawn : MonoBehaviour
     }
     public void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
+
         //Initial Move after spawn
         NavMeshAgent.destination = Player.position;
+        animator.SetBool("IsAttacking", false);
+        animator.SetBool("IsWalking", true);
     }
     private void Update()
     {
@@ -34,6 +39,7 @@ public class AI_Pawn : MonoBehaviour
             {
                 case EnemyType.Melee:
                     //Melee Attack
+                    Attack();
                     Debug.Log("Melee Attack");
                     break;
                 case EnemyType.Range:
@@ -49,10 +55,12 @@ public class AI_Pawn : MonoBehaviour
         {
             NavMeshAgent.destination = Player.position;
             NavMeshAgent.isStopped = false;
+            animator.SetBool("IsWalking", true);
         }
         else
         {
             NavMeshAgent.destination = Player.position;
+            animator.SetBool("IsWalking", true);
         }
     }
     //Method to check the fin the player object is within the range.
@@ -78,5 +86,10 @@ public class AI_Pawn : MonoBehaviour
             timeleft = 2f;
         }
         
+    }
+    void Attack() 
+    {
+        animator.SetBool("IsAttacking",true);
+        animator.SetBool("IsWalking", false);
     }
 }

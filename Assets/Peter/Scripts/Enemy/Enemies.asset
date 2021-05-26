@@ -18,7 +18,7 @@ MonoBehaviour:
     Speed: 10
     Attack: 10
     AttackSpeed: 10
-    AttackRange: 1
+    AttackRange: 5
     Name: Werewolf
     prefab: {fileID: 3327239811954624554, guid: 542c9b85c3a26f44f9449fea8c2f73a8, type: 3}
     enemyType: 0
