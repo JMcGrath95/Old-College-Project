@@ -2,26 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RoomType
+{
+    StartRoom,
+    BossRoom,
+    EnemyRoom,
+    EmptyRoom,
+    TreasureRoom,
+}
+
 public class Room : MonoBehaviour
 {
     public List<Hallway> hallways = new List<Hallway>();
 
-    //might change to enum. 0 is normal, 1 is start, 2 is exit/boss.
-    public int roomType;
+    //public int roomType;
+    public RoomType roomType;
 
-    public GameObject Floor;
+    //floor object temporarily used for color changing to know what roomtype it is
+    public GameObject floor;
 
     //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;
 
-    //loops through children and assigns floor object if it fins an object named Floor
+    private void Start()
+    {
+        //default room to be empty to avoid errors if roomType somehow does not get assigned
+        roomType = RoomType.EmptyRoom;
+    }
+
+    //loops through children and assigns floor object if it finds an object named Floor
     public void GetFloor()
     {
         foreach (Transform t in transform)
         {
             if (t.gameObject.name == "Floor")
             {
-                Floor = t.gameObject;
+                floor = t.gameObject;
                 return;
             }
         }
@@ -37,8 +53,6 @@ public class Room : MonoBehaviour
             if (child.gameObject.GetComponent<Hallway>() != null)
                 hallways.Add(child.gameObject.GetComponent<Hallway>());
         }
-
-        //print(gameObject.name + " " + hallways.Count);
 
         foreach (Hallway hallway in hallways)
         {
@@ -70,5 +84,34 @@ public class Room : MonoBehaviour
                 leftHallway = true;
             }
         }
+    }
+
+    public void SetRoomByType()
+    {
+        switch (roomType)
+        {
+            case RoomType.StartRoom:
+                SetRoomColour(Color.green);
+                break;
+            case RoomType.BossRoom:
+                SetRoomColour(Color.red);
+                break;
+            case RoomType.EnemyRoom:
+                SetRoomColour(Color.grey);
+                break;
+            case RoomType.EmptyRoom:
+                SetRoomColour(Color.white);
+                break;
+            case RoomType.TreasureRoom:
+                SetRoomColour(Color.yellow);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void SetRoomColour(Color colour)
+    {
+        floor.GetComponent<MeshRenderer>().material.color = colour;
     }
 }

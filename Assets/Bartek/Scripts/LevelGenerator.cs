@@ -15,6 +15,7 @@ public class LevelGenerator : MonoBehaviour
     //variables for the first and last room for player spawn and boss spawn
     Room startRoom;
     Room exitRoom;
+    Room treasureRoom;
 
     //lsit of rooms use in the generator
     List<Room> rooms = new List<Room>();
@@ -267,31 +268,52 @@ public class LevelGenerator : MonoBehaviour
         rooms.Clear();
         rooms.AddRange(createdRooms);
 
-
         for (int i = 0; i < createdRooms.Count; i++)
         {
+            int random;
             if(i == 0)
             {
-                //changes color of last room made to green to show it as start room, assigns it to startroom and sets its room type
-                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.green;
-                createdRooms[i].roomType = 1;
+                createdRooms[i].roomType = RoomType.StartRoom;
                 startRoom = createdRooms[i];
             }
             else if(i == createdRooms.Count - 1)
             {
-                //changes color of last room made to red to show it as exit room, assigns it to exitroom and sets its room type
-                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.red;
-                createdRooms[i].roomType = 2;
+                createdRooms[i].roomType = RoomType.BossRoom;
                 exitRoom = createdRooms[i];
             }
             else
-            {   
-                //changes color of the room made to white to show it as a normal room and sets its room type
-                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.yellow;
-                createdRooms[i].roomType = 0;
+            {
+                random = Random.Range(0, 2);
+
+                if (random == 0)
+                {
+                    createdRooms[i].roomType = RoomType.EnemyRoom;
+                }
+                else if (random == 1)
+                {
+                    createdRooms[i].roomType = RoomType.EmptyRoom;
+                }
             }
         }
 
+        //setting treasure room
+        List<Room> potentialTreasureRooms = new List<Room>();
+        foreach (Room r in createdRooms)
+        {
+            if (r.hallways.Count < 2 && r.transform.position != exitRoom.transform.position)
+            {
+                potentialTreasureRooms.Add(r);
+            }
+        }
+
+        Room tr = RandomizeRoom(potentialTreasureRooms.ToArray());
+        tr.roomType = RoomType.TreasureRoom;
+        treasureRoom = tr;
+
+        foreach(Room cr in createdRooms)
+        {
+            cr.SetRoomByType();
+        }
     }
 
     //checks if there is a hallway facing the position passed in and opposite the direction passed in
