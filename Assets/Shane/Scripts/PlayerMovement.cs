@@ -67,12 +67,13 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateMovementDirection()
     {
 
-#if UNITY_EDITOR || UNITY_STANDALONE
-        directionToMoveThisFrame = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-#endif
 #if UNITY_ANDROID || UNITY_IOS
         directionToMoveThisFrame = new Vector3(fixedJoystick.Horizontal, 0, fixedJoystick.Vertical);
+
+#elif UNITY_EDITOR || UNITY_STANDALONE
+        directionToMoveThisFrame = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 #endif
+
 
         directionToMoveThisFrame = mainCamera.transform.TransformDirection(directionToMoveThisFrame);
         directionToMoveThisFrame = new Vector3(directionToMoveThisFrame.x, 0, directionToMoveThisFrame.z).normalized * movementSpeed * Time.deltaTime;
