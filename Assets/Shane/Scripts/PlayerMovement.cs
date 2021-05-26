@@ -1,6 +1,6 @@
 using UnityEngine;
 
-enum PlayerState
+public enum PlayerState
 {
     Idle,
     Walking,
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
 
     [Header("State")]
-    [SerializeField] private PlayerState playerState;
+    public static PlayerState playerState;
 
     [Header("Movement")]
     [SerializeField] FixedJoystick fixedJoystick;
@@ -39,29 +39,68 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        playerState = PlayerState.Idle;
     }
 
     private void Update()
     {
-        //Move.
         UpdateMovementDirection();
-        IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
-
-        //Update animator.
         animator.SetFloat("MovementSpeed", directionToMoveThisFrame.magnitude);
 
-        //Idle.
-        if (directionToMoveThisFrame == Vector3.zero)
+        switch (playerState)
         {
-            playerState = PlayerState.Idle;
+            case PlayerState.Idle:
 
+                if (directionToMoveThisFrame != Vector3.zero)
+                {
+                    playerState = PlayerState.Walking;
+                }
+
+                break;
+            case PlayerState.Walking:
+
+                IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToMoveThisFrame), rotationSpeed);
+
+
+                if (directionToMoveThisFrame == Vector3.zero)
+                {
+                    playerState = PlayerState.Idle;
+                }
+
+
+                break;
+            case PlayerState.Attacking:
+
+
+
+                break;
+            default:
+                break;
         }
-        //Walking.
-        else
-        {
-            playerState = PlayerState.Walking;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToMoveThisFrame), rotationSpeed);
-        }
+
+
+
+
+        ////Move.
+        //UpdateMovementDirection();
+        //IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
+
+        ////Update animator.
+        //animator.SetFloat("MovementSpeed", directionToMoveThisFrame.magnitude);
+
+        ////Idle.
+        //if (directionToMoveThisFrame == Vector3.zero)
+        //{
+        //    playerState = PlayerState.Idle;
+
+        //}
+        ////Walking.
+        //else
+        //{
+        //    playerState = PlayerState.Walking;
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToMoveThisFrame), rotationSpeed);
+        //}
     }
 
     private void UpdateMovementDirection()
@@ -73,7 +112,6 @@ public class PlayerMovement : MonoBehaviour
 #elif UNITY_EDITOR || UNITY_STANDALONE
         directionToMoveThisFrame = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 #endif
-
 
         directionToMoveThisFrame = mainCamera.transform.TransformDirection(directionToMoveThisFrame);
         directionToMoveThisFrame = new Vector3(directionToMoveThisFrame.x, 0, directionToMoveThisFrame.z).normalized * movementSpeed * Time.deltaTime;
