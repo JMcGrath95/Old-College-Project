@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    Animator animator;
+    PlayerMovement playerMovement;
+    PlayerAnimationController playerAnimationController;
 
     private Action CurrentAttack;
 
     [Header("Melee Attack Cooldown")]
     [SerializeField] private float meleeAttackCooldown = 2f;
+    private float timeOfLastAttack = float.MinValue;
+    private float meleeAttackAnimationTime;
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
     }
     private void Start()
     {
@@ -23,26 +27,27 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && AttackNotInCooldown)
         {
-            PlayerMovement.playerState = PlayerState.Attacking;
+            PlayerMovement.GoToNewState(PlayerState.Attacking);
             CurrentAttack();
         }
     }
 
-    //Different potential attacks.
+    //Different potential attacks maybe.
     private void MeleeAttack()
     {
-        StartCoroutine(AttackCoroutine());
+        //Find better way of getting animation time.
+        //AnimatorStateInfo animatorStateInfo = playerMovement.animator.GetCurrentAnimatorStateInfo(0);
+        timeOfLastAttack = Time.time;
+        playerMovement.SnapForwardRotationToInputDirection();
+        playerAnimationController.GoToAttacking(callAtEndOfAnimation: EndAttack);
     }
 
-    private IEnumerator AttackCoroutine()
+    private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
+
+    private void EndAttack()
     {
-        animator.SetBool("MeleeAttack1", true);
-        yield return new WaitForSeconds(1f);
-        animator.SetBool("MeleeAttack1", false);
-        PlayerMovement.playerState = PlayerState.Attacking;
-
+        PlayerMovement.GoToNewState(PlayerState.Walking);
     }
-
 }

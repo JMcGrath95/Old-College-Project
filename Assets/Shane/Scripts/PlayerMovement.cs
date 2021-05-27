@@ -13,10 +13,11 @@ public class PlayerMovement : MonoBehaviour
     //Components.
     CharacterController characterController;
     Camera mainCamera;
-    Animator animator;
+    PlayerAnimationController playerAnimationController;
 
     [Header("State")]
     public static PlayerState playerState;
+    public static PlayerState previousState;
 
     [Header("Movement")]
     [SerializeField] FixedJoystick fixedJoystick;
@@ -33,46 +34,45 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
     }
 
     private void Start()
     {
         mainCamera = Camera.main;
         playerState = PlayerState.Idle;
+        previousState = playerState;
     }
 
     private void Update()
     {
         UpdateMovementDirection();
-        animator.SetFloat("MovementSpeed", directionToMoveThisFrame.magnitude);
 
         switch (playerState)
         {
             case PlayerState.Idle:
 
+                playerAnimationController.GoToIdle(); 
+
                 if (directionToMoveThisFrame != Vector3.zero)
                 {
-                    playerState = PlayerState.Walking;
+                    GoToNewState(PlayerState.Walking);
                 }
 
                 break;
+
             case PlayerState.Walking:
-
-                IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToMoveThisFrame), rotationSpeed);
-
 
                 if (directionToMoveThisFrame == Vector3.zero)
                 {
-                    playerState = PlayerState.Idle;
+                    GoToNewState(PlayerState.Idle);
+                    return;
                 }
 
+                playerAnimationController.GoToWalking();
 
-                break;
-            case PlayerState.Attacking:
-
-
+                IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToMoveThisFrame), rotationSpeed);
 
                 break;
             default:
@@ -116,5 +116,18 @@ public class PlayerMovement : MonoBehaviour
         directionToMoveThisFrame = mainCamera.transform.TransformDirection(directionToMoveThisFrame);
         directionToMoveThisFrame = new Vector3(directionToMoveThisFrame.x, 0, directionToMoveThisFrame.z).normalized * movementSpeed * Time.deltaTime;
     }
+
+    public static void GoToNewState(PlayerState newState)
+    {
+        previousState = playerState;
+        playerState = newState;
+    }
+
+    public void SnapForwardRotationToInputDirection()
+    {
+        if(directionToMoveThisFrame != Vector3.zero)
+            transform.forward = directionToMoveThisFrame;
+    }
+
 }
 
