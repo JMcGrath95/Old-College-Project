@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public GameController gameController;
+
     //prefab rooms to choose from in the generator
     public Room[] rooms_TRBL;
     public Room[] rooms_T;
@@ -94,8 +96,7 @@ public class LevelGenerator : MonoBehaviour
         //then randomises a room in that list and add it to the rooms list
         foreach (Vector3 position in PositionsToPlaceRoomsIn)
         {
-            List<Room> r = new List<Room>();
-            r = CheckAdjacentPositions(position);
+            List<Room> r = CheckAdjacentPositions(position);
 
             Room room = RandomizeRoom(r.ToArray());
             RoomPositions.Add(position);
@@ -268,35 +269,45 @@ public class LevelGenerator : MonoBehaviour
         rooms.Clear();
         rooms.AddRange(createdRooms);
 
+        DefineRoomTypes();
+
+        gameController.StartGame();
+    }
+
+    void DefineRoomTypes()
+    {
         for (int i = 0; i < createdRooms.Count; i++)
         {
             int random;
-            if(i == 0)
+            
+            //setting first room as startRoom
+            if (i == 0)
             {
                 createdRooms[i].roomType = RoomType.StartRoom;
                 startRoom = createdRooms[i];
             }
-            else if(i == createdRooms.Count - 1)
+            //setting last room as BossRoom
+            else if (i == createdRooms.Count - 1)
             {
                 createdRooms[i].roomType = RoomType.BossRoom;
                 exitRoom = createdRooms[i];
             }
             else
             {
-                random = Random.Range(0, 2);
-
-                if (random == 0)
-                {
-                    createdRooms[i].roomType = RoomType.EnemyRoom;
-                }
-                else if (random == 1)
+                //setting remaining rooms as empty or enemy rooms
+                random = Random.Range(0, 5);
+                if (random < 2)
                 {
                     createdRooms[i].roomType = RoomType.EmptyRoom;
+                }
+                else
+                {
+                    createdRooms[i].roomType = RoomType.EnemyRoom;
                 }
             }
         }
 
-        //setting treasure room
+        //setting a room with one hallway that is not the BossRoom as TreasureRoom
         List<Room> potentialTreasureRooms = new List<Room>();
         foreach (Room r in createdRooms)
         {
@@ -310,7 +321,7 @@ public class LevelGenerator : MonoBehaviour
         tr.roomType = RoomType.TreasureRoom;
         treasureRoom = tr;
 
-        foreach(Room cr in createdRooms)
+        foreach (Room cr in createdRooms)
         {
             cr.SetRoomByType();
         }
