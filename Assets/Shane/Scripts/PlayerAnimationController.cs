@@ -20,6 +20,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void Start()
     {
+        //Find better way for this.
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
         foreach (AnimationClip clip in clips)
         {

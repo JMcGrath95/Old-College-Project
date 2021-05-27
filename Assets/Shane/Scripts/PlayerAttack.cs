@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -10,10 +12,12 @@ public class PlayerAttack : MonoBehaviour
 
     private Action CurrentAttack;
 
-    [Header("Melee Attack Cooldown")]
+    [Header("Melee Attack")]
     [SerializeField] private float meleeAttackCooldown = 2f;
     private float timeOfLastAttack = float.MinValue;
     private float meleeAttackAnimationTime;
+    private bool CanAttack { get { return AttackNotInCooldown && IsAttacking == false; } }
+    private bool IsAttacking;
 
     private void Awake()
     {
@@ -27,9 +31,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && AttackNotInCooldown)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && CanAttack)
         {
-            PlayerMovement.GoToNewState(PlayerState.Attacking);
             CurrentAttack();
         }
     }
@@ -39,7 +42,11 @@ public class PlayerAttack : MonoBehaviour
     {
         //Find better way of getting animation time.
         //AnimatorStateInfo animatorStateInfo = playerMovement.animator.GetCurrentAnimatorStateInfo(0);
+
+        PlayerMovement.GoToNewState(PlayerState.Attacking);
+        IsAttacking = true;
         timeOfLastAttack = Time.time;
+
         playerMovement.SnapForwardRotationToInputDirection();
         playerAnimationController.GoToAttacking(callAtEndOfAnimation: EndAttack);
     }
@@ -49,5 +56,6 @@ public class PlayerAttack : MonoBehaviour
     private void EndAttack()
     {
         PlayerMovement.GoToNewState(PlayerState.Walking);
+        IsAttacking = false;
     }
 }
