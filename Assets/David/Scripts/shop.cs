@@ -6,6 +6,11 @@ public class shop : MonoBehaviour
 {
     ShopManager manager;
 
+    //[Header("Shop Items")]
+    //public ItemList allItems;
+
+    
+
     void Start()
     {
         Canvas Canvas = FindObjectOfType<Canvas>();
@@ -18,8 +23,12 @@ public class shop : MonoBehaviour
                 return;
             }
         }
+
+        
     }
 
+
+    
 
 
     
@@ -34,7 +43,9 @@ public class shop : MonoBehaviour
                 Debug.Log("Opened");
                 manager.OpenShopMenu();
 
-                
+                manager.AddItem("Health", 500);
+                manager.AddItem("Poison", 200);
+                //AddItem("Health", 500);
             }
         }
         Debug.Log("Working");

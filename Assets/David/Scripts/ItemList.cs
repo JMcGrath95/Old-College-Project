@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-[CreateAssetMenu(fileName = "ItemList", menuName = "Items")]
+[CreateAssetMenu(fileName = "ItemList", menuName = "Items/List")]
 public class ItemList : ScriptableObject
 {
     public List<ShopScriptData> Items;

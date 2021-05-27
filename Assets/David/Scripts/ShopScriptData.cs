@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public class ShopScriptData : MonoBehaviour
+public class ShopScriptData 
 {
 
     public string ItemID;
@@ -13,6 +13,6 @@ public class ShopScriptData : MonoBehaviour
     public float Price;
     public Sprite itemImg;
 
-    public GameObject Prefab;
+    public GameObject ItemBtnPrefab;
 
 }
