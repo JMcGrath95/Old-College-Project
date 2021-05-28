@@ -113,8 +113,8 @@ public class PlayerMovement : MonoBehaviour
         directionToMoveThisFrame = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 #endif
 
-        directionToMoveThisFrame = mainCamera.transform.TransformDirection(directionToMoveThisFrame);
-        directionToMoveThisFrame = new Vector3(directionToMoveThisFrame.x, 0, directionToMoveThisFrame.z).normalized * movementSpeed * Time.deltaTime;
+        directionToMoveThisFrame = mainCamera.transform.TransformDirection(directionToMoveThisFrame) * Time.deltaTime;
+        directionToMoveThisFrame = new Vector3(directionToMoveThisFrame.x, 0, directionToMoveThisFrame.z).normalized * movementSpeed;
     }
 
     public static void GoToNewState(PlayerState newState)
