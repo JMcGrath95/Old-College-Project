@@ -5,14 +5,15 @@ using UnityEngine;
 public class shop : MonoBehaviour
 {
     ShopManager manager;
-
-    //[Header("Shop Items")]
-    //public ItemList allItems;
-
+    public static shop Inatance;
+    public ItemList item;
+    bool InRange;
     
 
     void Start()
     {
+        
+
         Canvas Canvas = FindObjectOfType<Canvas>();
 
         foreach (Transform T  in Canvas.transform)
@@ -27,32 +28,29 @@ public class shop : MonoBehaviour
         
     }
 
-
-    
-
-
-    
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        if (other.gameObject.tag == "Player")
+        if(InRange)
         {
-            
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Opened");
                 manager.OpenShopMenu();
-
-                manager.AddItem("Health", 500);
-                manager.AddItem("Poison", 200);
-                //AddItem("Health", 500);
             }
         }
-        Debug.Log("Working");
+    }
+    
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+            InRange = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         manager.CloseShopMenu();
+        InRange = false;
     }
 }
