@@ -15,7 +15,7 @@ public abstract class InteractableArea : MonoBehaviour, iInteractable
     public Func<KeyCode,bool> inputDelegate; 
     
     //Start.
-    private void Start()
+    public virtual void Start()
     {
         if (HoldToInteract)
             inputDelegate = Input.GetKey;
