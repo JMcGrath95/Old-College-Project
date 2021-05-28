@@ -36,7 +36,7 @@ public class shop : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("player");
+            
 
             if (Input.GetKeyDown(KeyCode.E))
             {

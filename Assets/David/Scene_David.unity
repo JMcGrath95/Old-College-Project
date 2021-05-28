@@ -1336,8 +1336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopUI: {fileID: 861836601}
-  Content: {fileID: 0}
-  allItems: {fileID: 0}
+  Content: {fileID: 1193777141}
+  allItems: {fileID: 11400000, guid: 3512937ad17e0cc41a7e035954fc5bf4, type: 2}
 --- !u!1 &2117871705
 GameObject:
   m_ObjectHideFlags: 0

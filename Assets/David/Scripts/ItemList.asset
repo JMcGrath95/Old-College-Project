@@ -13,23 +13,13 @@ MonoBehaviour:
   m_Name: ItemList
   m_EditorClassIdentifier: 
   Items:
-  - ItemID: 
-    Desciption: 
-    Price: 0
-    itemImg: {fileID: 0}
-    ItemBtnPrefab: {fileID: 0}
-  - ItemID: 
-    Desciption: 
-    Price: 0
-    itemImg: {fileID: 0}
-    ItemBtnPrefab: {fileID: 0}
-  - ItemID: 
-    Desciption: 
-    Price: 0
-    itemImg: {fileID: 0}
-    ItemBtnPrefab: {fileID: 0}
-  - ItemID: 
-    Desciption: 
-    Price: 0
-    itemImg: {fileID: 0}
-    ItemBtnPrefab: {fileID: 0}
+  - ItemID: Health
+    Desciption: Restores 25 Hp
+    Price: 500
+    itemImg: {fileID: 21300000, guid: f07016b493a9e10409f45b843b30fce2, type: 3}
+    ItemBtnPrefab: {fileID: 5041154721763309396, guid: 106fde4df6d9e744eb5d4feaecf7c4b0, type: 3}
+  - ItemID: Poison Cure
+    Desciption: Cures Poison
+    Price: 300
+    itemImg: {fileID: 21300000, guid: ab7b4f72dc459284d965e73299cf0d77, type: 3}
+    ItemBtnPrefab: {fileID: 5041154721763309396, guid: 106fde4df6d9e744eb5d4feaecf7c4b0, type: 3}

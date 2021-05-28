@@ -6,6 +6,7 @@ public class ShopManager : MonoBehaviour
 {
     
     public GameObject shopUI;
+    [Header("Content Location")]
     public Transform Content;
     
 
@@ -24,7 +25,9 @@ public class ShopManager : MonoBehaviour
 
                 item.ItemBtnPrefab.GetComponent<ItembtnPrefab>().ItemImgIcon.sprite = item.itemImg;
 
+                item.ItemBtnPrefab.GetComponent<ItembtnPrefab>().ItemDescription.text = item.Desciption;
 
+                item.ItemBtnPrefab.GetComponent<ItembtnPrefab>().Currency.text = item.Price.ToString();
             }
         }
     }

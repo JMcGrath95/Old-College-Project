@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemImgIcon: {fileID: 5041154721981730541}
+  ItemDescription: {fileID: 549862718921952193}
+  Currency: {fileID: 5041154722617527560}
 --- !u!1 &5041154721981730547
 GameObject:
   m_ObjectHideFlags: 0
