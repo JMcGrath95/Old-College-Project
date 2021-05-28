@@ -31,14 +31,6 @@ public class PlayerAttack : MonoBehaviour
         btnAttack.onClick.AddListener(CurrentAttack);
     }
 
-    private void Update()
-    {
-        //if(Input.GetKeyDown(KeyCode.Mouse0) && CanAttack)
-        //{
-        //    CurrentAttack();
-        //}
-    }
-
     //Different potential attacks maybe.
     private void MeleeAttack()
     {

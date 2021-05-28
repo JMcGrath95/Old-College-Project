@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
         directionToMoveThisFrame = new Vector3(fixedJoystick.Horizontal, 0, fixedJoystick.Vertical);
 
-#elif UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_STANDALONE
         directionToMoveThisFrame = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 #endif
 

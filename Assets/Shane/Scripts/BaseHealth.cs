@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class BaseHealth : MonoBehaviour, iDamageable
 {
-    public virtual event Action DamageTakenEvent;
-    public virtual event Action DeathEvent;
+    public abstract event Action DamageTakenEvent;
+    public abstract event Action DeathEvent;
 
     [SerializeField] protected int startingHealth;
     [SerializeField] protected int currentHealth;
