@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         playerState = newState;
     }
 
-    public void SnapForwardRotationToInputDirection()
+    public void SnapRotationToInputDirection()
     {
         if(directionToMoveThisFrame != Vector3.zero)
             transform.forward = directionToMoveThisFrame;

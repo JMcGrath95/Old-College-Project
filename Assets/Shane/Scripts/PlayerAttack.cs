@@ -10,9 +10,10 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement playerMovement;
     PlayerAnimationController playerAnimationController;
 
-    private Action CurrentAttack;
+    private UnityAction CurrentAttack;
 
     [Header("Melee Attack")]
+    [SerializeField] private Button btnAttack;
     [SerializeField] private float meleeAttackCooldown = 2f;
     private float timeOfLastAttack = float.MinValue;
     private float meleeAttackAnimationTime;
@@ -27,14 +28,15 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         CurrentAttack = MeleeAttack;
+        btnAttack.onClick.AddListener(CurrentAttack);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && CanAttack)
-        {
-            CurrentAttack();
-        }
+        //if(Input.GetKeyDown(KeyCode.Mouse0) && CanAttack)
+        //{
+        //    CurrentAttack();
+        //}
     }
 
     //Different potential attacks maybe.
@@ -47,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = true;
         timeOfLastAttack = Time.time;
 
-        playerMovement.SnapForwardRotationToInputDirection();
+        playerMovement.SnapRotationToInputDirection();
         playerAnimationController.GoToAttacking(callAtEndOfAnimation: EndAttack);
     }
 
