@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
+  maxHealth: 100
 --- !u!114 &5935063644340607158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemList: []
+  currency: 0
 --- !u!1 &990434729285102661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,6 +2551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c1f981faa506c4cbef879dbcedbb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 50
 --- !u!1 &6376868638990534873
 GameObject:
   m_ObjectHideFlags: 0

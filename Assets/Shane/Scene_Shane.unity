@@ -1551,10 +1551,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6376868638541306235, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: Damage
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 6376868638990534873, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1607,10 +1603,6 @@ PrefabInstance:
       propertyPath: btnAttack
       value: 
       objectReference: {fileID: 987693060}
-    - target: {fileID: 6376868640145168441, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3bbded4819325e489b192d5172f1484, type: 3}
 --- !u!1001 &7920202792536655563
