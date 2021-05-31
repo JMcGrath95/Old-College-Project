@@ -7,7 +7,6 @@ public enum PlayerState
     Attacking
 }
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     //Components.
@@ -33,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+        characterController = GetComponentInParent<CharacterController>();
+        playerAnimationController = GetComponent<PlayerAnimationController>();
     }
 
     private void Start()
@@ -78,29 +77,6 @@ public class PlayerMovement : MonoBehaviour
             default:
                 break;
         }
-
-
-
-
-        ////Move.
-        //UpdateMovementDirection();
-        //IsGrounded = characterController.SimpleMove(directionToMoveThisFrame);
-
-        ////Update animator.
-        //animator.SetFloat("MovementSpeed", directionToMoveThisFrame.magnitude);
-
-        ////Idle.
-        //if (directionToMoveThisFrame == Vector3.zero)
-        //{
-        //    playerState = PlayerState.Idle;
-
-        //}
-        ////Walking.
-        //else
-        //{
-        //    playerState = PlayerState.Walking;
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToMoveThisFrame), rotationSpeed);
-        //}
     }
 
     private void UpdateMovementDirection()
@@ -128,6 +104,5 @@ public class PlayerMovement : MonoBehaviour
         if(directionToMoveThisFrame != Vector3.zero)
             transform.forward = directionToMoveThisFrame;
     }
-
 }
 

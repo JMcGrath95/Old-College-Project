@@ -34,20 +34,20 @@ public class PlayerAttack : MonoBehaviour
     //Different potential attacks maybe.
     private void MeleeAttack()
     {
-        //Find better way of getting animation time.
-        //AnimatorStateInfo animatorStateInfo = playerMovement.animator.GetCurrentAnimatorStateInfo(0);
+        if(CanAttack)
+        {
+            PlayerMovement.GoToNewState(PlayerState.Attacking);
+            IsAttacking = true;
+            timeOfLastAttack = Time.time;
 
-        PlayerMovement.GoToNewState(PlayerState.Attacking);
-        IsAttacking = true;
-        timeOfLastAttack = Time.time;
-
-        playerMovement.SnapRotationToInputDirection();
-        playerAnimationController.GoToAttacking(callAtEndOfAnimation: EndAttack);
+            playerMovement.SnapRotationToInputDirection();
+            playerAnimationController.GoToAttacking();
+        }
     }
 
     private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
 
-    private void EndAttack()
+    public void EndAttack()
     {
         PlayerMovement.GoToNewState(PlayerState.Walking);
         IsAttacking = false;
