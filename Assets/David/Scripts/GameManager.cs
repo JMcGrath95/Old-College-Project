@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public ItemList Items; 
+    public ItemList Items;
+    public float Currency;
 }

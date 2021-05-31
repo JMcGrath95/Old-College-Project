@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
@@ -25,11 +26,15 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    public void BuyItem(string itemid)
+    {
+        
+    }
+
 
     public void PopulateShopItems()
     {
-        //AddItem("Health", 500);
-        //AddItem("Poison Cure", 200);
+        
 
         foreach (var item in allItems.Items)
         {
@@ -42,6 +47,7 @@ public class ShopManager : MonoBehaviour
 
             item.ItemBtnPrefab.GetComponent<ItembtnPrefab>().Currency.text = item.Price.ToString();
 
+            item.ItemBtnPrefab.GetComponent<Button>().onClick.AddListener(() => BuyItem(item.ItemID));
         }
     }
 
