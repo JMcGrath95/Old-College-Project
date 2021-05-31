@@ -1,17 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickableItemCurrency : PickableItem
 {
-    public static event Action<string, int> PickedUpCurrencyEvent;
+    public static event Action<string, int> PlayerPickedUpCurrencyEvent;
 
     [SerializeField] private int currencyToGive;
 
     public override void PlayerPickedMeUp()
     {
-        PickedUpCurrencyEvent?.Invoke(itemID,currencyToGive);
+        PlayerPickedUpCurrencyEvent?.Invoke(itemID,currencyToGive);
         Destroy(gameObject);
     }
 }

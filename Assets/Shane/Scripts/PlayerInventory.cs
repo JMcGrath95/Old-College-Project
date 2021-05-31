@@ -1,6 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+//Putting currency here for now.
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -10,7 +12,13 @@ public class PlayerInventory : MonoBehaviour
     private void Awake() { }
     private void Start() 
     {
-        PickableItemCurrency.PickedUpCurrencyEvent += OnPlayerPickedUpCurrency;
+        PickableItemCurrency.PlayerPickedUpCurrencyEvent += OnPlayerPickedUpCurrency;
+        PickableInventoryItem.PlayerPickedUpInventoryEvent += OnPlayerPickedUpInventoryItem;
+    }
+
+    private void OnPlayerPickedUpInventoryItem(string itemID, PickableInventoryItem inventoryItem)
+    {
+        
     }
 
     private void OnPlayerPickedUpCurrency(string itemID,int currencyToAdd)
@@ -19,22 +27,15 @@ public class PlayerInventory : MonoBehaviour
         print($"picked up currency. Currency is now {currency}");
     }
 
-    private void OnPlayerPickedUpItem(string itemID)
-    {
-        //Find item by ID. Add to list.
-        //For now just creating one and adding.
-
-        ItemList.Add(new ShaneItem(itemID, "Test Item", "Test Description"));
-        print("added item");
-
-    }
-
-
-
     private void AddItemToInventory(string itemID)
     {
 
     }
 
+    private void OnDestroy()
+    {
+        PickableItemCurrency.PlayerPickedUpCurrencyEvent -= OnPlayerPickedUpCurrency;
+        PickableInventoryItem.PlayerPickedUpInventoryEvent -= OnPlayerPickedUpInventoryItem;
 
+    }
 }

@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseHealth : MonoBehaviour, iDamageable
 {
     public abstract event Action DamageTakenEvent;
     public abstract event Action DeathEvent;
+    public abstract event Action HealthAddedEvent;
 
     [SerializeField] protected int startingHealth;
     [SerializeField] protected int currentHealth;
@@ -14,12 +13,7 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
 
     public virtual void Start() => currentHealth = startingHealth;
 
+    //Should probably make virtual. 
     public abstract void TakeDamage(int amount);
-
-    public virtual void AddHealth(int amount) 
-    {
-        currentHealth += amount;
-        if (currentHealth >= maxHealth)
-            currentHealth = maxHealth;
-    }
+    public abstract void AddHealth(int amount);
 }

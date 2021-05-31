@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -46,16 +43,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
             CurrentAttack();
     }
-#elif UNITY_ANDROID || UNITY_IOS
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            CurrentAttack();
-    }
 #endif
-
-
 
     //Different potential attacks maybe.
     private void MeleeAttack()

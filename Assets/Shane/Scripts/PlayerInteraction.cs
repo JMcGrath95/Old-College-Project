@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -44,10 +41,11 @@ public class PlayerInteraction : MonoBehaviour
 
     }
 
+
+#if UNITY_STANDALONE
     private void Update()
     {
         //If PC.
-#if UNITY_STANDALONE
 
         if (!IsInInteractionArea)
             return;
@@ -56,8 +54,10 @@ public class PlayerInteraction : MonoBehaviour
         {
             interactable.Interact();
         }
-#endif
+
     }
+#endif
+
 
     private void UpdateInteractInfo(InteractableArea interactableArea)
     {

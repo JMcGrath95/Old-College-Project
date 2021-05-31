@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickableItemHealthPotion : PickableItem
@@ -11,7 +9,6 @@ public class PickableItemHealthPotion : PickableItem
 
     public override void PlayerPickedMeUp()
     {
-        print("picked up health");
         PickedUpHealthPotionEvent?.Invoke(itemID, healthToGive);
         Destroy(gameObject);
     }
