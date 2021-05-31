@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public GameController gameController;
+
     //prefab rooms to choose from in the generator
     public Room[] rooms_TRBL;
     public Room[] rooms_T;
@@ -15,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     //variables for the first and last room for player spawn and boss spawn
     Room startRoom;
     Room exitRoom;
+    Room treasureRoom;
 
     //lsit of rooms use in the generator
     List<Room> rooms = new List<Room>();
@@ -93,8 +96,7 @@ public class LevelGenerator : MonoBehaviour
         //then randomises a room in that list and add it to the rooms list
         foreach (Vector3 position in PositionsToPlaceRoomsIn)
         {
-            List<Room> r = new List<Room>();
-            r = CheckAdjacentPositions(position);
+            List<Room> r = CheckAdjacentPositions(position);
 
             Room room = RandomizeRoom(r.ToArray());
             RoomPositions.Add(position);
@@ -267,31 +269,62 @@ public class LevelGenerator : MonoBehaviour
         rooms.Clear();
         rooms.AddRange(createdRooms);
 
+        DefineRoomTypes();
 
+        gameController.StartGame();
+    }
+
+    void DefineRoomTypes()
+    {
         for (int i = 0; i < createdRooms.Count; i++)
         {
-            if(i == 0)
+            int random;
+            
+            //setting first room as startRoom
+            if (i == 0)
             {
-                //changes color of last room made to green to show it as start room, assigns it to startroom and sets its room type
-                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.green;
-                createdRooms[i].roomType = 1;
+                createdRooms[i].roomType = RoomType.StartRoom;
                 startRoom = createdRooms[i];
             }
-            else if(i == createdRooms.Count - 1)
+            //setting last room as BossRoom
+            else if (i == createdRooms.Count - 1)
             {
-                //changes color of last room made to red to show it as exit room, assigns it to exitroom and sets its room type
-                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.red;
-                createdRooms[i].roomType = 2;
+                createdRooms[i].roomType = RoomType.BossRoom;
                 exitRoom = createdRooms[i];
             }
             else
-            {   
-                //changes color of the room made to white to show it as a normal room and sets its room type
-                createdRooms[i].Floor.GetComponent<MeshRenderer>().material.color = Color.yellow;
-                createdRooms[i].roomType = 0;
+            {
+                //setting remaining rooms as empty or enemy rooms
+                random = Random.Range(0, 5);
+                if (random < 2)
+                {
+                    createdRooms[i].roomType = RoomType.EmptyRoom;
+                }
+                else
+                {
+                    createdRooms[i].roomType = RoomType.EnemyRoom;
+                }
             }
         }
 
+        //setting a room with one hallway that is not the BossRoom as TreasureRoom
+        List<Room> potentialTreasureRooms = new List<Room>();
+        foreach (Room r in createdRooms)
+        {
+            if (r.hallways.Count < 2 && r.transform.position != exitRoom.transform.position)
+            {
+                potentialTreasureRooms.Add(r);
+            }
+        }
+
+        Room tr = RandomizeRoom(potentialTreasureRooms.ToArray());
+        tr.roomType = RoomType.TreasureRoom;
+        treasureRoom = tr;
+
+        foreach (Room cr in createdRooms)
+        {
+            cr.SetRoomByType();
+        }
     }
 
     //checks if there is a hallway facing the position passed in and opposite the direction passed in
