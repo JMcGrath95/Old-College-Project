@@ -20,6 +20,7 @@ public class EnemyHealth : BaseHealth
         if(currentHealth <= 0)
         {
             DeathEvent?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

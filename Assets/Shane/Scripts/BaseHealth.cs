@@ -10,8 +10,16 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
 
     [SerializeField] protected int startingHealth;
     [SerializeField] protected int currentHealth;
+    [SerializeField] protected int maxHealth;
 
     public virtual void Start() => currentHealth = startingHealth;
 
     public abstract void TakeDamage(int amount);
+
+    public virtual void AddHealth(int amount) 
+    {
+        currentHealth += amount;
+        if (currentHealth >= maxHealth)
+            currentHealth = maxHealth;
+    }
 }
