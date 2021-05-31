@@ -10,9 +10,10 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement playerMovement;
     PlayerAnimationController playerAnimationController;
 
-    private Action CurrentAttack;
+    private UnityAction CurrentAttack;
 
     [Header("Melee Attack")]
+    [SerializeField] private Button btnAttack;
     [SerializeField] private float meleeAttackCooldown = 2f;
     private float timeOfLastAttack = float.MinValue;
     private float meleeAttackAnimationTime;
@@ -27,33 +28,26 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         CurrentAttack = MeleeAttack;
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && CanAttack)
-        {
-            CurrentAttack();
-        }
+        btnAttack.onClick.AddListener(CurrentAttack);
     }
 
     //Different potential attacks maybe.
     private void MeleeAttack()
     {
-        //Find better way of getting animation time.
-        //AnimatorStateInfo animatorStateInfo = playerMovement.animator.GetCurrentAnimatorStateInfo(0);
+        if(CanAttack)
+        {
+            PlayerMovement.GoToNewState(PlayerState.Attacking);
+            IsAttacking = true;
+            timeOfLastAttack = Time.time;
 
-        PlayerMovement.GoToNewState(PlayerState.Attacking);
-        IsAttacking = true;
-        timeOfLastAttack = Time.time;
-
-        playerMovement.SnapForwardRotationToInputDirection();
-        playerAnimationController.GoToAttacking(callAtEndOfAnimation: EndAttack);
+            playerMovement.SnapRotationToInputDirection();
+            playerAnimationController.GoToAttacking();
+        }
     }
 
     private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
 
-    private void EndAttack()
+    public void EndAttack()
     {
         PlayerMovement.GoToNewState(PlayerState.Walking);
         IsAttacking = false;
