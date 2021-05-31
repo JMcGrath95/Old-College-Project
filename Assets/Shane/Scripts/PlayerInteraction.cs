@@ -81,7 +81,7 @@ public class PlayerInteraction : MonoBehaviour
         
 #elif UNITY_ANDROID || UNITY_IOS
 
-        interactableArea.btnToInteract.onClick.AddListener(interactable.Interact);
+        interactableArea.btnToInteract.onClick.RemoveListener(interactable.Interact);
 #endif
     }
 
