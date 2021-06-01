@@ -580,6 +580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6939594222792322940}
   - component: {fileID: 2805547426135310267}
+  - component: {fileID: 969585292407398706}
   m_Layer: 0
   m_Name: TRL
   m_TagString: Untagged
@@ -625,10 +626,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallways: []
-  hallwayT: 0
-  hallwayR: 0
-  hallwayB: 0
-  hallwayL: 0
+  roomType: 0
+  floor: {fileID: 0}
+  inRoomTrigger: 0
+  roomCleared: 1
+  topHallway: 0
+  rightHallway: 0
+  bottomHallway: 0
+  leftHallway: 0
+--- !u!65 &969585292407398706
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939594222792322943}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 18, y: 2, z: 18}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6939594223433805708
 GameObject:
   m_ObjectHideFlags: 0

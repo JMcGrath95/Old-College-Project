@@ -21,6 +21,8 @@ public class Room : MonoBehaviour
     //floor object temporarily used for color changing to know what roomtype it is
     public GameObject floor;
 
+    public bool inRoomTrigger = false, roomCleared = true;
+
     //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;
 
@@ -92,26 +94,72 @@ public class Room : MonoBehaviour
         {
             case RoomType.StartRoom:
                 SetRoomColour(Color.green);
+                roomCleared = true;
                 break;
             case RoomType.BossRoom:
                 SetRoomColour(Color.red);
+                roomCleared = false;
                 break;
             case RoomType.EnemyRoom:
                 SetRoomColour(Color.grey);
+                roomCleared = false;
                 break;
             case RoomType.EmptyRoom:
                 SetRoomColour(Color.white);
+                roomCleared = true;
                 break;
             case RoomType.TreasureRoom:
                 SetRoomColour(Color.yellow);
+                roomCleared = true;
                 break;
             default:
+                roomCleared = true;
                 break;
         }
     }
-
+    
     void SetRoomColour(Color colour)
     {
         floor.GetComponent<MeshRenderer>().material.color = colour;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRoomTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRoomTrigger = false;
+        }
+    }
+
+    public void OpenDoors()
+    {
+        foreach (Hallway hallway in hallways)
+        {
+            hallway.OpenDoor();
+        }
+    }
+
+    public void CloseDoors()
+    {
+        foreach (Hallway hallway in hallways)
+        {
+            hallway.CloseDoor();
+        }
+    }
+
+    public void StartRoom()
+    {
+        CloseDoors();
+        //start whatever this room does based on type of room.
+        Invoke("OpenDoors", 5);
+        roomCleared = true;
     }
 }

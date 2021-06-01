@@ -8,9 +8,27 @@ public class Hallway : MonoBehaviour
 
     //1 = up, 2 = right, 3 = down, 4 = left
     public int direction;
+    bool roomEntered = false;
 
     public void OpenDoor()
     {
-        door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y - 20, door.transform.position.z);
+        door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y - 70, door.transform.position.z);
+    }
+
+    public void CloseDoor()
+    {
+        door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y + 70, door.transform.position.z);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if(GetComponentInParent<Room>().inRoomTrigger && !roomEntered && !GetComponentInParent<Room>().roomCleared)
+            {
+                GetComponentInParent<Room>().StartRoom();
+                roomEntered = true;
+            }
+        }
     }
 }
