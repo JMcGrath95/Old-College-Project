@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Holds info - what key to interact? Held down or not?
 //Events for entering, leaving area.
