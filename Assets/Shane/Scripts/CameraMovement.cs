@@ -8,17 +8,20 @@ public class CameraMovement : MonoBehaviour
     private Transform player;
     private Vector3 offset;
 
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-
-        offset = transform.position - player.position;
-    }
+    private void Awake() { }
+    private void Start() { }
 
     private void LateUpdate()
     {
+        if (player == null)
+            return;
+
         transform.position = player.position + offset;
     }
 
+    public void FindPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        offset = transform.position - player.position;
+    }
 }
