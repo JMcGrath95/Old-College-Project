@@ -9,14 +9,6 @@ public class PlayerHealth : BaseHealth
     public override void Start()
     {
         base.Start();
-
-        PickableItemHealthPotion.PickedUpHealthPotionEvent += OnPickedUpHealthPotion;
-    }
-
-    private void OnPickedUpHealthPotion(string itemID, int healthToGive)
-    {
-        AddHealth(healthToGive);
-        print($"Picked up health potion: current health is now {currentHealth}.");
     }
 
     public override void AddHealth(int amount)
@@ -35,8 +27,5 @@ public class PlayerHealth : BaseHealth
         if(currentHealth <= 0)
             DeathEvent?.Invoke();     
     }
-
-
-    private void OnDestroy() => PickableItemHealthPotion.PickedUpHealthPotionEvent -= OnPickedUpHealthPotion;
 
 }
