@@ -47,7 +47,7 @@ public class AI_Werewolf : AI_Pawn
             {
                 if (hit.collider.tag == "Player")
                 {
-                    hit.collider.gameObject.GetComponent<Health>().TakeDamage((int)Enemy.Enemy.Attack);
+                    hit.collider.gameObject.GetComponent<iDamageable>().TakeDamage((int)Enemy.Enemy.Attack);
                     NavMeshAgent.isStopped = true;
                     animator.Play(MeleeAttackAnim);
                     timer = 2f;

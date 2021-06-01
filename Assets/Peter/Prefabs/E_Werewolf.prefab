@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 7781968105969541299}
   - component: {fileID: 1742794830226771745}
   - component: {fileID: 3188790082275400526}
+  - component: {fileID: 432669307477331387}
   m_Layer: 0
   m_Name: E_Werewolf
   m_TagString: Untagged
@@ -103,17 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026c253c346541f44b8cb64d8c89c441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-    ID: 0
-    Health: 0
-    Speed: 0
-    Attack: 0
-    AttackSpeed: 0
-    AttackRange: 0
-    Name: 
-    prefab: {fileID: 0}
-    enemyType: 0
-    projectile_prefab: {fileID: 0}
   CurrentState: 0
 --- !u!114 &1742794830226771745
 MonoBehaviour:
@@ -127,17 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24e945a2720631418eee9d380e590ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-    ID: 0
-    Health: 0
-    Speed: 0
-    Attack: 0
-    AttackSpeed: 0
-    AttackRange: 0
-    Name: 
-    prefab: {fileID: 0}
-    enemyType: 0
-    projectile_prefab: {fileID: 0}
   CurrentState: 0
 --- !u!114 &3188790082275400526
 MonoBehaviour:
@@ -162,6 +141,21 @@ MonoBehaviour:
     prefab: {fileID: 0}
     enemyType: 0
     projectile_prefab: {fileID: 0}
+--- !u!114 &432669307477331387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327239811954624554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32090931cff80ad42a3d3296869d6965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
+  currentHealth: 0
+  maxHealth: 0
 --- !u!1001 &1343393629244660081
 PrefabInstance:
   m_ObjectHideFlags: 0

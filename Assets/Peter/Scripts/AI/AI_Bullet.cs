@@ -52,7 +52,7 @@ public class AI_Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag=="Player")
         {
-            collision.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
+            collision.collider.gameObject.GetComponent<iDamageable>().TakeDamage(damage);
             Destroy(gameObject);
         }
         
