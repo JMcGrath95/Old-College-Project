@@ -18,7 +18,7 @@ MonoBehaviour:
     Speed: 10
     Attack: 10
     AttackSpeed: 10
-    AttackRange: 1
+    AttackRange: 3
     Name: Werewolf
     prefab: {fileID: 3327239811954624554, guid: 542c9b85c3a26f44f9449fea8c2f73a8, type: 3}
     enemyType: 0
@@ -28,8 +28,8 @@ MonoBehaviour:
     Speed: 10
     Attack: 10
     AttackSpeed: 10
-    AttackRange: 10
+    AttackRange: 15
     Name: Bat
-    prefab: {fileID: 3327239811954624554, guid: 542c9b85c3a26f44f9449fea8c2f73a8, type: 3}
+    prefab: {fileID: 3327239811954624554, guid: ee14268230d295947a7ea658b6189cb9, type: 3}
     enemyType: 1
     projectile_prefab: {fileID: 6192541625579368567, guid: d05913c137f50754ea4662182082598c, type: 3}
