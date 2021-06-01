@@ -10,10 +10,9 @@ public enum State
     Idle
 }
 public class AI_Pawn : MonoBehaviour
-{    
-   
-    protected NavMeshAgent NavMeshAgent;
-    public Enemy Enemy;
+{
+    protected Enemy_Stats Enemy;
+    protected NavMeshAgent NavMeshAgent;    
     protected Transform Player;
     protected Animator animator;
     //float timeleft = 0f;
@@ -25,8 +24,8 @@ public class AI_Pawn : MonoBehaviour
     }
     public virtual void Awake()
     {
-        
 
+        
         //Initial Move after spawn
         //NavMeshAgent.destination = Player.position;
         //animator.SetBool("IsAttacking", false);
@@ -92,9 +91,9 @@ public class AI_Pawn : MonoBehaviour
         //}
     }
     //Method to check the fin the player object is within the range.
-    protected bool IsInRange() 
+    protected bool IsInRange(Transform transform) 
     {
-        if (Vector3.Distance(NavMeshAgent.transform.position, Player.position) <= Enemy.AttackRange)
+        if (Vector3.Distance(transform.position, Player.position) <= Enemy.Enemy.AttackRange)
         {            
             return true;
         }
@@ -105,6 +104,13 @@ public class AI_Pawn : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Enemy = gameObject.GetComponent<Enemy_Stats>();
+    }
+    protected void Rotation()
+    {
+        Vector3 targetDirection = Player.transform.position - transform.position;
+        Vector3 NewDir = Vector3.RotateTowards(transform.forward, targetDirection, 10 * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(NewDir);
     }
     //Sample fire method, will be reworked.
     //void Fire() 

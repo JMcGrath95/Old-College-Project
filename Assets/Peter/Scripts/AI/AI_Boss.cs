@@ -41,7 +41,7 @@ public class AI_Boss : MonoBehaviour
             Vector3 shootDir = (Player.transform.position - transform.position).normalized;
             GameObject Temp = Instantiate(Boss.Projectile, gameObject.transform.position, Quaternion.identity);
             AI_Bullet bullet = Temp.GetComponent<AI_Bullet>();
-            bullet.SetDir(shootDir, transform.position, Boss.AttackRange);
+            bullet.SetDir(shootDir, transform.position, Boss.AttackRange,(int)Boss.Attack);
             timeleft = 0.5f;
         }
 

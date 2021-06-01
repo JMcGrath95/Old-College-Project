@@ -6,18 +6,26 @@ public class AI_Bullet : MonoBehaviour
 {
     private Vector3 shootDir;
     private Vector3 origin;
-    private float range;
+    private float range ;
+    private int damage;
     float distance_traveled;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    public void SetDir(Vector3 shootDir,Vector3 origin,float range) 
+    private void Awake()
+    {
+        
+    }
+    public void SetDir(Vector3 shootDir,Vector3 origin,float range,int damage) 
     {
         this.shootDir = shootDir;
         this.origin = origin;
         this.range = range;
+        this.damage = damage;
         transform.eulerAngles = new Vector3(0, 0, GetAngle(shootDir));
         //Destroy(gameObject,3f);
     }
@@ -30,7 +38,7 @@ public class AI_Bullet : MonoBehaviour
             Destroy(gameObject);
         }
         float moveSpeed = 10f;
-        transform.position += shootDir * moveSpeed * Time.deltaTime;
+        transform.position += (shootDir + new Vector3(0,0.2f)) * moveSpeed * Time.deltaTime;
     }
     float GetAngle(Vector3 dir) 
     {
@@ -39,5 +47,15 @@ public class AI_Bullet : MonoBehaviour
         if (n < 0) n += 360;
 
         return n;
-    }    
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag=="Player")
+        {
+            collision.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        
+
+    }
 }

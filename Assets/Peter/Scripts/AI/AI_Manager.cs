@@ -7,9 +7,7 @@ using System;
 
 public class AI_Manager : MonoBehaviour
 {
-    //THIS SCRIPT NEEDS REWORKING POSSIBLY OBSOLETE
-    [SerializeField]
-    GameObject Player;
+    public Transform Player;
     //Vector3 Player_position;
     public List<AI_Pawn> list_of_pawns;
     public Spawner spawner;
@@ -23,7 +21,7 @@ public class AI_Manager : MonoBehaviour
     
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
         //Call to spawn enemies and the boss.
         StartCoroutine(SpawnEnemiesTemp());   
     }

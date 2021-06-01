@@ -525,6 +525,7 @@ MonoBehaviour:
   Enemies: {fileID: 11400000, guid: 83403fd5d6186a64ba631564d02c5407, type: 2}
   Bosses: {fileID: 11400000, guid: 7818cec6a3b13624b82287c11b7dafd3, type: 2}
   manager: {fileID: 481416031}
+  SpawnBoss: 0
   AreSpawned: 0
 --- !u!4 &820618340
 Transform:
@@ -552,7 +553,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901279908}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 0.5, y: 1, z: 0.5}
@@ -561,6 +562,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!136 &901279914
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901279908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.82634306
+  m_Height: 4.302181
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.631594, z: 0.007941008}
 --- !u!1 &1040339909
 GameObject:
   m_ObjectHideFlags: 0

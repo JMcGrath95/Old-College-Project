@@ -11,13 +11,14 @@ public class Spawner : MonoBehaviour
     public Boss Bosses;
     //public string SpawnList;
     public AI_Manager manager;
+    public bool SpawnBoss;
 
     
     public bool AreSpawned = false;
     
     
     
-    //Spawning regular boss.
+    //Spawning regular
     public void Enemy_Spawn_Small(float amount_to_spawn,int Range_from,int Range_to) 
     {
         
@@ -34,7 +35,7 @@ public class Spawner : MonoBehaviour
             temp = Enemies.enemies.Find(e => e.ID == enemy);
             GameObject just_made = Instantiate(temp.prefab);
             just_made.name = temp.Name;
-            just_made.GetComponent<AI_Pawn>().Enemy = new Enemy
+            just_made.GetComponent<Enemy_Stats>().Enemy = new Enemy
             {
                 ID = temp.ID,
                 prefab = temp.prefab,
@@ -56,21 +57,23 @@ public class Spawner : MonoBehaviour
     //TO BE IMPROVED
     public void Spawn_Boss(int id) 
     {
-        _boss temp = Bosses.bosses.Find(b => b.ID == id);
-        GameObject just_made_boss = Instantiate(temp.Boss_Prefab);
-        just_made_boss.name = temp.Name;
-        just_made_boss.GetComponent<AI_Boss>().Boss = new _boss
+        if (SpawnBoss)
         {
-            ID=temp.ID,
-            Name=temp.Name,
-            Speed=temp.Speed,
-            Attack=temp.Attack,
-            AttackSpeed=temp.AttackSpeed,
-            AttackRange=temp.AttackRange,
-            Projectile=temp.Projectile,
-            Boss_Prefab=temp.Boss_Prefab
-        };
-        
+            _boss temp = Bosses.bosses.Find(b => b.ID == id);
+            GameObject just_made_boss = Instantiate(temp.Boss_Prefab);
+            just_made_boss.name = temp.Name;
+            just_made_boss.GetComponent<AI_Boss>().Boss = new _boss
+            {
+                ID = temp.ID,
+                Name = temp.Name,
+                Speed = temp.Speed,
+                Attack = temp.Attack,
+                AttackSpeed = temp.AttackSpeed,
+                AttackRange = temp.AttackRange,
+                Projectile = temp.Projectile,
+                Boss_Prefab = temp.Boss_Prefab
+            };
+        }
     }
     //Splits the spawn string on ","
     int[] Split(string List) 
