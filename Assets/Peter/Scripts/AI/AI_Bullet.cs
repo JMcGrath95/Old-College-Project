@@ -9,6 +9,8 @@ public class AI_Bullet : MonoBehaviour
     private float range ;
     private int damage;
     float distance_traveled;
+    float attack_speed;
+    Transform source;
     
     
     // Start is called before the first frame update
@@ -20,14 +22,15 @@ public class AI_Bullet : MonoBehaviour
     {
         
     }
-    public void SetDir(Vector3 shootDir,Vector3 origin,float range,int damage) 
+    public void SetDir(Vector3 shootDir,Vector3 origin,float range,int damage,float attack_speed,Transform source) 
     {
         this.shootDir = shootDir;
         this.origin = origin;
         this.range = range;
         this.damage = damage;
+        this.attack_speed = attack_speed;
+        this.source = source;
         transform.eulerAngles = new Vector3(0, 0, GetAngle(shootDir));
-        //Destroy(gameObject,3f);
     }
     // Update is called once per frame
     void Update()
@@ -37,8 +40,7 @@ public class AI_Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        float moveSpeed = 10f;
-        transform.position += (shootDir + new Vector3(0,0.2f)) * moveSpeed * Time.deltaTime;
+        transform.position += (shootDir + new Vector3(0,0.2f)) * attack_speed * Time.deltaTime;
     }
     float GetAngle(Vector3 dir) 
     {
@@ -50,7 +52,16 @@ public class AI_Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag=="Player")
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.transform!=source)
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag=="Enemy"&&collision.gameObject.transform!=source)
         {
             collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(damage);
             Destroy(gameObject);
