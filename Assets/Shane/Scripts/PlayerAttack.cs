@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
     //Start.
     private void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
     }
     private void Start()
