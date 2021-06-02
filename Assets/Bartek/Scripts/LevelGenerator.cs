@@ -18,6 +18,9 @@ public class LevelGenerator : MonoBehaviour
     Room startRoom;
     Room exitRoom;
     Room treasureRoom;
+    
+    //distance between room centres
+    public int dbrc = 50;
 
     //lsit of rooms use in the generator
     List<Room> rooms = new List<Room>();
@@ -642,19 +645,19 @@ public class LevelGenerator : MonoBehaviour
         {
             //Gets room spawn postion if direction is up
             case 1:
-                returnPos = new Vector3(pos.x, pos.y, pos.z + 30);
+                returnPos = new Vector3(pos.x, pos.y, pos.z + dbrc);
                 break;
             //Gets room spawn postion if direction is right
             case 2:
-                returnPos = new Vector3(pos.x + 30, pos.y, pos.z);
+                returnPos = new Vector3(pos.x + dbrc, pos.y, pos.z);
                 break;
             //Gets room spawn postion if direction is down
             case 3:
-                returnPos = new Vector3(pos.x, pos.y, pos.z - 30);
+                returnPos = new Vector3(pos.x, pos.y, pos.z - dbrc);
                 break;
             //Gets room spawn postion if direction is left
             case 4:
-                returnPos = new Vector3(pos.x - 30, pos.y, pos.z);
+                returnPos = new Vector3(pos.x - dbrc, pos.y, pos.z);
                 break;
         }
 

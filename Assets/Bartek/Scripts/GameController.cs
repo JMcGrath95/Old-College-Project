@@ -10,15 +10,9 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        Player.GetComponent<PlayerHealth>().DeathEvent += GameController_DeathEvent;
-        NavMeshBuilder.BuildNavMesh();
         Instantiate(Player, new Vector3(0, 0, 0), Quaternion.identity);
+        NavMeshBuilder.BuildNavMesh();
         cam.FindPlayer();
-    }
-
-    private void GameController_DeathEvent()
-    {
-        GameOver();
     }
 
     public void GameOver()

@@ -155,7 +155,6 @@ public class Room : MonoBehaviour
 
     public void StartRoom()
     {
-        print("DSF");
         switch (roomType)
         {
             case RoomType.StartRoom:
@@ -169,7 +168,6 @@ public class Room : MonoBehaviour
             case RoomType.EmptyRoom:
                 break;
             case RoomType.TreasureRoom:
-                print("dfsfs");
                 controller.StartTreasureRoom(this);
                 break;
             default:
