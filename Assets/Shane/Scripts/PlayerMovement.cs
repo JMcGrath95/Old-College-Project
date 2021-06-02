@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponentInParent<CharacterController>();
-        playerAnimationController = GetComponent<PlayerAnimationController>();
+        playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
     }
 
     private void Start()

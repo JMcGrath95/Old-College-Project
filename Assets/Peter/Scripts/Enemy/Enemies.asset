@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - ID: 0
-    Health: 10
+    Health: 100
     Speed: 10
     Attack: 10
     AttackSpeed: 10
@@ -24,7 +24,7 @@ MonoBehaviour:
     enemyType: 0
     projectile_prefab: {fileID: 0}
   - ID: 1
-    Health: 10
+    Health: 50
     Speed: 10
     Attack: 10
     AttackSpeed: 10

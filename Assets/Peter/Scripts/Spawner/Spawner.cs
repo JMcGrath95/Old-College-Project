@@ -60,6 +60,7 @@ public class Spawner : MonoBehaviour
             temp = Enemies.enemies.Find(e => e.ID == enemy);
             GameObject just_made = Instantiate(temp.prefab);
             just_made.name = temp.Name;
+            Enemy_Stats stats = just_made.GetComponent<Enemy_Stats>();
             just_made.GetComponent<Enemy_Stats>().Enemy = new Enemy
             {
                 ID = temp.ID,
@@ -75,6 +76,8 @@ public class Spawner : MonoBehaviour
             };
             just_made.transform.position = Spawn_point;
             spawnedEnemies.Add(just_made.GetComponent<EnemyHealth>());
+            just_made.GetComponent<EnemyHealth>().SetMaxHealth((int)stats.Enemy.Health);
+
         }
         AreSpawned = true;
     }
@@ -136,19 +139,20 @@ public class Spawner : MonoBehaviour
     }
     //Pulls all of the objects tagged as "SpawnPoint" into an array
     //Loops through it and finds a random point
-    Transform GetRandomSpawn(int random_int)
-    {
-        GameObject[] SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+    //OBSOLETE
+    //Transform GetRandomSpawn(int random_int)
+    //{
+    //    GameObject[] SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
-        for (int i = 0; i < SpawnPoints.Length; i++)
-        {
-            if (i == random_int)
-            {
-                return SpawnPoints[i].transform;
-            }
-        }
-        return null;
-    }
+    //    for (int i = 0; i < SpawnPoints.Length; i++)
+    //    {
+    //        if (i == random_int)
+    //        {
+    //            return SpawnPoints[i].transform;
+    //        }
+    //    }
+    //    return null;
+    //}
 
     void GetPositions()
     {
