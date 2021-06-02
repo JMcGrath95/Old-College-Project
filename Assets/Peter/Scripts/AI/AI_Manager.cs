@@ -12,23 +12,23 @@ public class AI_Manager : MonoBehaviour
     public List<AI_Pawn> list_of_pawns;
     public Spawner spawner;
     public static AI_Manager current;
-    
+
 
     public List<AI_Pawn> list_of_melee_pawns;
     public List<AI_Pawn> list_of_range_pawns;
 
 
-    
-    void Start()
+
+    /*void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         //Call to spawn enemies and the boss.
-        StartCoroutine(SpawnEnemiesTemp());   
-    }
+        StartCoroutine(SpawnEnemiesTemp());
+    }*/
 
-    
+
     void Update()
-    {        
+    {
         //if (spawner.AreSpawned)
         //{
         //    StartCoroutine(IsItInRange());
@@ -38,29 +38,29 @@ public class AI_Manager : MonoBehaviour
     //{
     //    current = this;
     //}
-    
+
     //public void AddToBeManaged() 
     //{
-        //list_of_pawns = GetComponentsInChildren<AI_Pawn>().ToList();
-        //if (list_of_pawns != null)
-        //{
-        //    foreach (var enemy in list_of_pawns)
-        //    {
-        //        switch (enemy.GetComponent<AI_Pawn>().Enemy.enemyType)
-        //        {
-        //            case EnemyType.Melee:
-        //                list_of_melee_pawns.Add(enemy);
-        //                enemy.NavMeshAgent.destination=Player.transform.position;
-        //                break;
-        //            case EnemyType.Range:
-        //                list_of_range_pawns.Add(enemy);
-        //                enemy.NavMeshAgent.SetDestination(Player.transform.position);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //}        
+    //list_of_pawns = GetComponentsInChildren<AI_Pawn>().ToList();
+    //if (list_of_pawns != null)
+    //{
+    //    foreach (var enemy in list_of_pawns)
+    //    {
+    //        switch (enemy.GetComponent<AI_Pawn>().Enemy.enemyType)
+    //        {
+    //            case EnemyType.Melee:
+    //                list_of_melee_pawns.Add(enemy);
+    //                enemy.NavMeshAgent.destination=Player.transform.position;
+    //                break;
+    //            case EnemyType.Range:
+    //                list_of_range_pawns.Add(enemy);
+    //                enemy.NavMeshAgent.SetDestination(Player.transform.position);
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //}        
     //}
     //public void MoveAllGeneric(List<AI_Pawn> enemy_list)
     //{
@@ -90,7 +90,7 @@ public class AI_Manager : MonoBehaviour
     //            }
     //        }
     //    }
-        
+
     //}
     //IEnumerator IsItInRange()
     //{
@@ -135,11 +135,11 @@ public class AI_Manager : MonoBehaviour
     //    Debug.Log("Projectile Fired!");
     //}
 
-    IEnumerator SpawnEnemiesTemp() 
-    {
-        spawner.Spawn_Boss(0);
-        spawner.Enemy_Spawn_Small(10,0,2);
-        yield return new WaitUntil(()=>spawner.AreSpawned==true);
-        //AddToBeManaged();
-    }
+    /* IEnumerator SpawnEnemiesTemp() 
+     {
+         spawner.Spawn_Boss(0);
+         spawner.Enemy_Spawn_Small(10,0,2);
+         yield return new WaitUntil(()=>spawner.AreSpawned==true);
+         //AddToBeManaged();
+     }*/
 }

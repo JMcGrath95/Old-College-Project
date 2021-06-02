@@ -156,10 +156,12 @@ MonoBehaviour:
   roomType: 0
   floor: {fileID: 0}
   inRoomTrigger: 0
+  roomCleared: 1
   topHallway: 0
   rightHallway: 0
   bottomHallway: 0
   leftHallway: 0
+  spawner: {fileID: 0}
 --- !u!65 &1237461576969732743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -285,7 +287,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8698474639863345579
 Transform:

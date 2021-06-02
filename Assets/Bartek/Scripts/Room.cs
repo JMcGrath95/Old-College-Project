@@ -26,10 +26,13 @@ public class Room : MonoBehaviour
     //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;
 
+    public Spawner spawner;
+
+    RoomController controller;
+
     private void Start()
     {
-        //default room to be empty to avoid errors if roomType somehow does not get assigned
-        roomType = RoomType.EmptyRoom;
+        controller = GameObject.FindGameObjectWithTag("RoomController").GetComponent<RoomController>();
     }
 
     //loops through children and assigns floor object if it finds an object named Floor
@@ -157,9 +160,22 @@ public class Room : MonoBehaviour
 
     public void StartRoom()
     {
-        CloseDoors();
-        //start whatever this room does based on type of room.
-        Invoke("OpenDoors", 5);
-        roomCleared = true;
+        switch (roomType)
+        {
+            case RoomType.StartRoom:
+                break;
+            case RoomType.BossRoom:
+                controller.StartBossRoom(this); 
+                break;
+            case RoomType.EnemyRoom:
+                controller.StartEnemyRoom(this);
+                break;
+            case RoomType.EmptyRoom:
+                break;
+            case RoomType.TreasureRoom:
+                break;
+            default:
+                break;
+        }
     }
 }

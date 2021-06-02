@@ -62,6 +62,7 @@ MonoBehaviour:
   rightHallway: 0
   bottomHallway: 0
   leftHallway: 0
+  spawner: {fileID: 0}
 --- !u!65 &1584776248390886092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -377,7 +378,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &492091714747631240
 Transform:
