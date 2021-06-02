@@ -13,4 +13,5 @@ public class Cash : Item
             Debug.Log("colliding");
         }
     }
+
 }

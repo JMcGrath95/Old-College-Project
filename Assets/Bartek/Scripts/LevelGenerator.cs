@@ -272,6 +272,11 @@ public class LevelGenerator : MonoBehaviour
         DefineRoomTypes();
 
         gameController.StartGame();
+
+        foreach (Room r in createdRooms)
+        {
+            r.OpenDoors();
+        }
     }
 
     void DefineRoomTypes()

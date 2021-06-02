@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2939906522984222825
 Transform:
@@ -296,6 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2939906524929694148}
   - component: {fileID: -6231825534935184927}
+  - component: {fileID: 5612493454967133647}
   m_Layer: 0
   m_Name: Hallway
   m_TagString: Untagged
@@ -333,7 +334,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabdf078c26682448a47b50a7b7571a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 2939906524020969149}
+  door: {fileID: 2939906524020969149}
+  direction: 0
+--- !u!65 &5612493454967133647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939906524929694151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 4}
+  m_Center: {x: -4, y: 0.5, z: 0}
 --- !u!1 &2939906525001237072
 GameObject:
   m_ObjectHideFlags: 0

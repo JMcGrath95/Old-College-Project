@@ -21,13 +21,19 @@ public class Room : MonoBehaviour
     //floor object temporarily used for color changing to know what roomtype it is
     public GameObject floor;
 
+    public bool inRoomTrigger = false, roomCleared = false;
+
     //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;
 
+    public Spawner spawner;
+
+    RoomController controller;
+
     private void Start()
     {
-        //default room to be empty to avoid errors if roomType somehow does not get assigned
-        roomType = RoomType.EmptyRoom;
+        controller = GameObject.FindGameObjectWithTag("RoomController").GetComponent<RoomController>();
+        roomCleared = false;
     }
 
     //loops through children and assigns floor object if it finds an object named Floor
@@ -109,9 +115,65 @@ public class Room : MonoBehaviour
                 break;
         }
     }
-
+    
     void SetRoomColour(Color colour)
     {
         floor.GetComponent<MeshRenderer>().material.color = colour;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRoomTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRoomTrigger = false;
+        }
+    }
+
+    public void OpenDoors()
+    {
+        foreach (Hallway hallway in hallways)
+        {
+            hallway.OpenDoor();
+        }
+    }
+
+    public void CloseDoors()
+    {
+        foreach (Hallway hallway in hallways)
+        {
+            hallway.CloseDoor();
+        }
+    }
+
+    public void StartRoom()
+    {
+        print("DSF");
+        switch (roomType)
+        {
+            case RoomType.StartRoom:
+                break;
+            case RoomType.BossRoom:
+                controller.StartBossRoom(this); 
+                break;
+            case RoomType.EnemyRoom:
+                controller.StartEnemyRoom(this);
+                break;
+            case RoomType.EmptyRoom:
+                break;
+            case RoomType.TreasureRoom:
+                print("dfsfs");
+                controller.StartTreasureRoom(this);
+                break;
+            default:
+                break;
+        }
     }
 }

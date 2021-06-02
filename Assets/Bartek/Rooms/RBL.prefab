@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6629374200010277922}
   - component: {fileID: 2983689080321017065}
+  - component: {fileID: 2958729404271110587}
   m_Layer: 0
   m_Name: RBL
   m_TagString: Untagged
@@ -150,10 +151,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallways: []
-  hallwayT: 0
-  hallwayR: 0
-  hallwayB: 0
-  hallwayL: 0
+  roomType: 0
+  floor: {fileID: 0}
+  inRoomTrigger: 0
+  roomCleared: 1
+  topHallway: 0
+  rightHallway: 0
+  bottomHallway: 0
+  leftHallway: 0
+  spawner: {fileID: 0}
+--- !u!65 &2958729404271110587
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629374200010277925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 18, y: 2, z: 18}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6629374200014343106
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +285,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6629374200671778026
 Transform:
