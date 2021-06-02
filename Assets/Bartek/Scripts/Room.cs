@@ -21,7 +21,7 @@ public class Room : MonoBehaviour
     //floor object temporarily used for color changing to know what roomtype it is
     public GameObject floor;
 
-    public bool inRoomTrigger = false, roomCleared = true;
+    public bool inRoomTrigger = false, roomCleared = false;
 
     //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;
@@ -33,6 +33,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         controller = GameObject.FindGameObjectWithTag("RoomController").GetComponent<RoomController>();
+        roomCleared = false;
     }
 
     //loops through children and assigns floor object if it finds an object named Floor
@@ -97,26 +98,20 @@ public class Room : MonoBehaviour
         {
             case RoomType.StartRoom:
                 SetRoomColour(Color.green);
-                roomCleared = true;
                 break;
             case RoomType.BossRoom:
                 SetRoomColour(Color.red);
-                roomCleared = false;
                 break;
             case RoomType.EnemyRoom:
                 SetRoomColour(Color.grey);
-                roomCleared = false;
                 break;
             case RoomType.EmptyRoom:
                 SetRoomColour(Color.white);
-                roomCleared = true;
                 break;
             case RoomType.TreasureRoom:
                 SetRoomColour(Color.yellow);
-                roomCleared = true;
                 break;
             default:
-                roomCleared = true;
                 break;
         }
     }
@@ -160,6 +155,7 @@ public class Room : MonoBehaviour
 
     public void StartRoom()
     {
+        print("DSF");
         switch (roomType)
         {
             case RoomType.StartRoom:
@@ -173,6 +169,8 @@ public class Room : MonoBehaviour
             case RoomType.EmptyRoom:
                 break;
             case RoomType.TreasureRoom:
+                print("dfsfs");
+                controller.StartTreasureRoom(this);
                 break;
             default:
                 break;

@@ -637,6 +637,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4083175628393520353, guid: 7f70e62c266bf8a4d9b929cfc5084c48, type: 3}
+      propertyPath: items.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083175628393520353, guid: 7f70e62c266bf8a4d9b929cfc5084c48, type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 8615955567101575231, guid: efb5054415721db4dae48dae5983bedd, type: 3}
+    - target: {fileID: 4083175628393520353, guid: 7f70e62c266bf8a4d9b929cfc5084c48, type: 3}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 8324595090585275162, guid: 7be5e3fc524a4f34aaeaced685ba6444, type: 3}
+    - target: {fileID: 4083175628393520353, guid: 7f70e62c266bf8a4d9b929cfc5084c48, type: 3}
+      propertyPath: items.Array.data[2]
+      value: 
+      objectReference: {fileID: 621197391578160349, guid: 5a108df6135840242b495021ae83e1f3, type: 3}
     - target: {fileID: 4083175628393520355, guid: 7f70e62c266bf8a4d9b929cfc5084c48, type: 3}
       propertyPath: m_Name
       value: RoomController

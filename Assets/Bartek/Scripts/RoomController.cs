@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     public Spawner spawnerPrefab;
+    public List<Item> items = new List<Item>();
 
     public void StartEnemyRoom(Room room)
     {
@@ -20,5 +21,11 @@ public class RoomController : MonoBehaviour
         room.spawner = Instantiate(spawnerPrefab, room.transform);
         room.spawner.roomAssignedTo = room;
         room.spawner.SpawnBossEnemy();
+    }
+
+    public void StartTreasureRoom(Room room)
+    {
+        Instantiate(items[Random.Range(0, items.Count)], room.transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
+        room.roomCleared = true;
     }
 }
