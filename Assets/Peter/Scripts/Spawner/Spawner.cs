@@ -91,6 +91,7 @@ public class Spawner : MonoBehaviour
         just_made_boss.GetComponent<AI_Boss>().Boss = new _boss
         {
             ID = temp.ID,
+            Health=temp.Health,
             Name = temp.Name,
             Speed = temp.Speed,
             Attack = temp.Attack,
@@ -99,6 +100,7 @@ public class Spawner : MonoBehaviour
             Projectile = temp.Projectile,
             Boss_Prefab = temp.Boss_Prefab
         };
+        just_made_boss.GetComponent<EnemyHealth>().SetMaxHealth((int)just_made_boss.GetComponent<AI_Boss>().Boss.Health);
     }
     //Splits the spawn string on ","
     int[] Split(string List)
