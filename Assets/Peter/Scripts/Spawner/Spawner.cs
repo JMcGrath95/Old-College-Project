@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour
             Vector3 Spawn_point = GetRandomPosition();
             Enemy temp;
             temp = Enemies.enemies.Find(e => e.ID == enemy);
-            GameObject just_made = Instantiate(temp.prefab);
+            GameObject just_made = Instantiate(temp.prefab,Spawn_point,Quaternion.identity);
             just_made.name = temp.Name;
             Enemy_Stats stats = just_made.GetComponent<Enemy_Stats>();
             just_made.GetComponent<Enemy_Stats>().Enemy = new Enemy
@@ -73,8 +73,7 @@ public class Spawner : MonoBehaviour
                 AttackSpeed = temp.AttackSpeed,
                 enemyType = temp.enemyType,
                 projectile_prefab = temp.projectile_prefab
-            };
-            just_made.transform.position = Spawn_point;
+            };            
             spawnedEnemies.Add(just_made.GetComponent<EnemyHealth>());
             just_made.GetComponent<EnemyHealth>().SetMaxHealth((int)stats.Enemy.Health);
 
