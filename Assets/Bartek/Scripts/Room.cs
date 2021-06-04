@@ -21,7 +21,7 @@ public class Room : MonoBehaviour
     //floor object temporarily used for color changing to know what roomtype it is
     public GameObject floor;
 
-    public bool inRoomTrigger = false, roomCleared = false;
+    public bool inRoomTrigger = false, roomCleared = false, roomEntered = false;
 
     //bools to check if there is a hallway in the corresponding position
     public bool topHallway, rightHallway, bottomHallway, leftHallway;

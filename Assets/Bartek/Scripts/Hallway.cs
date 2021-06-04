@@ -8,7 +8,6 @@ public class Hallway : MonoBehaviour
 
     //1 = up, 2 = right, 3 = down, 4 = left
     public int direction;
-    bool roomEntered = false;
 
     public void OpenDoor()
     {
@@ -24,10 +23,10 @@ public class Hallway : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if(GetComponentInParent<Room>().inRoomTrigger && !roomEntered && !GetComponentInParent<Room>().roomCleared)
+            if(GetComponentInParent<Room>().inRoomTrigger && !GetComponentInParent<Room>().roomEntered && !GetComponentInParent<Room>().roomCleared)
             {
                 GetComponentInParent<Room>().StartRoom();
-                roomEntered = true;
+                GetComponentInParent<Room>().roomEntered = true;
             }
         }
     }
