@@ -7,7 +7,7 @@ public class AI_Boss : MonoBehaviour
     public _boss Boss;
     public GameObject Player;
     float timeleft = 0f;
-    public Room roomAssignedTo;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +32,9 @@ public class AI_Boss : MonoBehaviour
     }
     private void Health_DeathEvent() 
     {
-        roomAssignedTo.roomCleared = true;
-        roomAssignedTo.OpenDoors();
+        Room room = GetComponentInParent<Room>();
+        room.roomCleared = true;
+        room.OpenDoors();
     }
     void LookTowards() 
     {
