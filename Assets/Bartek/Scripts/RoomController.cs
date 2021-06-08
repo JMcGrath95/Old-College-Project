@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     public Spawner spawnerPrefab;
+    public ExitPortal portalPrefab;
     public List<Item> items = new List<Item>();
 
     public void StartEnemyRoom(Room room)

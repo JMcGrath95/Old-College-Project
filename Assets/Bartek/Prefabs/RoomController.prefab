@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerPrefab: {fileID: 6375186873447484759, guid: e40856a0546037244ac5c92838dc9778, type: 3}
+  portalPrefab: {fileID: -8428931868024751098, guid: 99fdbefb26ad05947b6ff2ed0240b873, type: 3}
+  items: []
