@@ -8,6 +8,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerStateIdle playerStateIdle;
     public PlayerStateWalking playerStateWalking;
     public PlayerStateAttacking playerStateAttacking;
+    public PlayerStateDashing playerStateDashing;
 
     //Components. More than one state uses component? Make public. Otherwise, make private and pass into updatecomponenents method as parameter.
     //Public Components.
@@ -28,6 +29,7 @@ public class PlayerStateMachine : StateMachine
         playerStateIdle.UpdateComponents(this);
         playerStateWalking.UpdateComponents(this, characterController);
         playerStateAttacking.UpdateComponents(this);
+        playerStateDashing.UpdateComponents(this,characterController);
 
         ChangeState(playerStateIdle);
     }

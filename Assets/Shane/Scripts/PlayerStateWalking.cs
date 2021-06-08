@@ -23,8 +23,17 @@ public class PlayerStateWalking : iState
         this.characterController = characterController;
     }
 
-    public void Enter() => InputManager.AttackInputEvent += OnAttackInputEvent;
-    public void Exit() => InputManager.AttackInputEvent -= OnAttackInputEvent;
+    public void Enter()
+    {
+        InputManager.AttackInputEvent += OnAttackInputEvent;
+        InputManager.DashInputEvent += OnDashInputEvent;
+    }
+
+    public void Exit()
+    {
+        InputManager.AttackInputEvent -= OnAttackInputEvent;
+        InputManager.DashInputEvent -= OnDashInputEvent;
+    }
 
     public void Tick()
     {
@@ -41,5 +50,7 @@ public class PlayerStateWalking : iState
 
     }
     private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
+    private void OnDashInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
+
 
 }

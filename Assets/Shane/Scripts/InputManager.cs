@@ -15,30 +15,41 @@ public class InputManager : MonoBehaviour
     [SerializeField] private FixedJoystick fixedJoystick;
 
     //Attacking.
+    [SerializeField] private KeyCode keyAttack;
     [SerializeField] private Button btnAttack;
     public static event Action AttackInputEvent;
+
+    //Dashing. Cooldown here?
+    [SerializeField] private KeyCode keyDash;
+    [SerializeField] private Button btnDash;
+    public static event Action DashInputEvent;
 
     private void Start()
     {
         mainCamera = Camera.main;
 
-#if UNITY_ANDROID || UNITY_IOS
-        btnAttack.onClick.AddListener(OnAttackButtonClick);
-       
-#endif
+        #if UNITY_ANDROID || UNITY_IOS
+        btnAttack.onClick.AddListener(OnAttackInput);
+        btnDash.onClick.AddListener(OnDashInput);
+        #endif
     }
 
     private void OnAttackInput() => AttackInputEvent?.Invoke();
+    private void OnDashInput()
+    {
+        if(IsMovementInput)
+            DashInputEvent?.Invoke();
+    }
 
     private void Update()
     {
         #region Update Movement
-#if UNITY_ANDROID || UNITY_IOS
+        #if UNITY_ANDROID || UNITY_IOS
         MovementInput = new Vector3(fixedJoystick.Horizontal, 0, fixedJoystick.Vertical);
 
-#elif UNITY_STANDALONE
+        #elif UNITY_STANDALONE
         MovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-#endif
+        #endif
 
         MovementInput = mainCamera.transform.TransformDirection(MovementInput) * Time.deltaTime;
         MovementInput = new Vector3(MovementInput.x, 0, MovementInput.z).normalized;
@@ -46,13 +57,35 @@ public class InputManager : MonoBehaviour
 
         #region Update Attack
 
-#if UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        #if UNITY_STANDALONE
+        if (Input.GetKeyDown(keyAttack))
             OnAttackInput();
-#endif
+        #endif
 
         #endregion
 
+        #region Update Dash
+
+        #if UNITY_STANDALONE
+        if (Input.GetKeyDown(keyDash))
+            OnDashInput();
+        #endif
+
+        #endregion
+
+    }
+
+
+
+    private void OnDestroy()
+    {
+        //Unsub events if on mobile.
+        #if UNITY_ANDROID || UNITY_IOS
+
+        btnAttack.onClick.RemoveListener(OnAttackInput);
+        btnDash.onClick.RemoveListener(OnDashInput);
+
+        #endif
     }
 
 }
