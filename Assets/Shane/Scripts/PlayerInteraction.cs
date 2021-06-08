@@ -1,5 +1,8 @@
 using UnityEngine;
 
+//Listens out for player pressing interact button.
+//If it has a reference to an interactable area (i.e is inside one), it calls .Interact on it. 
+
 public class PlayerInteraction : MonoBehaviour
 {
     private iInteractable interactable;

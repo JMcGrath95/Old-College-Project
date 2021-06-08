@@ -6,25 +6,15 @@ using UnityEngine;
 [Serializable]
 public class PlayerStateIdle : iState
 {
-    PlayerStateMachine playerStateMachine;
+    private PlayerStateMachine playerStateMachine;
 
     public void UpdateComponents(PlayerStateMachine playerStateMachine) => this.playerStateMachine = playerStateMachine;
 
-    public void Enter()
-    {
-        InputManager.AttackInputEvent += OnAttackInputEvent;
-        InputManager.DashInputEvent += OnDashInputEvent;
-    }
+    public void Enter() => InputManager.AttackInputEvent += OnAttackInputEvent;
 
-    public void Exit()
-    {
-        InputManager.AttackInputEvent -= OnAttackInputEvent;
-        InputManager.DashInputEvent -= OnDashInputEvent;
-    }
+    public void Exit() => InputManager.AttackInputEvent -= OnAttackInputEvent;
 
     private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
-    private void OnDashInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
-
 
     public void Tick()
     {

@@ -1,14 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_ButtonWithCooldown : MonoBehaviour
 {
-    protected UI_RadialProgressBar radialProgressBar;
+    protected UI_ProgressBar progressBar;
+    protected Button button;
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
-        radialProgressBar = GetComponentInParent<UI_RadialProgressBar>();
+        button = GetComponent<Button>();
+        progressBar = GetComponentInParent<UI_ProgressBar>();
     }
+    protected virtual void Start() { }
 
+    protected void DisableButton() => button.interactable = false;
+    protected void EnableButton() => button.interactable = true;
+
+    protected void EnableButtonCooldown(float cooldownLength)
+    {
+        Timer cooldownTimer = new Timer(this,cooldownLength, EnableButton);
+    }
 }

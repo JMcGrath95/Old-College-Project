@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class UI_DashButton : UI_ButtonWithCooldown
 {
-    public override void Awake() => base.Awake();
+    protected override void Awake() => base.Awake();
 
-    private void Start()
+    protected override void Start()
     {
+        PlayerStateDashing.DashStartedEvent += OnPlayerStartedDash;
         PlayerStateDashing.DashEndedEvent += OnPlayerEndedDash;
     }
 
+    private void OnPlayerStartedDash() => DisableButton();
+
     private void OnPlayerEndedDash(float dashCooldown)
     {
-        radialProgressBar.ResetProgressBar();
-        radialProgressBar.StartFillingProgressBar(dashCooldown);
+        progressBar.ResetProgressBar();
+        progressBar.StartFillingProgressBar(dashCooldown);
+
+        EnableButtonCooldown(dashCooldown);
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         PlayerStateDashing.DashEndedEvent -= OnPlayerEndedDash;
     }

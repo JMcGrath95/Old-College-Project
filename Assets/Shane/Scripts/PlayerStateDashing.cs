@@ -10,6 +10,7 @@ public class PlayerStateDashing : iState
     private PlayerStateMachine playerStateMachine;
     private CharacterController characterController;
 
+    public static event Action DashStartedEvent;
     public static event Action<float> DashEndedEvent;
 
     [Header("Dash Info")]
@@ -17,26 +18,38 @@ public class PlayerStateDashing : iState
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldown;
 
-    //private bool CanDash { get { return !IsInCooldown && did } }
     private bool IsInCooldown { get { return Time.time <= nextTimeCanDash; } }
     private bool DidDash = true;
-    private float timeForDashToEnd;
     private float nextTimeCanDash = float.MinValue;
+    private float timeForDashToEnd;
     private Vector3 directionToDash;
 
+    public void UpdateComponents(PlayerStateMachine playerStateMachine,CharacterController characterController)
+    {
+        this.playerStateMachine = playerStateMachine;
+        this.characterController = characterController;
+    }
 
     public void Enter()
     {
+        //Have to check for cooldown if on PC as player can spam dash button.
+        //If on mobile, the dash button is disabled and gets re-enabled once dash cooldown ends.
+        #if UNITY_STANDALONE
         if (IsInCooldown)
         {
             DidDash = false;
             playerStateMachine.RevertState();
             return;
         }
+        #endif
+
+        //Set up Dash.
+        DashStartedEvent?.Invoke();
 
         DidDash = true;
-        Debug.Log("entered dash state");
         directionToDash = InputManager.MovementInput;
+        playerStateMachine.myTransform.forward = directionToDash;
+
         timeForDashToEnd = Time.time + dashDuration;
 
         playerStateMachine.playerAnimationController.GoToDash();
@@ -44,7 +57,9 @@ public class PlayerStateDashing : iState
 
     public void Exit() 
     { 
-        if(DidDash)
+        //If the dash was in cooldown, state immediately exits and hits this, hence the check for if they had just dashed.
+
+        if(DidDash) 
         {
             DashEndedEvent?.Invoke(dashCooldown);
             nextTimeCanDash = Time.time + dashCooldown;
@@ -53,15 +68,11 @@ public class PlayerStateDashing : iState
 
     public void Tick()
     {
+        //Dash Movement.
         characterController.SimpleMove(directionToDash * forceToApply);
 
         if (Time.time >= timeForDashToEnd)
             playerStateMachine.RevertState();
     }
 
-    public void UpdateComponents(PlayerStateMachine playerStateMachine,CharacterController characterController)
-    {
-        this.playerStateMachine = playerStateMachine;
-        this.characterController = characterController;
-    }
 }

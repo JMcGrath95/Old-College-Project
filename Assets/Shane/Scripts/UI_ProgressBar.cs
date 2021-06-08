@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_RadialProgressBar : MonoBehaviour
+//A progress bar that fills from 0 - 1.
+//Pass in how many seconds until progress bar reaches full amount.
+
+public class UI_ProgressBar : MonoBehaviour
 {
     private Image image;
 
     public event Action ProgressBarFilledEvent;
 
-
-    [SerializeField] private float secondsUntilFull;
     public bool IsActive { get { return image.fillAmount >= 1f; } }
 
     private void Awake() => image = GetComponent<Image>();
