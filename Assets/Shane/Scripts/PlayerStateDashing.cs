@@ -39,7 +39,7 @@ public class PlayerStateDashing : iState
         directionToDash = InputManager.MovementInput;
         timeForDashToEnd = Time.time + dashDuration;
 
-        //playerStateMachine.playerAnimationController.GoToDash();
+        playerStateMachine.playerAnimationController.GoToDash();
     }
 
     public void Exit() 
