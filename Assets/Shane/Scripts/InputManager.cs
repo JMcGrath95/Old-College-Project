@@ -4,22 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class InputManager : MonoBehaviour
 {
-    //Maybe have buttons here as well, with events to fire when they are pressed.
-
     //Movement.
     public static Vector3 MovementInput { get; private set; }
     public static bool IsMovementInput { get { return MovementInput != Vector3.zero; } }
     private Camera mainCamera; 
     [SerializeField] private FixedJoystick fixedJoystick;
 
+    //Interacting.
+    [SerializeField] private KeyCode keyInteract;
+    [SerializeField] private Button btnInteract;
+    private Func<KeyCode, bool> interactInputDelegate; //Not used yet. Need this if certain interaction areas you need to interact by holding button instead of single press.
+    public static event Action InteractInputEvent;
+
     //Attacking.
     [SerializeField] private KeyCode keyAttack;
     [SerializeField] private Button btnAttack;
     public static event Action AttackInputEvent;
 
-    //Dashing. Cooldown here?
+    //Dashing. 
     [SerializeField] private KeyCode keyDash;
     [SerializeField] private Button btnDash;
     public static event Action DashInputEvent;
@@ -28,12 +33,16 @@ public class InputManager : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-        #if UNITY_ANDROID || UNITY_IOS
+
+#if UNITY_ANDROID || UNITY_IOS
+        btnInteract.onClick.AddListener(OnInteractInput);
         btnAttack.onClick.AddListener(OnAttackInput);
         btnDash.onClick.AddListener(OnDashInput);
-        #endif
+#endif
     }
 
+
+    private void OnInteractInput() => InteractInputEvent?.Invoke();
     private void OnAttackInput() => AttackInputEvent?.Invoke();
     private void OnDashInput()
     {
@@ -69,23 +78,30 @@ public class InputManager : MonoBehaviour
         #if UNITY_STANDALONE
         if (Input.GetKeyDown(keyDash))
             OnDashInput();
-        #endif
+#endif
+
+        #endregion
+
+        #region Update Interaction
+
+
+        if (Input.GetKeyDown(keyInteract))
+             OnInteractInput();
 
         #endregion
 
     }
 
-
-
     private void OnDestroy()
     {
         //Unsub events if on mobile.
-        #if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS
 
+        btnInteract.onClick.RemoveListener(OnInteractInput);
         btnAttack.onClick.RemoveListener(OnAttackInput);
         btnDash.onClick.RemoveListener(OnDashInput);
 
-        #endif
+#endif
     }
 
 }

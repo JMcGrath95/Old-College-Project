@@ -2,43 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Holds info - what key to interact? Held down or not?
-//Events for entering, leaving area.
+
 public abstract class InteractableArea : MonoBehaviour, iInteractable
 {
     //Events.
     public static event Action<InteractableArea> EnteredAreaEvent;
     public static event Action<InteractableArea> LeftAreaEvent;
-
-    //PC Interaction.
-#if UNITY_STANDALONE
-    [Header("Interact Input")]
-    [SerializeField] private bool HoldToInteract;
-    public KeyCode keyToInteract;
-    public Func<KeyCode,bool> inputDelegate;
-
-#elif UNITY_ANDROID || UNITY_IOS
-    public Button btnToInteract;
-#endif
-
-
-    //Start.
-    public virtual void Start()
-    {
-#if UNITY_STANDALONE
-
-        if (HoldToInteract)
-            inputDelegate = Input.GetKey;
-        else
-            inputDelegate = Input.GetKeyDown;
-
-
-#elif UNITY_ANDROID || UNITY_IOS
-
-
-
-#endif
-    }
+    public abstract void Interact();
 
 
     private void OnTriggerEnter(Collider other)
@@ -56,5 +26,4 @@ public abstract class InteractableArea : MonoBehaviour, iInteractable
         LeftAreaEvent?.Invoke(this);
     }
 
-    public abstract void Interact();
 }
