@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitPortal : MonoBehaviour, iInteractable
+public class ExitPortal : InteractableArea
 {
-    public void Interact()
+    public override void Interact()
     {
         Application.Quit();
     }
+
 }

@@ -4882,3 +4882,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a9137f42e44fe4ba84acd640470081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoldToInteract: 0
+  keyToInteract: 101
