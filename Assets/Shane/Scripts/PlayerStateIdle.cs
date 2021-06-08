@@ -10,10 +10,20 @@ public class PlayerStateIdle : iState
 
     public void UpdateComponents(PlayerStateMachine playerStateMachine) => this.playerStateMachine = playerStateMachine;
 
-    public void Enter() => InputManager.AttackInputEvent += OnAttackInputEvent;
-    public void Exit() => InputManager.AttackInputEvent -= OnAttackInputEvent;
+    public void Enter()
+    {
+        InputManager.AttackInputEvent += OnAttackInputEvent;
+        InputManager.DashInputEvent += OnDashInputEvent;
+    }
+
+    public void Exit()
+    {
+        InputManager.AttackInputEvent -= OnAttackInputEvent;
+        InputManager.DashInputEvent -= OnDashInputEvent;
+    }
 
     private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
+    private void OnDashInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
 
 
     public void Tick()
