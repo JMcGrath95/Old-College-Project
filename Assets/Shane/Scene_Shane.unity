@@ -802,29 +802,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1256641997 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3574266793316937200, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-  m_PrefabInstance: {fileID: 3574266794425823874}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1256641998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256641997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82cb50de100e6de4f9130aab99666a49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollider: {fileID: 1256642005}
---- !u!136 &1256642005 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 3574266793316937201, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-  m_PrefabInstance: {fileID: 3574266794425823874}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1471430072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,10 +1557,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 44790471268223137, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: playerStateDashing.dashCooldown
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3574266793316937200, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: m_Name
       value: Player

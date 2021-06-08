@@ -139,7 +139,7 @@ MonoBehaviour:
   playerStateDashing:
     forceToApply: 23
     dashDuration: 0.4
-    dashCooldown: 3
+    dashCooldown: 1
 --- !u!114 &44790471268223136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1699,6 +1699,7 @@ GameObject:
   - component: {fileID: 3574266793316937207}
   - component: {fileID: 3574266793316937206}
   - component: {fileID: 3574266793316937201}
+  - component: {fileID: 1256641998}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1811,6 +1812,19 @@ CapsuleCollider:
   m_Height: 8.51
   m_Direction: 1
   m_Center: {x: 0, y: 3.3, z: 0}
+--- !u!114 &1256641998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3574266793316937200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cb50de100e6de4f9130aab99666a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollider: {fileID: 3574266793316937201}
 --- !u!1 &3601034504226154201
 GameObject:
   m_ObjectHideFlags: 0
