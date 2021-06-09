@@ -130,15 +130,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStateWalking:
-    movementSpeed: 5
+    movementSpeed: 8.5
     IsGrounded: 0
     rotationSpeed: 0.15
   playerStateAttacking:
     currentWeapon: {fileID: 0}
     meleeAttackCooldown: 0.5
   playerStateDashing:
-    forceToApply: 23
-    dashDuration: 0.4
+    forceToApply: 28
+    dashDuration: 0.25
     dashCooldown: 1
 --- !u!114 &44790471268223136
 MonoBehaviour:

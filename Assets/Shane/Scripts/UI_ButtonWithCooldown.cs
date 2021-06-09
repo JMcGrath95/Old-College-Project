@@ -1,24 +1,19 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+//A button which can be disabled and enabled after a certain time.
+
 public class UI_ButtonWithCooldown : MonoBehaviour
 {
-    protected UI_ProgressBar progressBar;
     protected Button button;
 
-    protected virtual void Awake()
-    {
-        button = GetComponent<Button>();
-        progressBar = GetComponentInParent<UI_ProgressBar>();
-    }
-    protected virtual void Start() { }
+    protected virtual void Awake() => button = GetComponent<Button>();
 
     protected void DisableButton() => button.interactable = false;
     protected void EnableButton() => button.interactable = true;
 
     protected void EnableButtonCooldown(float cooldownLength)
     {
-        Timer cooldownTimer = new Timer(this,cooldownLength, EnableButton);
+        Timer timer = new Timer(this,cooldownLength, EnableButton);
     }
 }

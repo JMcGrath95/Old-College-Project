@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,25 +14,21 @@ public class UI_ProgressBar : MonoBehaviour
 
     public event Action ProgressBarFilledEvent;
 
-    public bool IsActive { get { return image.fillAmount >= 1f; } }
 
     private void Awake() => image = GetComponent<Image>();
 
     public void ResetProgressBar() => image.fillAmount = 0;
 
-    public void StartFillingProgressBar(float seconds) => StartCoroutine(FillProgressBarCoroutine(seconds)); 
-    private IEnumerator FillProgressBarCoroutine(float seconds)
+    public void StartFillingProgressBar(float secondsUntilFull) => StartCoroutine(FillProgressBarCoroutine(secondsUntilFull)); 
+    private IEnumerator FillProgressBarCoroutine(float secondsUntilFull)
     {
-        float timer = 0f;
+        Timer timer = new Timer(this,timeToStop: secondsUntilFull,callbacksOnTimerEnd: ()=> ProgressBarFilledEvent?.Invoke());
+        timer.Start();
 
-        while(timer <= seconds)
+        while(!timer.ended)
         {
-            timer += Time.deltaTime;
-            image.fillAmount = timer / seconds;
+            image.fillAmount = timer.elapsed / secondsUntilFull;
             yield return null;
         }
-
-        ProgressBarFilledEvent?.Invoke();
-
     }
 }

@@ -36,7 +36,6 @@ public class InputManager : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-
 #if UNITY_ANDROID || UNITY_IOS
         btnInteract.onClick.AddListener(OnInteractInput);
         btnAttack.onClick.AddListener(OnAttackInput);
@@ -44,7 +43,7 @@ public class InputManager : MonoBehaviour
 #endif
     }
 
-
+    //Raising input events.
     private void OnInteractInput() => InteractInputEvent?.Invoke();
     private void OnAttackInput() => AttackInputEvent?.Invoke();
     private void OnDashInput()

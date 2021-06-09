@@ -19,7 +19,7 @@ public class PlayerStateDashing : iState
     [SerializeField] private float dashCooldown;
 
     private bool IsInCooldown { get { return Time.time <= nextTimeCanDash; } }
-    private bool DidDash = true;
+    private bool DashSuccessful = true;
     private float nextTimeCanDash = float.MinValue;
     private float timeForDashToEnd;
     private Vector3 directionToDash;
@@ -37,7 +37,7 @@ public class PlayerStateDashing : iState
         #if UNITY_STANDALONE
         if (IsInCooldown)
         {
-            DidDash = false;
+            DashSuccessful = false;
             playerStateMachine.RevertState();
             return;
         }
@@ -46,7 +46,7 @@ public class PlayerStateDashing : iState
         //Set up Dash.
         DashStartedEvent?.Invoke();
 
-        DidDash = true;
+        DashSuccessful = true;
         directionToDash = InputManager.MovementInput;
         playerStateMachine.myTransform.forward = directionToDash;
 
@@ -59,7 +59,7 @@ public class PlayerStateDashing : iState
     { 
         //If the dash was in cooldown, state immediately exits and hits this, hence the check for if they had just dashed.
 
-        if(DidDash) 
+        if(DashSuccessful) 
         {
             DashEndedEvent?.Invoke(dashCooldown);
             nextTimeCanDash = Time.time + dashCooldown;

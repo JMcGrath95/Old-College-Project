@@ -2,26 +2,49 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+//Timer which runs until specified time and can call methods after it has reached this time.
+
 public class Timer 
 {
-    public Timer(MonoBehaviour mono, float timeToStop, params Action[] callbacksOnTimerEnd)
+    private MonoBehaviour monoBehaviour;
+    private float timeToStop;
+    private Action[] callbacksOnTimerEnd;
+
+    public float elapsed;
+    public bool ended = false;
+
+    public Timer(MonoBehaviour monoBehaviour,float timeToStop)
     {
-       mono.StartCoroutine(StartTimerCoroutine(timeToStop,callbacksOnTimerEnd));
+        this.monoBehaviour = monoBehaviour;
+        this.timeToStop = timeToStop;
     }
+    public Timer(MonoBehaviour monoBehaviour, float timeToStop, params Action[] callbacksOnTimerEnd)
+    {
+        this.monoBehaviour = monoBehaviour;
+        this.timeToStop = timeToStop;
+        this.callbacksOnTimerEnd = callbacksOnTimerEnd;
+    }
+
+    public void Start() => monoBehaviour.StartCoroutine(StartTimerCoroutine(timeToStop, callbacksOnTimerEnd));
 
     private IEnumerator StartTimerCoroutine(float timeToStop,params Action[] callbacks)
     {
-        float timer = 0f;
-
-        while (timer <= timeToStop)
+        //Increase timer until it reaches time to stop.
+        while (elapsed <= timeToStop)
         {
-            timer += Time.deltaTime;
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
-        for (int i = 0; i < callbacks.Length; i++)
+        //Callbacks if any.
+        if(callbacks != null)
         {
-            callbacks[i]?.Invoke();
+            for (int i = 0; i < callbacks.Length; i++)
+            {
+                callbacks[i]?.Invoke();
+            }
         }
+
+        ended = true;
     }
 }

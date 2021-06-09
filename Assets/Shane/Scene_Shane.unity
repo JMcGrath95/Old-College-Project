@@ -1550,6 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217df76b5b62f36448d53e43a4f43444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressBar: {fileID: 884580364}
 --- !u!1001 &3574266794425823874
 PrefabInstance:
   m_ObjectHideFlags: 0

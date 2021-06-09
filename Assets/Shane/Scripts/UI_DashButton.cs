@@ -1,22 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+//Dash button has progress bar which shows how long until dash cooldown ends.
+//Listens out for player starting / ending dash.
 
 public class UI_DashButton : UI_ButtonWithCooldown
 {
+    [SerializeField] private UI_ProgressBar progressBar;
+
     protected override void Awake() => base.Awake();
 
-    protected override void Start()
+    private void Start()
     {
         PlayerStateDashing.DashStartedEvent += OnPlayerStartedDash;
         PlayerStateDashing.DashEndedEvent += OnPlayerEndedDash;
     }
 
-    private void OnPlayerStartedDash() => DisableButton();
+    private void OnPlayerStartedDash()
+    {
+        DisableButton();
+        progressBar.ResetProgressBar();
+    }
 
     private void OnPlayerEndedDash(float dashCooldown)
     {
-        progressBar.ResetProgressBar();
         progressBar.StartFillingProgressBar(dashCooldown);
 
         EnableButtonCooldown(dashCooldown);
@@ -24,6 +30,7 @@ public class UI_DashButton : UI_ButtonWithCooldown
 
     public void OnDestroy()
     {
+        PlayerStateDashing.DashStartedEvent -= OnPlayerStartedDash;
         PlayerStateDashing.DashEndedEvent -= OnPlayerEndedDash;
     }
 }

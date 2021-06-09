@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 //If the player enters an interactable area the player interaction script is notified and gets a reference to the interface/object.
 
