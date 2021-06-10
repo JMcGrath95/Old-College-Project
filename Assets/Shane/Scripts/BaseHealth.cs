@@ -18,4 +18,9 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
     public abstract void AddHealth(int amount);
     public virtual void SetMaxHealth(int amount) => maxHealth = amount;
     public virtual void AddMaxHealth(int amount) => maxHealth += amount;
+
+    public virtual int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
 }

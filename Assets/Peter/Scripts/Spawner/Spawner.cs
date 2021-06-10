@@ -13,11 +13,12 @@ public class Spawner : MonoBehaviour
     public Room roomAssignedTo;
 
     List<Vector3> spawnPositions = new List<Vector3>();
-
     List<EnemyHealth> spawnedEnemies = new List<EnemyHealth>();
     int enemiesCount;
 
     public bool AreSpawned = false;
+
+    GameObject spawnedBoss;
 
     void GetEnemies()
     {
@@ -26,6 +27,20 @@ public class Spawner : MonoBehaviour
             enemiesCount++;
             eh.DeathEvent += Eh_DeathEvent;
         }
+    }
+
+    void GetBoss(GameObject boss)
+    {
+        spawnedBoss = boss;
+        spawnedBoss.GetComponent<EnemyHealth>().DeathEvent += Boss_DeathEvent;
+    }
+
+    private void Boss_DeathEvent()
+    {
+        roomAssignedTo.roomCleared = true;
+        roomAssignedTo.OpenDoors();
+        ExitPortal portal = GameObject.FindGameObjectWithTag("RoomController").GetComponent<RoomController>().portalPrefab;
+        Instantiate(portal, roomAssignedTo.transform);
     }
 
     private void Eh_DeathEvent()
@@ -100,6 +115,7 @@ public class Spawner : MonoBehaviour
             Boss_Prefab = temp.Boss_Prefab
         };
         just_made_boss.GetComponent<EnemyHealth>().SetMaxHealth((int)just_made_boss.GetComponent<AI_Boss>().Boss.Health);
+        GetBoss(just_made_boss);
     }
     //Splits the spawn string on ","
     int[] Split(string List)
