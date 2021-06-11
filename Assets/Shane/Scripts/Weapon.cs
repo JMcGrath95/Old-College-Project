@@ -12,8 +12,8 @@ public class Weapon : MonoBehaviour
     private void Start() => DisableHitbox();
 
     //Hitbox enabling / disabling.
-    private void EnableHitbox() => weaponCollider.enabled = true;
-    private void DisableHitbox() => weaponCollider.enabled = false;
+    public void EnableHitbox() => weaponCollider.enabled = true;
+    public void DisableHitbox() => weaponCollider.enabled = false;
     public void EnableAndDisableHitbox() => StartCoroutine(EnableAndDisableHitboxCoroutine());
     private IEnumerator EnableAndDisableHitboxCoroutine()
     {

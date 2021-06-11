@@ -35,18 +35,19 @@ public class PlayerStateAttacking : iState
         {
             timeOfLastAttack = Time.time;
 
+            //Snap rotation to input direction if any.
             if (InputManager.IsMovementInput)
                 playerStateMachine.myTransform.forward = InputManager.MovementInput;
 
 
             //Need to rework attacking.
-            playerStateMachine.playerAnimationController.GoToAttacking();
-
+            playerStateMachine.playerAnimationController.GoToNextAttack();
         }
     }
 
     public void Exit() { }
     public void Tick() { }
 
-    public void EnableWeaponHitbox() => currentWeapon.EnableAndDisableHitbox();
+    public void EnableWeaponHitbox() => currentWeapon.EnableHitbox();
+    public void DisableWeaponHitbox() => currentWeapon.DisableHitbox();
 }

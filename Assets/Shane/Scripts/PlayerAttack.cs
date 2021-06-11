@@ -17,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
     private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
 
     //Start.
-
     private void Start()
     {
         CurrentAttack = MeleeAttack;
@@ -33,5 +32,6 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void EnableWeaponHitbox() => currentWeapon.EnableAndDisableHitbox();
+    public void EnableWeaponHitbox() => currentWeapon.EnableHitbox();
+    public void DisableWeaponHitbox() => currentWeapon.DisableHitbox();
 }
