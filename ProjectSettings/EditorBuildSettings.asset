@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Main Game/Scene_Game.unity
     guid: 75c13a7938eeeac44b99398f713ad241
   - enabled: 1
-    path: Assets/Bartek/Scenes/Scene_Bartek.unity
+    path: Assets/Bartek/Scenes/RoomGenerationTesting.unity
     guid: f9ac1d7688ca17c459561c3dcc8f5597
   - enabled: 1
     path: Assets/David/Scene_David.unity

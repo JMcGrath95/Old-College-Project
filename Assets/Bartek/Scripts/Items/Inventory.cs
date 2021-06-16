@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public ItemTest test;
+    public List<ProjectileItem> ProjectileItems = new List<ProjectileItem>();
 
     void Start()
     {
-        test.test.Initiliaze(this.gameObject);
+        foreach (ProjectileItem projectileItem in ProjectileItems)
+        {
+            projectileItem.InitializeItem();
+        }
+        
+        foreach (ProjectileItem projectileItem in ProjectileItems)
+        {
+            projectileItem.UseItem();
+        }
+
+        //add code tying offensive items to attack event of player
     }
 
     void Update()
     {
-        test.test.TriggerEffect();
+
     }
 }
