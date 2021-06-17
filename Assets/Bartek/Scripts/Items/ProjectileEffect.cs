@@ -10,10 +10,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ProjectileEffect", menuName = "Effects/New Projectile Effect")]
 public class ProjectileEffect : BaseEffect
 {
-    public ProjectilePrefab PrefabToSpawn;                                     //prefab projectile that will spawn and have its values chganed by scriptableobject projectile
-    public List<Projectile> ProjectilesToUse = new List<Projectile>();         //projectiles that will be shot out
-    public List<Vector3> ProjectileDirections = new List<Vector3>();           //Direction projectiles will be shot out in. Defines how many projectiles there will be
-    private GameObject Player;                                                 //reference to player used as spawn point for projectiles spawn
+    public ProjectilePrefab PrefabToSpawn;                                      //prefab projectile that will spawn and have its values chganed by scriptableobject projectile
+    public float offsetValue = 1.2f;                                            //Multiplier which offsets projectile from player e.g 1.5 is 1.5 times direction value away from player (direction is normalized and can only be 1/-1 even is different value is input)
+    public List<Projectile> ProjectilesToUse = new List<Projectile>();          //projectiles that will be shot out
+    public List<Vector3> ProjectileDirections = new List<Vector3>();            //Direction projectiles will be shot out in. Defines how many projectiles there will be
+    private GameObject Player;                                                  //reference to player used as spawn point for projectiles spawn
 
     public override void InitializeEffect()
     {
@@ -33,9 +34,15 @@ public class ProjectileEffect : BaseEffect
 
     void SpawnOrb(List<Projectile> projectileSOList, Vector3 dirToFireIn)
     {
+        dirToFireIn = dirToFireIn.normalized;
+
         Projectile ProjectileSO = projectileSOList[Random.Range(0, projectileSOList.Count)];
 
-        ProjectilePrefab projectile = Instantiate(PrefabToSpawn, Player.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        Vector3 offset = Player.transform.position + (offsetValue * dirToFireIn);
+
+        Vector3 spawnPos = (Player.transform.position + new Vector3(0, 1.5f, 0)) + offset;
+
+        ProjectilePrefab projectile = Instantiate(PrefabToSpawn, spawnPos, Quaternion.identity);
         projectile.FillValues(ProjectileSO, dirToFireIn);
     }
 }
