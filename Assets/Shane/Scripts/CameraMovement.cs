@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private bool FollowPlayerAtStart;
+
     [Header("Player Info")]
     private Transform player;
     private Vector3 offset;
 
     private void Awake() { }
-    private void Start() { }
+    private void Start()
+    {
+        if (FollowPlayerAtStart)
+            FindPlayer();
+    }
 
     private void LateUpdate()
     {
