@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class BaseItem 
+public class ItemBase 
 {
     public string ItemID;
     public string Description;
