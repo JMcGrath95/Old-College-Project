@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectName: 3 Bullet Shotgun
   EffectSound: {fileID: 0}
+  Owner: {fileID: 0}
   PrefabToSpawn: {fileID: 316776862675890965, guid: d45a94d8b7dfeda4bb5c30728a1318f8, type: 3}
-  offsetValue: 1.2
+  offsetValue: 1.5
+  Speed: 20
   ProjectilesToUse:
   - {fileID: 11400000, guid: a2cb64ddc07543643bc5e10c0f491735, type: 2}
   ProjectileDirections:
