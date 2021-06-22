@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OffensiveItem : BaseItem
 {
-    public override void InitializeItem()
+    public override void InitializeItem(GameObject owner)
     {
         Debug.Log(ItemName + " item initiliazed.");
     }

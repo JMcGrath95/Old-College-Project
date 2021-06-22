@@ -16,7 +16,10 @@ public abstract class BaseItem : ScriptableObject
     public AudioClip ItemSound = null;                          //Audio for the item. some items can have no sound
     public ItemUseType ItemType;                                //This enum is used to define when the item is used e.g Attacking type items are used on player attack
 
-    public abstract void InitializeItem();                      //used when items gets added/used when any values needs to shared from item or to item
+    [HideInInspector]
+    public GameObject Owner;                                    //reference to owner (set through InitializeEffect not inspector)
+
+    public abstract void InitializeItem(GameObject owner);      //used when items gets added/used when any values needs to shared from item or to item
     public abstract void UseItem();                             //called when item is getting used to trigger what the item does
     
 }

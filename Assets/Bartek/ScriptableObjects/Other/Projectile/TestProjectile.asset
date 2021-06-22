@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dda5cc48c4bba409bb77a156771b1c, type: 3}
   m_Name: TestProjectile
   m_EditorClassIdentifier: 
-  Name: test
+  Name: TP
   Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  Size: 1
+  Size: 0.75
   Damage: 10
   Speed: 2
   Color: {r: 0.00030589104, g: 1, b: 0, a: 0}

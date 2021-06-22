@@ -12,12 +12,14 @@ public class ProjectileItem : OffensiveItem
 {
     public List<ProjectileEffect> ProjectileEffects = new List<ProjectileEffect>();
 
-    public override void InitializeItem()
+    public override void InitializeItem(GameObject owner)
     {
-        base.InitializeItem();
+        base.InitializeItem(owner);
+        Owner = owner;
+
         foreach (ProjectileEffect pe in ProjectileEffects)
         {
-            pe.InitializeEffect();
+            pe.InitializeEffect(Owner);
         }
     }
 

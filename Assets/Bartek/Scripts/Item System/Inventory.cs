@@ -5,12 +5,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<ProjectileItem> ProjectileItems = new List<ProjectileItem>();
+    public GameObject Player;
 
     void Start()
     {
         foreach (ProjectileItem projectileItem in ProjectileItems)
         {
-            projectileItem.InitializeItem();
+            projectileItem.InitializeItem(Player);
         }
         
         foreach (ProjectileItem projectileItem in ProjectileItems)
