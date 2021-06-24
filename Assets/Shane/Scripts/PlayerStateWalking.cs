@@ -13,7 +13,13 @@ public class PlayerStateWalking : iState
 
     [Header("Movement Speed")]
     [SerializeField] private float startingMovementSpeed; //Just to see default speed in inspector.
-    public static float MovementSpeed;                   
+    [SerializeField] private float minMovementSpeed;
+    [SerializeField] private float maxMovementSpeed;
+
+    private static float movementSpeed;
+    public static float MovementSpeed { get { return movementSpeed; } set { movementSpeed = Mathf.Clamp(movementSpeed, MinMovementSpeed, MaxMovementSpeed); } }
+    private static float MinMovementSpeed;
+    private static float MaxMovementSpeed;
 
     [Header("Rotation Speed")]
     [SerializeField] private float rotationSpeed;
@@ -23,7 +29,9 @@ public class PlayerStateWalking : iState
         this.playerStateMachine = playerStateMachine;
         this.characterController = characterController;
 
-        MovementSpeed = startingMovementSpeed; 
+        MinMovementSpeed = minMovementSpeed;
+        MaxMovementSpeed = maxMovementSpeed;
+        MovementSpeed = startingMovementSpeed;
     }
 
     //State Machine.
