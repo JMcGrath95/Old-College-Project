@@ -1635,6 +1635,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: playerStateWalking.startingMovementSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3bbded4819325e489b192d5172f1484, type: 3}
 --- !u!1001 &7920202792536655563
