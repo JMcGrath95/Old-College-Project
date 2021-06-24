@@ -7,7 +7,7 @@ using UnityEngine;
 /// number refers to corresponding value in scriptable object when filling projectiles list
 /// </summary>
 
-[CreateAssetMenu(fileName = "ProjectileEffect", menuName = "Effects/New Projectile Effect")]
+[CreateAssetMenu(fileName = "Projectile Effect", menuName = "Effects/New Projectile Effect")]
 public class ProjectileEffect : BaseEffect
 {
     public ProjectilePrefab PrefabToSpawn;                                      //prefab projectile that will spawn and have its values chganed by scriptableobject projectile
@@ -28,11 +28,11 @@ public class ProjectileEffect : BaseEffect
 
         foreach (Vector3 dir in ProjectileDirections)
         {
-            SpawnOrb(ProjectilesToUse, dir, Speed);
+            SpawnProjectile(ProjectilesToUse, dir, Speed);
         }
     }
 
-    void SpawnOrb(List<ProjectileSO> projectileSOList, Vector3 dirToFireIn, float speed)
+    void SpawnProjectile(List<ProjectileSO> projectileSOList, Vector3 dirToFireIn, float speed)
     {
         dirToFireIn = dirToFireIn.normalized;
 

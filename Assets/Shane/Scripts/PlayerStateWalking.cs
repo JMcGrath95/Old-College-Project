@@ -12,7 +12,7 @@ public class PlayerStateWalking : iState
     CharacterController characterController;
 
     [Header("Movement")]
-    [SerializeField] private float movementSpeed;
+    [SerializeField] public float movementSpeed;
     [SerializeField] private bool IsGrounded;
     [Header("Rotation Speed")]
     [SerializeField] private float rotationSpeed;

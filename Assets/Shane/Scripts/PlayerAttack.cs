@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private UnityAction CurrentAttack;
 
     [Header("Melee Attack")]
-    [SerializeField] private Weapon currentWeapon;
+    [SerializeField] public Weapon currentWeapon;
     [SerializeField] private float meleeAttackCooldown = 2f;
 
     private float timeOfLastAttack = float.MinValue;

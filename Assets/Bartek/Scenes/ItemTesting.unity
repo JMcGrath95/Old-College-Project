@@ -166,8 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48492656b9152b4aa9398d667b81583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileItems:
-  - {fileID: 11400000, guid: 385ea84bc5b112a4b9e2391f570ba4a7, type: 2}
+  ProjectileItems: []
+  ValueChangingItems:
+  - {fileID: 11400000, guid: 27d81c7d7c42e064797548c66c2c235a, type: 2}
   Player: {fileID: 1899728555}
 --- !u!1 &597841975
 GameObject:

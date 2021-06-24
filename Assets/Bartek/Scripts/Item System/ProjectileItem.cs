@@ -8,25 +8,22 @@ using UnityEngine;
 /// </summary>
 
 [CreateAssetMenu(fileName = "Projectile Item", menuName = "Items/New Projectile Item")]
-public class ProjectileItem : OffensiveItem
+public class ProjectileItem : BaseItem
 {
     public List<ProjectileEffect> ProjectileEffects = new List<ProjectileEffect>();
 
     public override void InitializeItem(GameObject owner)
     {
-        base.InitializeItem(owner);
         Owner = owner;
 
-        foreach (ProjectileEffect pe in ProjectileEffects)
+        foreach (ProjectileEffect effect in ProjectileEffects)
         {
-            pe.InitializeEffect(Owner);
+            effect.InitializeEffect(Owner);
         }
     }
 
     public override void UseItem()
     {
-        base.UseItem();
-
         foreach (ProjectileEffect pe in ProjectileEffects)
         {
             pe.TriggerEffect();
