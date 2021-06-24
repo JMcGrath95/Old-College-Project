@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84dda5cc48c4bba409bb77a156771b1c, type: 3}
-  m_Name: TestProjectile
+  m_Script: {fileID: 11500000, guid: 6615b7d0b566c554795e736925887ce5, type: 3}
+  m_Name: TestChangeEffect
   m_EditorClassIdentifier: 
-  Name: TP
-  Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  Size: 0.75
-  Damage: 10
-  Speed: 2
-  Color: {r: 0.00030589104, g: 1, b: 0, a: 0}
-  Range: 50
+  EffectName: Test Change Effect
+  EffectSound: {fileID: 0}
+  Owner: {fileID: 0}
+  valueToChange: 0
+  Value: 10
+  Add: 1
+  ForPlayer: 1

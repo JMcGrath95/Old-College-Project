@@ -8,7 +8,6 @@ TagManager:
   - SpawnPoint
   - RoomController
   - Projectile
-  - Wall
   layers:
   - Default
   - TransparentFX

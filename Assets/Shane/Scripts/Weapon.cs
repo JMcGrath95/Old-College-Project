@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour
 {
     Collider weaponCollider;
 
-    [SerializeField] private int Damage;
+    [SerializeField] public int Damage;
 
     //Start.
     private void Awake() => weaponCollider = GetComponent<Collider>();
