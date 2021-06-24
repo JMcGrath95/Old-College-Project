@@ -19,6 +19,9 @@ public class EnemyHealth : BaseHealth
 
     public override void TakeDamage(int amount)
     {
+        if (!canTakeDamage)
+            return;
+
         DamageTakenEvent?.Invoke();
         currentHealth -= amount;
 
