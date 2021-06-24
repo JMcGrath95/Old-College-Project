@@ -12,10 +12,27 @@ public class PlayerAnimationController : BaseAnimationController
     private readonly string[] attackAnimations = new string[3] { "Hit Action 2", "Hit Action 3", "Hit Action 4" };
     private Queue<string> attackAnimationQueue;
 
-    private float currentAttackSpeedModifier = 1f;
+    [Header("Attack Speed Modifying")]
+    [SerializeField] private float currentAttackSpeedModifier = 1f;
+    [SerializeField] private float minAttackSpeedModifier;
+    [SerializeField] private float maxAttackSpeedModifier;
+
+    public float CurrentAttackSpeedModifier 
+    { 
+        private get { return currentAttackSpeedModifier; }
+        set 
+        { 
+            currentAttackSpeedModifier = Mathf.Clamp(currentAttackSpeedModifier, minAttackSpeedModifier, maxAttackSpeedModifier);
+            animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);
+        } 
+    }
 
     public override void Awake() => base.Awake();
-    private void Start() => attackAnimationQueue = new Queue<string>(attackAnimations);
+    private void Start()
+    {
+        attackAnimationQueue = new Queue<string>(attackAnimations);
+        CurrentAttackSpeedModifier = 1f;
+    }
 
     public void GoToIdle() => ChangeAnimationState(idleAnimation);
     public void GoToWalking() => ChangeAnimationState(walkingAnimation);
@@ -28,15 +45,15 @@ public class PlayerAnimationController : BaseAnimationController
     }
 
     public void GoToDash() => ChangeAnimationState(dashAnimation);
-    public void IncreaseAttackMultipler(float amount)
-    {
-        currentAttackSpeedModifier += amount;
-        animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);
-    }
-    public void DecreaseAttackMultipler(float amount)
-    {
-        currentAttackSpeedModifier -= amount;
-        animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);      
-    }
+    //public void IncreaseAttackMultipler(float amount)
+    //{
+    //    CurrentAttackSpeedModifier += amount;
+    //    animator.SetFloat("AttackSpeedMultiplier", CurrentAttackSpeedModifier);
+    //}
+    //public void DecreaseAttackMultipler(float amount)
+    //{
+    //    CurrentAttackSpeedModifier -= amount;
+    //    animator.SetFloat("AttackSpeedMultiplier", CurrentAttackSpeedModifier);      
+    //}
 
 }

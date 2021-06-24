@@ -1636,8 +1636,28 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: playerStateWalking.maxMovementSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: playerStateWalking.minMovementSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: playerStateAttacking.startingAttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: playerStateWalking.startingMovementSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220171869548126751, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: maxAttackSpeedModifier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220171869548126751, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: minAttackSpeedModifier
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3bbded4819325e489b192d5172f1484, type: 3}

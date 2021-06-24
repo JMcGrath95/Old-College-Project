@@ -10,7 +10,7 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
     [Header("Health Stats")]
     [SerializeField] protected int currentHealth;
     [SerializeField] protected int maxHealth;
-    [Header("Invinsibilty")]
+    [Header("Invincibilty")]
     [SerializeField] protected bool canTakeDamage;
 
     public virtual void Start() => currentHealth = maxHealth;
