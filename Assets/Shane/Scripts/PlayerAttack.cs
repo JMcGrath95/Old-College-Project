@@ -28,7 +28,6 @@ public class PlayerAttack : MonoBehaviour
         if(CanAttack)
         {
             timeOfLastAttack = Time.time;
-
         }
     }
 

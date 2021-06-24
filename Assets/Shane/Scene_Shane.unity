@@ -1563,6 +1563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5195876691315528, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5195876691315531, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1627,6 +1631,10 @@ PrefabInstance:
       propertyPath: fixedJoystick
       value: 
       objectReference: {fileID: 504541809}
+    - target: {fileID: 5195876811921227, guid: a3bbded4819325e489b192d5172f1484, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3bbded4819325e489b192d5172f1484, type: 3}
 --- !u!1001 &7920202792536655563
