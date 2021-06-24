@@ -12,7 +12,7 @@ public class PlayerAnimationController : BaseAnimationController
     private readonly string[] attackAnimations = new string[3] { "Hit Action 2", "Hit Action 3", "Hit Action 4" };
     private Queue<string> attackAnimationQueue;
 
-
+    private float currentAttackSpeedModifier = 1f;
 
     public override void Awake() => base.Awake();
     private void Start() => attackAnimationQueue = new Queue<string>(attackAnimations);
@@ -28,6 +28,15 @@ public class PlayerAnimationController : BaseAnimationController
     }
 
     public void GoToDash() => ChangeAnimationState(dashAnimation);
-    public void SetAttackMultiplier(float amount) => animator.SetFloat("AttackSpeedMultiplier", amount);
+    public void IncreaseAttackMultipler(float amount)
+    {
+        currentAttackSpeedModifier += amount;
+        animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);
+    }
+    public void DecreaseAttackMultipler(float amount)
+    {
+        currentAttackSpeedModifier -= amount;
+        animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);      
+    }
 
 }

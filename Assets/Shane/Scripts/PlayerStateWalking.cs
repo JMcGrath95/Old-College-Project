@@ -13,8 +13,7 @@ public class PlayerStateWalking : iState
 
     [Header("Movement Speed")]
     [SerializeField] private float startingMovementSpeed; //Just to see default speed in inspector.
-    private static float movementSpeed;                   
-    public static void IncreaseMovementSpeed(float amount) => movementSpeed += amount;
+    public static float MovementSpeed;                   
 
     [Header("Rotation Speed")]
     [SerializeField] private float rotationSpeed;
@@ -24,7 +23,7 @@ public class PlayerStateWalking : iState
         this.playerStateMachine = playerStateMachine;
         this.characterController = characterController;
 
-        movementSpeed = startingMovementSpeed; 
+        MovementSpeed = startingMovementSpeed; 
     }
 
     //State Machine.
@@ -48,7 +47,7 @@ public class PlayerStateWalking : iState
 
         playerStateMachine.playerAnimationController.GoToWalking();
 
-        characterController.SimpleMove(InputManager.MovementInput * movementSpeed);
+        characterController.SimpleMove(InputManager.MovementInput * MovementSpeed);
         playerStateMachine.myTransform.rotation = Quaternion.Slerp(playerStateMachine.myTransform.rotation, Quaternion.LookRotation(InputManager.MovementInput), rotationSpeed);
 
     }
