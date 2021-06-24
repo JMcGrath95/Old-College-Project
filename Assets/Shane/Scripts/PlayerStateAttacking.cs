@@ -15,12 +15,14 @@ public class PlayerStateAttacking : iState
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private float meleeAttackCooldown = 2f;
 
+    [Header("Attack Speed")]
+    [SerializeField] private float startingAttackSpeed;
+
     private float timeOfLastAttack = float.MinValue;
 
     //Attack Conditions
     private bool CanAttack { get { return AttackNotInCooldown; } }
     private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
-
 
     public void UpdateComponents(PlayerStateMachine playerStateMachine) => this.playerStateMachine = playerStateMachine;
 
@@ -50,4 +52,5 @@ public class PlayerStateAttacking : iState
 
     public void EnableWeaponHitbox() => currentWeapon.EnableHitbox();
     public void DisableWeaponHitbox() => currentWeapon.DisableHitbox();
+
 }

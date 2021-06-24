@@ -21,6 +21,9 @@ public class PlayerHealth : BaseHealth
     }
     public override void TakeDamage(int amount)
     {
+        if (!canTakeDamage)
+            return;
+
         currentHealth -= amount;
         DamageTakenEvent?.Invoke();
 
