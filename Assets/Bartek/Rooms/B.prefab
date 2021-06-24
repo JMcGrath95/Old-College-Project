@@ -56,6 +56,7 @@ MonoBehaviour:
   floor: {fileID: 0}
   inRoomTrigger: 0
   roomCleared: 1
+  roomEntered: 0
   topHallway: 0
   rightHallway: 0
   bottomHallway: 0
@@ -88,7 +89,7 @@ GameObject:
   - component: {fileID: 275855890756222985}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +184,7 @@ GameObject:
   - component: {fileID: 275855891136452925}
   m_Layer: 0
   m_Name: Wall (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +279,7 @@ GameObject:
   - component: {fileID: 275855891256943422}
   m_Layer: 0
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +374,7 @@ GameObject:
   - component: {fileID: 275855891555097762}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,7 +565,7 @@ GameObject:
   - component: {fileID: 275855892367301347}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
