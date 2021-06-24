@@ -50,15 +50,14 @@ public class ValueChangingEffect : BaseEffect
 
             case ValueToChange.MovementSpeed:
                 if (ForPlayer)
-                    //Owner.GetComponent<PlayerStateWalking>().movementSpeed += Value;
-                    Debug.Log("cant use movement speed is scipt doesnt have monobehaviour");
+                    PlayerStateWalking.MovementSpeed -= Value;
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.Speed += Value;
                 break;
 
             case ValueToChange.AttackSpeed:
                 if (ForPlayer)
-                    Debug.Log("player attack speed not added yet");
+                    Owner.GetComponentInChildren<PlayerAnimationController>().IncreaseAttackMultipler(Value);
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.AttackSpeed += Value;
                 break;
@@ -85,15 +84,14 @@ public class ValueChangingEffect : BaseEffect
 
             case ValueToChange.MovementSpeed:
                 if (ForPlayer)
-                    //Owner.GetComponent<PlayerStateWalking>().movementSpeed -= Value;
-                    Debug.Log("cant use movement speed is scipt doesnt have monobehaviour");
+                    PlayerStateWalking.MovementSpeed -= Value;
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.Speed -= Value;
                 break;
 
             case ValueToChange.AttackSpeed:
                 if (ForPlayer)
-                    Debug.Log("player attack speed not added yet");
+                    Owner.GetComponentInChildren<PlayerAnimationController>().DecreaseAttackMultipler(Value);
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.AttackSpeed -= Value;
                 break;
