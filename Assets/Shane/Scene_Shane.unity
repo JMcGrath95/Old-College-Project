@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 300
-  canTakeDamage: 1
+  canTakeDamage: 0
 --- !u!54 &1531706754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1563,10 +1563,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5195876691315528, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5195876691315531, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1611,10 +1607,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5195876691315569, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: canTakeDamage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5195876691315575, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: btnDash
       value: 
@@ -1631,34 +1623,6 @@ PrefabInstance:
       propertyPath: fixedJoystick
       value: 
       objectReference: {fileID: 504541809}
-    - target: {fileID: 5195876811921227, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: playerStateWalking.maxMovementSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: playerStateWalking.minMovementSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: playerStateAttacking.startingAttackSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7220171869548126748, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: playerStateWalking.startingMovementSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7220171869548126751, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: maxAttackSpeedModifier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7220171869548126751, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: minAttackSpeedModifier
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3bbded4819325e489b192d5172f1484, type: 3}
 --- !u!1001 &7920202792536655563

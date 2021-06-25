@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class BaseHealth : MonoBehaviour, iDamageable
@@ -11,7 +12,7 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
     [SerializeField] protected int currentHealth;
     [SerializeField] protected int maxHealth;
     [Header("Invincibilty")]
-    [SerializeField] protected bool canTakeDamage;
+    [SerializeField] public bool canTakeDamage;
 
     public virtual void Start() => currentHealth = maxHealth;
 
@@ -20,5 +21,11 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
     public virtual void SetMaxHealth(int amount) => maxHealth = amount;
     public virtual void AddMaxHealth(int amount) => maxHealth += amount;
     public int GetCurrentHealth => currentHealth;
-    public void SetCanTakeDamage(bool canTakeDamage) => this.canTakeDamage = canTakeDamage;
+
+    public void EnableInvincibilityForTimePeriod(float duration)
+    {
+        canTakeDamage = false;
+        Timer timer = new Timer(this, duration, () => canTakeDamage = true);
+        timer.Start();
+    }
 }

@@ -6,7 +6,12 @@ public class EnemyHealth : BaseHealth
     public override event Action DeathEvent;
     public override event Action HealthAddedEvent;
 
-    public override void Start() => base.Start();
+    public override void Start()
+    {
+        base.Start();
+        canTakeDamage = true;
+    }
+
     public override void AddHealth(int amount)
     {
         currentHealth += amount;

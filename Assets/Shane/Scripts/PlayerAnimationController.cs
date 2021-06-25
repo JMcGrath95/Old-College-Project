@@ -13,7 +13,7 @@ public class PlayerAnimationController : BaseAnimationController
     private Queue<string> attackAnimationQueue;
 
     [Header("Attack Speed Modifying")]
-    [SerializeField]  float currentAttackSpeedModifier = 1f;
+    [SerializeField] private float currentAttackSpeedModifier = 1f;
     [SerializeField] private float minAttackSpeedModifier;
     [SerializeField] private float maxAttackSpeedModifier;
 
@@ -46,15 +46,4 @@ public class PlayerAnimationController : BaseAnimationController
     }
 
     public void GoToDash() => ChangeAnimationState(dashAnimation);
-    //public void IncreaseAttackMultipler(float amount)
-    //{
-    //    CurrentAttackSpeedModifier += amount;
-    //    animator.SetFloat("AttackSpeedMultiplier", CurrentAttackSpeedModifier);
-    //}
-    //public void DecreaseAttackMultipler(float amount)
-    //{
-    //    CurrentAttackSpeedModifier -= amount;
-    //    animator.SetFloat("AttackSpeedMultiplier", CurrentAttackSpeedModifier);      
-    //}
-
 }
