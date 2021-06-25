@@ -95,6 +95,18 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        /*
+         * A specific combination of rooms can be created where there is no free positions for rooms to spawn in
+         * if this happens the generator will remove all the rooms minus the starting room and regenerate the other rooms
+        */
+        if (PositionsToPlaceRoomsIn.Count <= 0)
+        {
+            for (int i = 1; i < rooms.Count; i++)
+            {
+                rooms.Remove(rooms[i]);
+            }
+        }
+
         //checks adjacent positions for each position in PositionsToPlaceRoomsIn list
         //checks what rooms can be spawned in those adjacent positions and assings them to r
         //then randomises a room in that list and add it to the rooms list

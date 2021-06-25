@@ -581,6 +581,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1982270809114633196, guid: d44d883c3cd3fdb488b5cd42a2a4005f, type: 3}
+      propertyPath: maxRoomCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982270809114633196, guid: d44d883c3cd3fdb488b5cd42a2a4005f, type: 3}
+      propertyPath: minRoomCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982270809114633196, guid: d44d883c3cd3fdb488b5cd42a2a4005f, type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1096442006}
