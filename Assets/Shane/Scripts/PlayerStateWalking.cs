@@ -31,7 +31,7 @@ public class PlayerStateWalking : iState
 
         MinMovementSpeed = minMovementSpeed;
         MaxMovementSpeed = maxMovementSpeed;
-        MovementSpeed = startingMovementSpeed;
+        movementSpeed = startingMovementSpeed;
     }
 
     //State Machine.

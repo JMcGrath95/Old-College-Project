@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 100
+  canTakeDamage: 0
 --- !u!114 &5195876691315574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3961,6 +3962,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daaedbbfdb7d1734dab167f918281226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentAttackSpeedModifier: 1
+  minAttackSpeedModifier: 1
+  maxAttackSpeedModifier: 5
 --- !u!114 &7220171869548126748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3974,12 +3978,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStateWalking:
-    movementSpeed: 8.5
-    IsGrounded: 0
+    startingMovementSpeed: 5
+    minMovementSpeed: 1
+    maxMovementSpeed: 20
     rotationSpeed: 0.15
   playerStateAttacking:
     currentWeapon: {fileID: 5195876811921269}
     meleeAttackCooldown: 0.5
+    startingAttackSpeed: 10
   playerStateDashing:
     forceToApply: 22
     dashDuration: 0.25

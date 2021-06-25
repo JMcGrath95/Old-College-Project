@@ -13,15 +13,16 @@ public class PlayerAnimationController : BaseAnimationController
     private Queue<string> attackAnimationQueue;
 
     [Header("Attack Speed Modifying")]
-    [SerializeField] private float currentAttackSpeedModifier = 1f;
+    [SerializeField]  float currentAttackSpeedModifier = 1f;
     [SerializeField] private float minAttackSpeedModifier;
     [SerializeField] private float maxAttackSpeedModifier;
 
     public float CurrentAttackSpeedModifier 
     { 
-        private get { return currentAttackSpeedModifier; }
+        get { return currentAttackSpeedModifier; }
         set 
-        { 
+        {
+            currentAttackSpeedModifier = value;
             currentAttackSpeedModifier = Mathf.Clamp(currentAttackSpeedModifier, minAttackSpeedModifier, maxAttackSpeedModifier);
             animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);
         } 
