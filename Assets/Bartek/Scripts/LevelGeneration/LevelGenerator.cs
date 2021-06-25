@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -18,9 +19,9 @@ public class LevelGenerator : MonoBehaviour
     Room startRoom;
     Room exitRoom;
     Room treasureRoom;
-    
+
     //distance between room centres
-    public int dbrc = 50;
+    public int DistanceBetweenConnectedRooms = 50;
 
     //lsit of rooms use in the generator
     List<Room> rooms = new List<Room>();
@@ -194,7 +195,7 @@ public class LevelGenerator : MonoBehaviour
                     hallwaysNeeded++;
                 }
             }
-            
+
             //loops through all the room presets
             //checks room being checked against them and removes any that have a hallway that this room doesn't
             foreach (Room room in allRooms)
@@ -287,7 +288,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < createdRooms.Count; i++)
         {
             int random;
-            
+
             //setting first room as startRoom
             if (i == 0)
             {
@@ -603,8 +604,12 @@ public class LevelGenerator : MonoBehaviour
     Room RandomizeRoom(Room[] roomsToChooseFrom)
     {
         //print(roomsToChooseFrom.Length);
-        rand = Random.Range(0, roomsToChooseFrom.Length);
-        return roomsToChooseFrom[rand];
+        if (roomsToChooseFrom.Length > 0)
+        {
+            rand = Random.Range(0, roomsToChooseFrom.Length);
+            return roomsToChooseFrom[rand];
+        }
+        return allRooms[0];
     }
 
     //adds room to the lsit and runs its methods
@@ -645,19 +650,19 @@ public class LevelGenerator : MonoBehaviour
         {
             //Gets room spawn postion if direction is up
             case 1:
-                returnPos = new Vector3(pos.x, pos.y, pos.z + dbrc);
+                returnPos = new Vector3(pos.x, pos.y, pos.z + DistanceBetweenConnectedRooms);
                 break;
             //Gets room spawn postion if direction is right
             case 2:
-                returnPos = new Vector3(pos.x + dbrc, pos.y, pos.z);
+                returnPos = new Vector3(pos.x + DistanceBetweenConnectedRooms, pos.y, pos.z);
                 break;
             //Gets room spawn postion if direction is down
             case 3:
-                returnPos = new Vector3(pos.x, pos.y, pos.z - dbrc);
+                returnPos = new Vector3(pos.x, pos.y, pos.z - DistanceBetweenConnectedRooms);
                 break;
             //Gets room spawn postion if direction is left
             case 4:
-                returnPos = new Vector3(pos.x - dbrc, pos.y, pos.z);
+                returnPos = new Vector3(pos.x - DistanceBetweenConnectedRooms, pos.y, pos.z);
                 break;
         }
 
