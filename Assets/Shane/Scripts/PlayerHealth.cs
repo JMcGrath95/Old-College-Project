@@ -10,7 +10,13 @@ public class PlayerHealth : BaseHealth
     {
         base.Start();
         canTakeDamage = true;
+
+        PlayerStateDashing.DashStartedEvent += OnPlayerStartedDash;
+        PlayerStateDashing.DashEndedEvent += OnPlayerEndedDash;
     }
+
+    private void OnPlayerEndedDash(float dashCooldown) => canTakeDamage = true;
+    private void OnPlayerStartedDash() => canTakeDamage = false;
 
     public override void AddHealth(int amount)
     {
@@ -32,4 +38,9 @@ public class PlayerHealth : BaseHealth
             DeathEvent?.Invoke();     
     }
 
+    private void OnDestroy()
+    {
+        PlayerStateDashing.DashStartedEvent -= OnPlayerStartedDash;
+        PlayerStateDashing.DashEndedEvent -= OnPlayerEndedDash;
+    }
 }

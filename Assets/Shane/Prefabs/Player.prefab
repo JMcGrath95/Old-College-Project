@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5195876691315569}
   - component: {fileID: 5195876691315574}
   - component: {fileID: 5195876691315575}
-  - component: {fileID: 5195876691315572}
   - component: {fileID: 5195876691315573}
   - component: {fileID: 5195876691315530}
   m_Layer: 7
@@ -97,19 +96,6 @@ MonoBehaviour:
   btnAttack: {fileID: 0}
   keyDash: 32
   btnDash: {fileID: 0}
---- !u!114 &5195876691315572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5195876691315528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82cb50de100e6de4f9130aab99666a49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollider: {fileID: 5195876691315530}
 --- !u!143 &5195876691315573
 CharacterController:
   m_ObjectHideFlags: 0
