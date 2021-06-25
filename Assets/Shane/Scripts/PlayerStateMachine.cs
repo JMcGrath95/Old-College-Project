@@ -16,11 +16,16 @@ public class PlayerStateMachine : StateMachine
     public Transform myTransform { get { return transform; } }
     //Private Components.
     private CharacterController characterController;
+    private PlayerAttack playerAttack;
 
     private void Awake()
     {
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
         characterController = GetComponentInParent<CharacterController>();
+        playerAttack = GetComponent<PlayerAttack>();
+
+
+        characterController.detectCollisions = false;
     }
 
     private void Start()
@@ -28,7 +33,7 @@ public class PlayerStateMachine : StateMachine
         //Update components.
         playerStateIdle.UpdateComponents(this);
         playerStateWalking.UpdateComponents(this, characterController);
-        playerStateAttacking.UpdateComponents(this);
+        playerStateAttacking.UpdateComponents(this,playerAttack);
         playerStateDashing.UpdateComponents(this,characterController);
 
         ChangeState(playerStateIdle);

@@ -21,4 +21,8 @@ public abstract class BaseHealth : MonoBehaviour, iDamageable
     public virtual void AddMaxHealth(int amount) => maxHealth += amount;
     public int GetCurrentHealth => currentHealth;
     public void SetCanTakeDamage(bool canTakeDamage) => this.canTakeDamage = canTakeDamage;
+
+
+    //IFrames.
+
 }

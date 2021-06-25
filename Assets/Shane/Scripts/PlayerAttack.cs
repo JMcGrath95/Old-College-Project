@@ -12,6 +12,9 @@ public class PlayerAttack : MonoBehaviour
 
     private float timeOfLastAttack = float.MinValue;
 
+    [Header("Attack Speed")]
+    [SerializeField] private float startingAttackSpeed;
+
     //Attack Conditions
     private bool CanAttack { get { return AttackNotInCooldown;} }
     private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
@@ -28,6 +31,14 @@ public class PlayerAttack : MonoBehaviour
         if(CanAttack)
         {
             timeOfLastAttack = Time.time;
+
+            //Snap rotation to input direction if any.
+            if (InputManager.IsMovementInput)
+                transform.forward = InputManager.MovementInput;
+
+
+            //Need to rework attacking.
+            //playerStateMachine.playerAnimationController.GoToNextAttack();
         }
     }
 

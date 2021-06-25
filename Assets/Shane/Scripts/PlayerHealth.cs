@@ -9,6 +9,7 @@ public class PlayerHealth : BaseHealth
     public override void Start()
     {
         base.Start();
+        canTakeDamage = true;
     }
 
     public override void AddHealth(int amount)
