@@ -11,34 +11,42 @@ public class AI_Boss : MonoBehaviour
     float timeleftroll = 3f;
     bool IsRolling = false;
     bool HitWall = false;
+    bool IsFlipped = false;
     public Transform BulletSource;
     Room room;
     NavMeshAgent boss_agent;
     Rigidbody rigid_body;
     Vector3 currenttarget;
-    Animator animator;
-
+    Collider _collider;
     // Start is called before the first frame update
     void Start()
     {
     }
     void Update()
     {
-        //TempAnimControl();        
+             
         if (timeleftroll <= 0f && !IsRolling)
-        {
+        {            
             LookTowards();
             StartCoroutine(RollTo());
         }
-        else if (Vector3.Distance(Player.transform.position, transform.position) <= Boss.AttackRange && !IsRolling)
+
+        if (!IsFlipped)
+        {
+            //Set to invincible.
+        }
+
+        if (Vector3.Distance(Player.transform.position, transform.position) <= Boss.AttackRange && !IsRolling)
         {
             LookTowards();
             Fire();
         }
+
         if (IsRolling)
         {
             rigid_body.MoveRotation(rigid_body.rotation * Quaternion.Euler(new Vector3(180, 0, 0) * Time.fixedDeltaTime));
         }
+
         timeleftroll -= Time.deltaTime;
     }
 
@@ -50,7 +58,7 @@ public class AI_Boss : MonoBehaviour
         room = GetComponentInParent<Room>();
         rigid_body = GetComponent<Rigidbody>();        
         boss_agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider>();
     }
     private void Health_DeathEvent()
     {
@@ -68,7 +76,6 @@ public class AI_Boss : MonoBehaviour
         timeleft -= Time.deltaTime;
         if (timeleft <= 0)
         {
-            //rigid_body.isKinematic = true;
             Vector3 shootDir = ((Player.transform.position + new Vector3(0, 0.5f)) - BulletSource.position);
             GameObject Temp = Instantiate(Boss.Projectile, BulletSource.position,Quaternion.identity);
             AI_Bullet bullet = Temp.GetComponent<AI_Bullet>();
@@ -78,36 +85,40 @@ public class AI_Boss : MonoBehaviour
     }
     IEnumerator RollTo()
     {
-        //rigid_body.isKinematic = true;
+        _collider.isTrigger = true;
         currenttarget = (Player.transform.position - transform.position).normalized;
         Vector3 Player_pos = Player.transform.position;
         IsRolling = true;
         rigid_body.AddForce(new Vector3(currenttarget.x, 0f ,currenttarget.z) * 180f , ForceMode.Force);
         
-        //yield return new WaitUntil(() => HitWall == true);
-        yield return new WaitForSeconds(10);
-        timeleftroll = 10f;        
+        yield return new WaitUntil(() => HitWall == true);        
+        timeleftroll = 3f;        
         IsRolling = false;
-        //rigid_body.isKinematic = false;
+        _collider.isTrigger = false;
+        HitWall = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage((int)Boss.Attack);
-            //Add knockback
-        } 
+            collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage((int)Boss.Attack);           
+        }        
     }
-    void HasHitWall() 
+    private void OnTriggerEnter(Collider other)
     {
-        if (timeleftroll<=-10)
+        if (other.gameObject.tag=="Player")
+        {
+            other.gameObject.GetComponentInChildren<iDamageable>().TakeDamage((int)Boss.Attack);
+        }
+        else if (other.gameObject.tag=="Wall")
         {
             HitWall = true;
         }
-        else HitWall = false;
+        else if (other.gameObject.GetComponent<Hallway>() != null)
+        {
+            HitWall = true;
+        }   
     }
-    void TempAnimControl()    
-    {
-        animator.SetBool("IsRolling", IsRolling);
-    }
+
+
 }

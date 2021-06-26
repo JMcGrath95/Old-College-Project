@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 351645325957823298}
   - component: {fileID: -8984614881550887794}
   - component: {fileID: 4783435612608365302}
-  - component: {fileID: 3559059467096803893}
   m_Layer: 0
   m_Name: Boss_Thick_Hedgehog
   m_TagString: Untagged
@@ -183,27 +182,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 68
+  m_Constraints: 100
   m_CollisionDetection: 0
---- !u!95 &3559059467096803893
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351645325957823325}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 326d0e0b075833f4fb87247d13cf2f3f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9038771975731560857
 GameObject:
   m_ObjectHideFlags: 0
