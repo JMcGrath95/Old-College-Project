@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fixedJoystick: {fileID: 0}
-  keyInteract: 102
+  keyInteract: 101
   btnInteract: {fileID: 0}
   keyAttack: 323
   btnAttack: {fileID: 0}

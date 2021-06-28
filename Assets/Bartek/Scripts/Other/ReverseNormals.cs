@@ -7,6 +7,8 @@ public class ReverseNormals : MonoBehaviour
 {
 	void Start()
 	{
+		GetComponent<MeshRenderer>().enabled = true;
+
 		MeshFilter filter = GetComponent(typeof(MeshFilter)) as MeshFilter;
 		if (filter != null)
 		{

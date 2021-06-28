@@ -10,7 +10,6 @@ public abstract class InteractableArea : MonoBehaviour, iInteractable
     public static event Action<InteractableArea> LeftAreaEvent;
     public abstract void Interact();
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Player")
@@ -18,6 +17,7 @@ public abstract class InteractableArea : MonoBehaviour, iInteractable
 
         EnteredAreaEvent?.Invoke(this);
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag != "Player")

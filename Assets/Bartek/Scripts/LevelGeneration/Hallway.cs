@@ -23,7 +23,6 @@ public class Hallway : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Player left hallway collider");
             if(GetComponentInParent<Room>().inRoomTrigger && !GetComponentInParent<Room>().roomEntered && !GetComponentInParent<Room>().roomCleared)
             {
                 GetComponentInParent<Room>().StartRoom();

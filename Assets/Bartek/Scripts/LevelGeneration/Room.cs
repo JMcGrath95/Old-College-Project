@@ -125,7 +125,6 @@ public class Room : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Player entered room collider");
             inRoomTrigger = true;
         }
     }
@@ -134,7 +133,6 @@ public class Room : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Player left room collider");
             inRoomTrigger = false;
         }
     }
