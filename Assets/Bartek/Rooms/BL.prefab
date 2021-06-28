@@ -344,7 +344,7 @@ MonoBehaviour:
   roomType: 0
   floor: {fileID: 0}
   inRoomTrigger: 0
-  roomCleared: 1
+  roomCleared: 0
   roomEntered: 0
   topHallway: 0
   rightHallway: 0

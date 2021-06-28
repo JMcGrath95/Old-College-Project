@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86e89de8b7402c4f96bf7c4456f6260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 8360634828975430777, guid: a2d85f4aa49ac164ab083063bcef5b47, type: 3}
+  gameController: {fileID: 0}
   rooms_TRBL:
   - {fileID: -8223778227229998680, guid: d2ef12b7056300b4e91d35673bc6df4f, type: 3}
   rooms_T:
@@ -98,5 +98,6 @@ MonoBehaviour:
   - {fileID: -5139448650797481767, guid: af4565457e7bfdd4090cc1f9a59cdb5f, type: 3}
   - {fileID: 5222638919594160467, guid: a24ab68bfa0766045af363617cc8194b, type: 3}
   - {fileID: 333435633462811707, guid: ba6ae455877ae124ea38ce4d752f20d3, type: 3}
-  minRoomCount: 15
-  maxRoomCount: 20
+  DistanceBetweenConnectedRooms: 50
+  minRoomCount: 10
+  maxRoomCount: 15
