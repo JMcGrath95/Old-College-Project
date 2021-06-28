@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba092e918fd4444091544ae83da597c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerIsInArea: 0
 --- !u!114 &504541809 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -1577,7 +1578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5195876691315531, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.33
+      value: -2.14
       objectReference: {fileID: 0}
     - target: {fileID: 5195876691315531, guid: a3bbded4819325e489b192d5172f1484, type: 3}
       propertyPath: m_LocalRotation.w
