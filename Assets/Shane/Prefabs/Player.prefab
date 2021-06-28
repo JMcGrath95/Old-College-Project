@@ -3906,7 +3906,7 @@ GameObject:
   - component: {fileID: 7220171869548126750}
   - component: {fileID: 7220171869548126751}
   - component: {fileID: 7220171869548126748}
-  - component: {fileID: 7220171869548126749}
+  - component: {fileID: 5555882774576508972}
   m_Layer: 0
   m_Name: Player Model
   m_TagString: Untagged
@@ -3993,7 +3993,7 @@ MonoBehaviour:
     forceToApply: 22
     dashDuration: 0.25
     dashCooldown: 1
---- !u!114 &7220171869548126749
+--- !u!114 &5555882774576508972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4006,8 +4006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 5195876811921269}
-  meleeAttackCooldown: 2
-  startingAttackSpeed: 0
+  meleeAttackCooldown: 1.1
 --- !u!1 &7265729271443635312
 GameObject:
   m_ObjectHideFlags: 0

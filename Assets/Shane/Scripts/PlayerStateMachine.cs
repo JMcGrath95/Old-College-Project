@@ -23,9 +23,6 @@ public class PlayerStateMachine : StateMachine
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
         characterController = GetComponentInParent<CharacterController>();
         playerAttack = GetComponent<PlayerAttack>();
-
-
-        characterController.detectCollisions = false;
     }
 
     private void Start()

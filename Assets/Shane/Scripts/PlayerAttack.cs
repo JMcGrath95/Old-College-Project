@@ -1,45 +1,41 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private UnityAction CurrentAttack;
+    PlayerAnimationController playerAnimationController;
+
+    //Events.
+    public static event Action PlayerAttackedEvent;
 
     [Header("Melee Attack")]
     [SerializeField] public Weapon currentWeapon;
     [SerializeField] private float meleeAttackCooldown = 2f;
+    private UnityAction CurrentAttack;
 
     private float timeOfLastAttack = float.MinValue;
 
-    [Header("Attack Speed")]
-    [SerializeField] private float startingAttackSpeed;
-
     //Attack Conditions
-    private bool CanAttack { get { return AttackNotInCooldown;} }
+    public bool CanAttack { get { return AttackNotInCooldown;} }
     private bool AttackNotInCooldown => Time.time - timeOfLastAttack >= meleeAttackCooldown;
 
     //Start.
-    private void Start()
+    private void Awake() => playerAnimationController = GetComponent<PlayerAnimationController>();
+    private void Start() => CurrentAttack = MeleeAttack;
+
+    public void MeleeAttack()
     {
-        CurrentAttack = MeleeAttack;
-    }
+        PlayerAttackedEvent?.Invoke();
 
-    //Different potential attacks maybe.
-    private void MeleeAttack()
-    {
-        if(CanAttack)
-        {
-            timeOfLastAttack = Time.time;
+        timeOfLastAttack = Time.time;
 
-            //Snap rotation to input direction if any.
-            if (InputManager.IsMovementInput)
-                transform.forward = InputManager.MovementInput;
+        //Snap rotation to input direction if any.
+        if (InputManager.IsMovementInput)
+            transform.forward = InputManager.MovementInput;
 
-
-            //Need to rework attacking.
-            //playerStateMachine.playerAnimationController.GoToNextAttack();
-        }
+        playerAnimationController.GoToNextAttack();
     }
 
     public void EnableWeaponHitbox() => currentWeapon.EnableHitbox();
