@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f5dbe20dc5cf244893c4250d072a81, type: 3}
-  m_Name: TestChangeItem
+  m_Script: {fileID: 11500000, guid: 1a39b88b1bcbe604d94d77f8229305e6, type: 3}
+  m_Name: Projectile Item
   m_EditorClassIdentifier: 
-  ItemName: Test Change Item
+  ItemName: New Item
   ItemMesh: {fileID: 0}
   DisplayImage: {fileID: 0}
   ItemSound: {fileID: 0}
-  ItemType: 1
+  ItemType: 0
   Owner: {fileID: 0}
-  valueChangingEffects:
-  - {fileID: 11400000, guid: 880b0644f4e069447ae22d44d539342a, type: 2}
-  - {fileID: 11400000, guid: af392007a3f6a22429862e864a6b7597, type: 2}
-  - {fileID: 11400000, guid: 4a496f760eec88d4582bc43dcda71428, type: 2}
+  ProjectileEffects:
+  - {fileID: 11400000, guid: 5793d158702fe734a8c33437ed72aba1, type: 2}
+  - {fileID: 11400000, guid: 118e12fb7b2eba34e875a7f756fb0a0c, type: 2}

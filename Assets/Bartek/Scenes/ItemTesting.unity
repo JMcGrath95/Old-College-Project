@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48492656b9152b4aa9398d667b81583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileItems: []
-  ValueChangingItems:
-  - {fileID: 11400000, guid: 27d81c7d7c42e064797548c66c2c235a, type: 2}
+  items:
+  - {fileID: 11400000, guid: 5febcab155962d54881026574ce8f1df, type: 2}
+  - {fileID: 11400000, guid: bedb9c37f88636b4781e2275441bba70, type: 2}
   Player: {fileID: 1899728555}
 --- !u!1 &597841975
 GameObject:
@@ -222,7 +222,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  - {fileID: 2100000, guid: 46bdce47e8e4df94ab9acd1b39edc258, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

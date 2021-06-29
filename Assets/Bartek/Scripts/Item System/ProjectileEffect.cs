@@ -11,15 +11,21 @@ using UnityEngine;
 public class ProjectileEffect : BaseEffect
 {
     public ProjectilePrefab PrefabToSpawn;                                      //prefab projectile that will spawn and have its values chganed by scriptableobject projectile
-    public float offsetValue = 1.2f;                                            //Multiplier which offsets projectile from player e.g 1.5 is 1.5 times direction value away from player (direction is normalized and can only be 1/-1 even is different value is input)
     public float Speed = 5;                                                     //Speed at which the projectile travels
     public List<ProjectileSO> ProjectilesToUse = new List<ProjectileSO>();      //projectiles that will be shot out
     public List<Vector3> ProjectileDirections = new List<Vector3>();            //Direction projectiles will be shot out in. Defines how many projectiles there will be
+    Vector3 SpawnPos;
 
     public override void InitializeEffect(GameObject owner)
     {
         Debug.Log(EffectName + " effect initiliazed.");
         Owner = owner;
+        SpawnPos = Owner.transform.position + new Vector3(0, 1.5f, 0);
+    }
+
+    public void SetSpawnPos(Vector3 pos)
+    {
+        SpawnPos = pos;
     }
 
     public override void TriggerEffect()
@@ -28,19 +34,15 @@ public class ProjectileEffect : BaseEffect
 
         foreach (Vector3 dir in ProjectileDirections)
         {
-            SpawnProjectile(ProjectilesToUse, dir, Speed);
+            SpawnProjectile(ProjectilesToUse, SpawnPos, dir, Speed);
         }
     }
 
-    void SpawnProjectile(List<ProjectileSO> projectileSOList, Vector3 dirToFireIn, float speed)
+    void SpawnProjectile(List<ProjectileSO> projectileSOList, Vector3 spawnPos, Vector3 dirToFireIn, float speed)
     {
         dirToFireIn = dirToFireIn.normalized;
 
         ProjectileSO ProjectileSO = projectileSOList[Random.Range(0, projectileSOList.Count)];
-
-        Vector3 offset = Owner.transform.position + (offsetValue * dirToFireIn);
-
-        Vector3 spawnPos = (Owner.transform.position + new Vector3(0, 1.5f, 0)) + offset;
 
         ProjectilePrefab projectile = Instantiate(PrefabToSpawn, spawnPos, Quaternion.identity);
 
