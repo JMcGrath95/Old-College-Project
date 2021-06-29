@@ -5,8 +5,10 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<BaseItem> items = new List<BaseItem>();
-
+    
     public GameObject Player;
+
+    public float Money;
 
     void Start()
     {

@@ -13,6 +13,7 @@ public enum ValueToChange
     MovementSpeed,
     AttackSpeed,
     Damage,
+    Money,
 }
 
 [CreateAssetMenu(fileName = "Value Changing Effect", menuName = "Effects/New Value Changing Effect")]
