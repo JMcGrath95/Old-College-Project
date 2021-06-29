@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Projectile Item
   m_EditorClassIdentifier: 
   ItemName: New Item
-  ItemMesh: {fileID: 0}
+  ItemMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   DisplayImage: {fileID: 0}
   ItemSound: {fileID: 0}
   ItemType: 0
