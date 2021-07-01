@@ -16,7 +16,7 @@ MonoBehaviour:
   - ID: 0
     Name: Thick Hedgehog
     Health: 250
-    Speed: 3
+    Speed: 25
     Attack: 15
     AttackSpeed: 3
     AttackRange: 30
