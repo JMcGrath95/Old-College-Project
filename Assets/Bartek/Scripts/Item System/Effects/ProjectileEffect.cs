@@ -40,6 +40,6 @@ public class ProjectileEffect : BaseEffect
 
         ProjectilePrefab projectile = Instantiate(PrefabToSpawn, spawnPos, Quaternion.identity);
 
-        projectile.FillValues(ProjectileSO, dirToFireIn, Owner, speed);
+        projectile.FillValues(ProjectileSO,  dirToFireIn, Owner, speed);
     }
 }
