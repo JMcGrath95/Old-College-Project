@@ -14,18 +14,12 @@ public class ProjectileEffect : BaseEffect
     public float Speed = 5;                                                     //Speed at which the projectile travels
     public List<ProjectileSO> ProjectilesToUse = new List<ProjectileSO>();      //projectiles that will be shot out
     public List<Vector3> ProjectileDirections = new List<Vector3>();            //Direction projectiles will be shot out in. Defines how many projectiles there will be
-    Vector3 SpawnPos;
 
     public override void InitializeEffect(GameObject owner)
     {
         Debug.Log(EffectName + " effect initiliazed.");
         Owner = owner;
-        SpawnPos = Owner.transform.position + new Vector3(0, 1.5f, 0);
-    }
-
-    public void SetSpawnPos(Vector3 pos)
-    {
-        SpawnPos = pos;
+        Debug.Log(owner.name);
     }
 
     public override void TriggerEffect()
@@ -34,7 +28,7 @@ public class ProjectileEffect : BaseEffect
 
         foreach (Vector3 dir in ProjectileDirections)
         {
-            SpawnProjectile(ProjectilesToUse, SpawnPos, dir, Speed);
+            SpawnProjectile(ProjectilesToUse, Owner.transform.position + new Vector3(0, 1.5f, 0), dir, Speed);
         }
     }
 

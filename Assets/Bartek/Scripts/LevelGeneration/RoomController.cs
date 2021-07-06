@@ -6,7 +6,8 @@ public class RoomController : MonoBehaviour
 {
     public Spawner spawnerPrefab;
     public ExitPortal portalPrefab;
-    public List<Item> items = new List<Item>();
+
+    public ItemController itemController;
 
     public void StartEnemyRoom(Room room)
     {
@@ -26,7 +27,7 @@ public class RoomController : MonoBehaviour
 
     public void StartTreasureRoom(Room room)
     {
-        Instantiate(items[Random.Range(0, items.Count)], room.transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
+        itemController.SpawnItemPrefab(room);
         room.roomCleared = true;
     }
 }
