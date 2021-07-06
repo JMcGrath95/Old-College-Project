@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - SpawnPoint
   - RoomController
-  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -16,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Player
-  - PlayerWeapon
+  - 
+  - Outlined
   - 
   - 
   - 
