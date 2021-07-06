@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIsInArea: 0
+  inventory: {fileID: 1101636964014121814, guid: 9f867f694a769bd4c9f28c0cf9aa006a, type: 3}
   rotationSpeed: 75
   moveSpeed: 0.5
   distanceTillFlip: 1

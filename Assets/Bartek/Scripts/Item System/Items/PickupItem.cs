@@ -8,7 +8,10 @@ public class PickupItem : InteractableArea
 {
     ItemController controller;
 
+    [SerializeField]
     BaseItem item;
+
+    Inventory inventory;
 
     public float rotationSpeed = 0.5f;
     public float moveSpeed = 0.5f;
@@ -20,11 +23,13 @@ public class PickupItem : InteractableArea
 
     private void Start()
     {
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+
         origin = transform.position;
 
         controller = FindObjectOfType<ItemController>();
 
-        item = controller.ReturnRandomItem();
+        item = controller.ReturnRandomItem(); 
         UpdatePrefab();
     }
 
@@ -36,7 +41,8 @@ public class PickupItem : InteractableArea
 
     public override void Interact()
     {
-        //add code calling player to add item to his inventory
+        inventory.AddItem(item);
+        Destroy(gameObject);
     }
 
     private void Update()
