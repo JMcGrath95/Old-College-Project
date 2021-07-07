@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 8032421325070891176}
   - {fileID: 2591042395776260817}
+  - {fileID: 5105391126832011879}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,7 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2970307256718523142}
   - component: {fileID: 2573439147249477891}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mask.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2857258896951050517}
   - component: {fileID: 8787750449069321746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hat.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4960751087877456921}
   - component: {fileID: 8695942297248874558}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nendoroid_B.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2150,6 +2151,99 @@ Transform:
   m_Father: {fileID: 5014784638389956945}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40.198322, y: -2.5670803, z: -1.870431}
+--- !u!1 &3527181653312735823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5105391126832011879}
+  - component: {fileID: 185638282371878503}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5105391126832011879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527181653312735823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5195876691315531}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &185638282371878503
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527181653312735823}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 0.7058824, g: 0.21491843, b: 0.023050921, a: 1}
+  m_Intensity: 3
+  m_Range: 50
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 631
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &3672181916965886588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3235348594934061212}
   - component: {fileID: 217863939993205695}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Axe.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4478,7 +4572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566867127309705149}
   - component: {fileID: 1746762362001274277}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}

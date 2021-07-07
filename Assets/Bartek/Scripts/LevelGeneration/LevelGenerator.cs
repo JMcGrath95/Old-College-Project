@@ -342,10 +342,10 @@ public class LevelGenerator : MonoBehaviour
         tr.roomType = RoomType.TreasureRoom;
         treasureRoom = tr;
 
-        foreach (Room cr in createdRooms)
+        /*foreach (Room cr in createdRooms)
         {
             cr.SetRoomByType();
-        }
+        }*/
     }
 
     //checks if there is a hallway facing the position passed in and opposite the direction passed in
