@@ -19,5 +19,5 @@ MonoBehaviour:
   Speed: 5
   ProjectilesToUse:
   - {fileID: 11400000, guid: 31f85dd690e301c44a43f1254d88e7a5, type: 2}
-  ProjectileDirections:
-  - {x: 0, y: 0, z: -1}
+  ProjectileYRotations:
+  - 180

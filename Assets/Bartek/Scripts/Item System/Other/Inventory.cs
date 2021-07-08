@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public List<BaseItem> items = new List<BaseItem>();
 
     GameObject Player;
+    GameObject playerModel;
 
     public float Money;
 
@@ -16,11 +17,20 @@ public class Inventory : MonoBehaviour
 
         Player = GameObject.FindGameObjectWithTag("Player");
 
+        foreach (Transform transform in Player.transform)
+        {
+            if(transform.gameObject.name == "Player Model")
+            {
+                playerModel = transform.gameObject;
+                continue;
+            }
+        }
+
         PlayerAttack.PlayerAttackedEvent += PlayerAttack_PlayerAttackedEvent;
 
         foreach (BaseItem item in items)
         {
-            item.InitializeItem(Player);
+            item.InitializeItem(playerModel);
         }
     }
 
@@ -38,7 +48,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(BaseItem itemToAdd)
     {
         items.Add(itemToAdd);
-        itemToAdd.InitializeItem(Player);
+        itemToAdd.InitializeItem(playerModel);
 
         if(itemToAdd.ItemType == ItemUseType.InstantUse)
         {

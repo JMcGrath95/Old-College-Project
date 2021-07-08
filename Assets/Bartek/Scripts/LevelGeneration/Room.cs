@@ -92,7 +92,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void SetRoomByType()
+    /*public void SetRoomByType()
     {
         switch (roomType)
         {
@@ -114,7 +114,7 @@ public class Room : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
     
     void SetRoomColour(Color colour)
     {

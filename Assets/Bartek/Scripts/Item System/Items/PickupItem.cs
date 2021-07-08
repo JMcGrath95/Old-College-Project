@@ -8,8 +8,9 @@ public class PickupItem : InteractableArea
 {
     ItemController controller;
 
-    [SerializeField]
-    BaseItem item;
+    public BaseItem item;
+
+    public bool testItem = false;
 
     Inventory inventory;
 
@@ -29,7 +30,9 @@ public class PickupItem : InteractableArea
 
         controller = FindObjectOfType<ItemController>();
 
-        item = controller.ReturnRandomItem(); 
+        if (!testItem)
+            item = controller.ReturnRandomItem();
+
         UpdatePrefab();
     }
 
@@ -49,7 +52,7 @@ public class PickupItem : InteractableArea
     {
         distanceTravelled = Vector3.Distance(origin, transform.position);
 
-        if(distanceTravelled >= distanceTillFlip)
+        if (distanceTravelled >= distanceTillFlip)
         {
             distanceTravelled = 0;
             origin = transform.position;

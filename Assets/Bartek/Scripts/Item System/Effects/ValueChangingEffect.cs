@@ -45,7 +45,7 @@ public class ValueChangingEffect : BaseEffect
         switch (valueToChange)
         {
             case ValueToChange.Health:
-                    Owner.GetComponent<BaseHealth>().AddHealth((int)Value);
+                    Owner.GetComponentInParent<BaseHealth>().AddHealth((int)Value);
                 Debug.Log(Owner.name);
                 break;
 
@@ -58,7 +58,7 @@ public class ValueChangingEffect : BaseEffect
 
             case ValueToChange.AttackSpeed:
                 if (ForPlayer)
-                    Owner.GetComponentInChildren<PlayerAnimationController>().CurrentAttackSpeedModifier += Value;
+                    Owner.GetComponent<PlayerAnimationController>().CurrentAttackSpeedModifier += Value;
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.AttackSpeed += Value;
                 break;

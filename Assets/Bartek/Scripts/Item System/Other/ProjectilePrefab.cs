@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjectilePrefab : MonoBehaviour
 {
-    public Vector3 Direction = Vector3.forward;             //Direction in which the projectile travels. defaults to forward
     public Mesh Mesh;                                       //Mesh of to change the projectile to 
     public float Size = 1;                                  //Size of Projectile
     public float Damage = 10;                               //Damage the projectile does to objects it can damage
@@ -27,7 +26,7 @@ public class ProjectilePrefab : MonoBehaviour
     //moves projectile every frame
     void Update()
     {
-        transform.position += Direction * Speed * Time.deltaTime;                   //projectile moves in the direction at the speed
+        transform.position += transform.forward * Speed * Time.deltaTime;           //projectile moves in the direction at the speed
 
         DistanceTraveled = Vector3.Distance(origin, transform.position);            //distance travelled is update based on the distance between current position and origin
 
@@ -59,10 +58,8 @@ public class ProjectilePrefab : MonoBehaviour
         }
     }
 
-    public void FillValues(ProjectileSO projectileSO, Vector3 dirToFireIn, GameObject owner, float speed)
+    public void FillValues(ProjectileSO projectileSO, GameObject owner, float speed)
     {
-        if (dirToFireIn != Vector3.zero) Direction = dirToFireIn;                    //Direction
-
         if (projectileSO.Mesh != null) Mesh = projectileSO.Mesh;                    //Mesh
 
         if (projectileSO.Size > 0) Size = projectileSO.Size;                        //Size

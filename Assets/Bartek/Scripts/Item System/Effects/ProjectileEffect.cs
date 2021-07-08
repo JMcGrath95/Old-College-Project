@@ -13,7 +13,7 @@ public class ProjectileEffect : BaseEffect
     public ProjectilePrefab PrefabToSpawn;                                      //prefab projectile that will spawn and have its values chganed by scriptableobject projectile
     public float Speed = 5;                                                     //Speed at which the projectile travels
     public List<ProjectileSO> ProjectilesToUse = new List<ProjectileSO>();      //projectiles that will be shot out
-    public List<Vector3> ProjectileDirections = new List<Vector3>();            //Direction projectiles will be shot out in. Defines how many projectiles there will be
+    public List<float> ProjectileYRotations = new List<float>();                //Direction projectiles will be shot out in. List size defines how many projectiles there will be
 
     public override void InitializeEffect(GameObject owner)
     {
@@ -26,20 +26,25 @@ public class ProjectileEffect : BaseEffect
     {
         Debug.Log(EffectName + " effect triggered.");
 
-        foreach (Vector3 dir in ProjectileDirections)
+
+        foreach (float rotation in ProjectileYRotations)
         {
-            SpawnProjectile(ProjectilesToUse, Owner.transform.position + new Vector3(0, 1.5f, 0), dir, Speed);
+            SpawnProjectile(ProjectilesToUse, Owner.transform.position + new Vector3(0, 1.5f, 0),  Speed, rotation);
         }
     }
 
-    void SpawnProjectile(List<ProjectileSO> projectileSOList, Vector3 spawnPos, Vector3 dirToFireIn, float speed)
+    void SpawnProjectile(List<ProjectileSO> projectileSOList, Vector3 spawnPos, float speed, float rotation)
     {
-        dirToFireIn = dirToFireIn.normalized;
+        float r;
+
+        r = Owner.transform.eulerAngles.y + rotation;
+
+        Debug.Log(r);
 
         ProjectileSO ProjectileSO = projectileSOList[Random.Range(0, projectileSOList.Count)];
 
-        ProjectilePrefab projectile = Instantiate(PrefabToSpawn, spawnPos, Quaternion.identity);
+        ProjectilePrefab projectile = Instantiate(PrefabToSpawn, spawnPos, Quaternion.Euler(0, r, 0));
 
-        projectile.FillValues(ProjectileSO,  dirToFireIn, Owner, speed);
+        projectile.FillValues(ProjectileSO, Owner, speed);
     }
 }
