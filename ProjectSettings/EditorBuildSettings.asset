@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Peter/Scenes/Scene_Peter.unity
     guid: 9f2ca1e1662e5a24badb72ae3a20654b
   - enabled: 1
-    path: Assets/Shane/Scene_Shane.unity
+    path: Assets/Shane/Scenes/Scene_Shane.unity
     guid: bf24f16c1187d3340b30d30e03e38d86
   m_configObjects: {}
