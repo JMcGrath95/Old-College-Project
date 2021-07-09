@@ -6,33 +6,15 @@ public class CameraRotation : MonoBehaviour
 {
     private Transform player;
 
+    [SerializeField] private float rotationSpeed;
 
-    private float RotationInput
-    { 
-        get 
-        {
-            if (Input.GetKey(KeyCode.Q))
-                return 1;
-            else if (Input.GetKey(KeyCode.E))
-                return -1;
-
-            return 0;     
-        } 
-    }
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    private void Start() => player = GameObject.FindGameObjectWithTag("Player").transform;
 
     // Update is called once per frame
     void Update()
     {
         //Camera Rotation.
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.RotateAround(player.position,Vector3.up,2f);
-        }
+        transform.RotateAround(player.position,Vector3.up,Input.GetAxisRaw("Camera Rotation") * rotationSpeed);
 
     }
 }
