@@ -14,8 +14,7 @@ public class InputManager : MonoBehaviour
     public static bool IsMovementInput { get { return MovementInput != Vector3.zero; } }
     public static Vector3 MovementInput { get; private set; }
     private Camera mainCamera; 
-
-    
+ 
     [Header("Interacting")]
     [SerializeField] private KeyCode keyInteract;
     [SerializeField] private Button btnInteract;
@@ -91,7 +90,6 @@ public class InputManager : MonoBehaviour
              OnInteractInput();
 
         #endregion
-
     }
 
     private void OnDestroy()
