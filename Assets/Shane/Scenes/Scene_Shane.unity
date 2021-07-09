@@ -192,6 +192,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &531962437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7920202794193176936, guid: 091d179945a187541889ad49ad817458, type: 3}
+  m_PrefabInstance: {fileID: 7920202792536655563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &531962439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531962437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df69b3942ad62648ac11691ac9f19ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &836815667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,8 +1655,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7920202793074667683, guid: 091d179945a187541889ad49ad817458, type: 3}
+      propertyPath: maxCameraZoom
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920202793074667683, guid: 091d179945a187541889ad49ad817458, type: 3}
+      propertyPath: minCameraZoom
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920202793074667683, guid: 091d179945a187541889ad49ad817458, type: 3}
+      propertyPath: cameraZoomSpeed
+      value: 3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920202793074667683, guid: 091d179945a187541889ad49ad817458, type: 3}
       propertyPath: FollowPlayerAtStart
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920202793074667693, guid: 091d179945a187541889ad49ad817458, type: 3}
+      propertyPath: orthographic size
+      value: 12.63
       objectReference: {fileID: 0}
     - target: {fileID: 7920202794193176936, guid: 091d179945a187541889ad49ad817458, type: 3}
       propertyPath: m_Name
