@@ -4,7 +4,7 @@ using UnityEditor.AI;
 public class GameController : MonoBehaviour
 {
     public GameObject Player;
-    public CameraMovement cam;
+    public CameraFollowPlayer cam;
 
     public void StartGame()
     {
