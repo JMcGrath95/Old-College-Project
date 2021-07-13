@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,20 +14,23 @@ public class InputManager : MonoBehaviour
     [SerializeField] private FixedJoystick fixedJoystick;
     public static bool IsMovementInput { get { return MovementInput != Vector3.zero; } }
     public static Vector3 MovementInput { get; private set; }
-    private Camera mainCamera; 
- 
+    private Camera mainCamera;
+
     [Header("Interacting")]
+    [SerializeField] private string interactKeyBindName;
     [SerializeField] private KeyCode keyInteract;
     [SerializeField] private Button btnInteract;
     private Func<KeyCode, bool> interactInputDelegate; //Not used yet. Need this if certain interaction areas you need to interact by holding button instead of single press.
     public static event Action InteractInputEvent;
 
     [Header("Attacking")]
+    [SerializeField] private string attackKeyBindName;
     [SerializeField] private KeyCode keyAttack;
     [SerializeField] private Button btnAttack;
     public static event Action AttackInputEvent;
 
     [Header("Dashing")]
+    [SerializeField] private string dashKeyBindName;
     [SerializeField] private KeyCode keyDash;
     [SerializeField] private Button btnDash;
     public static event Action DashInputEvent;
@@ -42,6 +46,11 @@ public class InputManager : MonoBehaviour
 #endif
     }
 
+    private void OnKeyBindChanged(string actionName,KeyCode key)
+    {
+        
+    }
+
     //Raising input events.
     private void OnInteractInput() => InteractInputEvent?.Invoke();
     private void OnAttackInput() => AttackInputEvent?.Invoke();
@@ -54,10 +63,10 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         #region Check For Movement
-        #if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS
         MovementInput = new Vector3(fixedJoystick.Horizontal, 0, fixedJoystick.Vertical);
 
-        #elif UNITY_STANDALONE
+#elif UNITY_STANDALONE
         MovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         #endif
 
@@ -67,18 +76,24 @@ public class InputManager : MonoBehaviour
 
         #region Check For Attack
 
-        #if UNITY_STANDALONE
-        if (Input.GetKeyDown(keyAttack))
+#if UNITY_STANDALONE
+
+        if (Input.GetKeyDown(KeyBindsManager.keyBinds[attackKeyBindName]))
             OnAttackInput();
-        #endif
+        //if (Input.GetKeyDown(keyAttack))
+        //    OnAttackInput();
+#endif
 
         #endregion
 
         #region Check For Dash
 
-        #if UNITY_STANDALONE
-        if (Input.GetKeyDown(keyDash))
+#if UNITY_STANDALONE
+
+        if (Input.GetKeyDown(KeyBindsManager.keyBinds[dashKeyBindName]))
             OnDashInput();
+        //if (Input.GetKeyDown(keyDash))
+        //    OnDashInput();
 #endif
 
         #endregion
@@ -86,14 +101,22 @@ public class InputManager : MonoBehaviour
         #region Check For Interaction
 
 
-        if (Input.GetKeyDown(keyInteract))
-             OnInteractInput();
+        //if (Input.GetKeyDown(keyInteract))
+        //    OnInteractInput();
+
+        if (Input.GetKeyDown(KeyBindsManager.keyBinds[interactKeyBindName]))
+            OnInteractInput();
 
         #endregion
     }
 
     private void OnDestroy()
     {
+
+
+
+
+
         //Unsub events if on mobile.
 #if UNITY_ANDROID || UNITY_IOS
 
