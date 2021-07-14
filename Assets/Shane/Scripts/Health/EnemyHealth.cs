@@ -5,6 +5,7 @@ public class EnemyHealth : BaseHealth
     public override event Action DamageTakenEvent;
     public override event Action DeathEvent;
     public override event Action HealthAddedEvent;
+    public override event Action MaxHealthChangedEvent;
 
     public override void Start()
     {
@@ -21,6 +22,11 @@ public class EnemyHealth : BaseHealth
             currentHealth = maxHealth;
     }
 
+    public override void SetMaxHealth(int amount)
+    {
+        base.SetMaxHealth(amount);
+        MaxHealthChangedEvent?.Invoke();
+    }
 
     public override void TakeDamage(int amount)
     {
