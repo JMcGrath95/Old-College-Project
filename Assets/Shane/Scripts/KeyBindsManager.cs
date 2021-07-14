@@ -79,11 +79,8 @@ public class KeyBindsManager : MonoBehaviour
                 return keyCodes[i];
             }
         }
-
         return KeyCode.None;
     }
-
-
 }
 
 

@@ -1624,26 +1624,6 @@ PrefabInstance:
       propertyPath: fixedJoystick
       value: 
       objectReference: {fileID: 504541809}
-    - target: {fileID: 5195876691315575, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: dashKeyBindName
-      value: Dash
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195876691315575, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: VerticalAxisName
-      value: Vertical
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195876691315575, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: attackKeyBindName
-      value: Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195876691315575, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: interactKeyBindName
-      value: Interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 5555882774576508972, guid: a3bbded4819325e489b192d5172f1484, type: 3}
-      propertyPath: meleeAttackCooldown
-      value: 0.9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3bbded4819325e489b192d5172f1484, type: 3}
 --- !u!1001 &7920202792536655563

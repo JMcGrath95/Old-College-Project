@@ -18,20 +18,17 @@ public class InputManager : MonoBehaviour
 
     [Header("Interacting")]
     [SerializeField] private string interactKeyBindName;
-    [SerializeField] private KeyCode keyInteract;
     [SerializeField] private Button btnInteract;
     private Func<KeyCode, bool> interactInputDelegate; //Not used yet. Need this if certain interaction areas you need to interact by holding button instead of single press.
     public static event Action InteractInputEvent;
 
     [Header("Attacking")]
     [SerializeField] private string attackKeyBindName;
-    [SerializeField] private KeyCode keyAttack;
     [SerializeField] private Button btnAttack;
     public static event Action AttackInputEvent;
 
     [Header("Dashing")]
     [SerializeField] private string dashKeyBindName;
-    [SerializeField] private KeyCode keyDash;
     [SerializeField] private Button btnDash;
     public static event Action DashInputEvent;
 
@@ -39,18 +36,11 @@ public class InputManager : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-        print(AudioListener.volume);
-
 #if UNITY_ANDROID || UNITY_IOS
         btnInteract.onClick.AddListener(OnInteractInput);
         btnAttack.onClick.AddListener(OnAttackInput);
         btnDash.onClick.AddListener(OnDashInput);
 #endif
-    }
-
-    private void OnKeyBindChanged(string actionName,KeyCode key)
-    {
-        
     }
 
     //Raising input events.

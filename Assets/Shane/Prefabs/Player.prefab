@@ -93,11 +93,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fixedJoystick: {fileID: 0}
-  keyInteract: 101
+  interactKeyBindName: Interact
   btnInteract: {fileID: 0}
-  keyAttack: 323
+  attackKeyBindName: Attack
   btnAttack: {fileID: 0}
-  keyDash: 32
+  dashKeyBindName: Dash
   btnDash: {fileID: 0}
 --- !u!143 &5195876691315573
 CharacterController:
@@ -4097,7 +4097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 5195876811921269}
-  meleeAttackCooldown: 1.1
+  meleeAttackCooldown: 0.9
 --- !u!1 &7265729271443635312
 GameObject:
   m_ObjectHideFlags: 0
