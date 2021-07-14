@@ -42,9 +42,4 @@ public class Base_Trap : MonoBehaviour
     {
         spikeAnimtor.SetBool(name: "Spike_Movement", true);
     }
-
-    public void ApplyDamage(int damage)
-    {
-
-    }
 }

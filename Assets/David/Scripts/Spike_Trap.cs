@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Spike_Trap : Base_Trap
 {
-    public GameObject OuterSpikes;
-    public GameObject MiddleSpikes;
-    public GameObject CenterSpikes;
-
     
+
 
     void Start()
     {
