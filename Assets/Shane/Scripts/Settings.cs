@@ -1,6 +1,6 @@
 public static class Settings 
 {
-    private static float volume;
+    private static float volume = 100f;
     public static float Volume { get { return volume; } set { volume = value; } }
 
 

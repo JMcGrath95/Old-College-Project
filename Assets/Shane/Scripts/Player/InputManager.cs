@@ -39,6 +39,8 @@ public class InputManager : MonoBehaviour
     {
         mainCamera = Camera.main;
 
+        print(AudioListener.volume);
+
 #if UNITY_ANDROID || UNITY_IOS
         btnInteract.onClick.AddListener(OnInteractInput);
         btnAttack.onClick.AddListener(OnAttackInput);

@@ -7,10 +7,10 @@ using UnityEngine;
 public class KeyBindsManager : MonoBehaviour
 {
     //Keybind was changed event.
-    public static event Action<string,KeyCode> KeyBindChangedEvent;
+    public static event Action<KeyBind> KeyBindChangedEvent;
 
     //Keycodes available.
-    private static readonly KeyCode[] keyCodes = Enum.GetValues(typeof(KeyCode))
+    public static readonly KeyCode[] keyCodes = Enum.GetValues(typeof(KeyCode))
                                                  .Cast<KeyCode>().ToArray();
 
     //Default keybinds in game. Set in inspector.
@@ -29,43 +29,61 @@ public class KeyBindsManager : MonoBehaviour
 
     private void Start()
     {
-        //ChangeKeybind("Attack", KeyCode.K);
+        DontDestroyOnLoad(this);
     }
 
-    public static void ChangeKeybind(string actionName,KeyCode keyCodeToAssign)
+    public static bool AttemptToChangeKeybind(KeyBind keyBind/*, Action<bool,KeyBind> callback*/)
     {
         //Does this action exist in game?
-        if (!keyBinds.ContainsKey(actionName))
+        if (!keyBinds.ContainsKey(keyBind.actionName))
         {
-            Debug.LogWarning($"Can't change keybind. No action exists for {actionName}.");
-            return;
+            Debug.LogWarning($"Can't change keybind. No action exists for {keyBind.actionName}.");
+            //callback(false,null);
+            return false;
         }
 
         //Keybinds already has that key in use?
-        if (KeyAlreadyInUse(keyCodeToAssign))
+        if (KeyAlreadyInUse(keyBind.keyCode))
         {
-            Debug.LogWarning($"Can't Change Keybind. Key {keyCodeToAssign} is already in use by the action {keyBinds.FirstOrDefault(kb => kb.Value == keyCodeToAssign).Key}.");
-            return;
+            Debug.LogWarning($"Can't Change Keybind. Key {keyBind.keyCode} is already in use by the action {keyBinds.FirstOrDefault(kb => kb.Value == keyBind.keyCode).Key}.");
+            //callback(false,null);
+            return false;
         }
 
-
         //Change keybind.
-        KeyBind keyBindBeingChanged = new KeyBind() { actionName = actionName, keyCode = keyBinds[actionName] };
 
-        keyBinds[actionName] = keyCodeToAssign;
-        KeyBindChangedEvent?.Invoke(actionName,keyCodeToAssign);
+        KeyBind keyBindBeingChanged = new KeyBind() { actionName = keyBind.actionName, keyCode = keyBinds[keyBind.actionName] };
 
-        KeyBind newKeyBind = new KeyBind() { actionName = actionName, keyCode = keyCodeToAssign };
+        keyBinds[keyBind.actionName] = keyBind.keyCode;
+        KeyBindChangedEvent?.Invoke(keyBind);
 
-        print($"Keybind - {keyBindBeingChanged} changed to {newKeyBind}");
+        KeyBind newKeyBind = new KeyBind() { actionName = keyBind.actionName, keyCode = keyBind.keyCode };
+        //callback(true,newKeyBind);
 
+        print($"Keybind changed! {keyBindBeingChanged} changed to {newKeyBind}");
+
+        return true;
 
         //Save to JSON?
-
     }
 
     //Is a key already used in a keybind?
     public static bool KeyAlreadyInUse(KeyCode keyCodeToCheck) => keyBinds.ContainsValue(keyCodeToCheck);
+
+    public static KeyCode GetCurrentKeyDown()
+    {
+        for (int i = 0; i < keyCodes.Length; i++)
+        {
+            if (Input.GetKeyDown(keyCodes[i]))
+            {
+                return keyCodes[i];
+            }
+        }
+
+        return KeyCode.None;
+    }
+
+
 }
 
 
@@ -74,6 +92,13 @@ public class KeyBind
 {
     public string actionName;
     public KeyCode keyCode;
+
+    public KeyBind() { }
+    public KeyBind(string actionName,KeyCode keyCode)
+    {
+        this.actionName = actionName;
+        this.keyCode = keyCode;
+    }
 
     public override string ToString()
     {
