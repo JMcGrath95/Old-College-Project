@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a39b88b1bcbe604d94d77f8229305e6, type: 3}
-  m_Name: Projectile Item
+  m_Name: PI_3Front1Back
   m_EditorClassIdentifier: 
-  ItemName: New Item
-  ItemMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  ItemName: Defensive Strike
   DisplayImage: {fileID: 0}
   ItemSound: {fileID: 0}
   ItemType: 0

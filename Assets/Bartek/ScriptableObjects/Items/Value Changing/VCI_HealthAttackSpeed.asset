@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7f5dbe20dc5cf244893c4250d072a81, type: 3}
-  m_Name: Value Changing Item
+  m_Name: VCI_HealthAttackSpeed
   m_EditorClassIdentifier: 
-  ItemName: New Item
-  ItemMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  ItemName: Balanced Buff
   DisplayImage: {fileID: 0}
   ItemSound: {fileID: 0}
   ItemType: 1

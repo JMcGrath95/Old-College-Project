@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cc4b4b5d6babee42a5c79eaf3781d7a, type: 3}
-  m_Name: Projectile Effect
+  m_Name: PE_BackwardsShot
   m_EditorClassIdentifier: 
-  EffectName: New Effect
+  EffectName: Backwards Single Shot
   EffectSound: {fileID: 0}
   Owner: {fileID: 0}
   PrefabToSpawn: {fileID: 316776862675890965, guid: d45a94d8b7dfeda4bb5c30728a1318f8, type: 3}
   Speed: 5
   ProjectilesToUse:
   - {fileID: 11400000, guid: 31f85dd690e301c44a43f1254d88e7a5, type: 2}
-  ProjectileDirections:
-  - {x: 0, y: 0, z: 1}
-  - {x: 1, y: 0, z: 1}
-  - {x: -1, y: 0, z: 1}
   ProjectileYRotations:
-  - 0
-  - 25
-  - -25
+  - 180

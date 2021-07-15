@@ -12,7 +12,6 @@ public enum ItemUseType
 public abstract class BaseItem : ScriptableObject
 {
     public string ItemName = "New Item";                        //display/search name
-    public Mesh ItemMesh;                                       //mesh for the item sued to fill prefab mesh used in world spawn for pickupable objects
     public Sprite DisplayImage;                                 //image reference used for UI display
     public AudioClip ItemSound = null;                          //Audio for the item. some items can have no sound
     public ItemUseType ItemType = ItemUseType.InstantUse;       //This enum is used to define when the item is used e.g Attacking type items are used on player attack

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84dda5cc48c4bba409bb77a156771b1c, type: 3}
-  m_Name: Projectile
+  m_Name: P_SmallLowDamage
   m_EditorClassIdentifier: 
-  Name: New Projectile
+  Name: Small Low Damge
   Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  Size: 1
-  Damage: 10
+  Size: 0.75
+  Damage: 5
   Color: {r: 0, g: 1, b: 0, a: 1}
   Range: 20

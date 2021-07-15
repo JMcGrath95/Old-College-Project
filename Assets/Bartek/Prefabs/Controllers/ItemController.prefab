@@ -46,4 +46,6 @@ MonoBehaviour:
   allItemList:
   - {fileID: 11400000, guid: 5febcab155962d54881026574ce8f1df, type: 2}
   - {fileID: 11400000, guid: bedb9c37f88636b4781e2275441bba70, type: 2}
+  - {fileID: 11400000, guid: 74ababd4ee2d95b4a8000f3e3eaeb46c, type: 2}
+  - {fileID: 11400000, guid: 566edcff62994cf4087b2f3c2c87aa61, type: 2}
   itemPrefab: {fileID: 8510792565172818928, guid: 9ac1195b95223fc4eae8ea877869fc3b, type: 3}

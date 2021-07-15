@@ -33,13 +33,6 @@ public class PickupItem : InteractableArea
         if (!testItem)
             item = controller.ReturnRandomItem();
 
-        UpdatePrefab();
-    }
-
-    private void UpdatePrefab()
-    {
-        if (item.ItemMesh != null)
-            GetComponent<MeshFilter>().mesh = item.ItemMesh;
     }
 
     public override void Interact()
