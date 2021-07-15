@@ -13,10 +13,16 @@ public class CameraRotation : MonoBehaviour
 
     private void Start()
     {
+        if (EnableRotationFromStart)
+            FindPlayer();
+    }
+
+    public void FindPlayer()
+    {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void Update()
+    private void Update()
     {
         if (player == null)
             return;
