@@ -55,8 +55,9 @@ public class UI_PauseScreenController : MonoBehaviour
 
     public void SaveSettings()
     {
-        //Save volume and keybinds settings.
+        //Save volume setting as well??
 
+        KeyBindsManager.SaveKeybindsToJSON();
 
         EnableMainPauseScreen();  
     }
