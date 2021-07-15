@@ -19,8 +19,7 @@ public class KeyBindsManager : MonoBehaviour
     //Keybinds in game which InputManager reads from.
     public static Dictionary<string, KeyCode> keyBinds = new Dictionary<string, KeyCode>();
 
-    //JSON Saving Keybind Settings In Text File.
-
+    //JSON Saving Keybind Settings To JSON File.
     public static readonly string keybindsJSONFolderPath = "/Shane/Keybinds.txt";
     public static string keybindsJSONFullPath;
     KeyBind[] keyBindsArrayReadFromJSONFile;
@@ -34,10 +33,12 @@ public class KeyBindsManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
 
         //Keybinds settings file exists. Read from it and set keybinds to this.

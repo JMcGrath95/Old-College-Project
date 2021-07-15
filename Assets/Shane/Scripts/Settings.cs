@@ -27,6 +27,7 @@ public class Settings : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
     }
 

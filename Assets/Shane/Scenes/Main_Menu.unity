@@ -2742,6 +2742,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.28
       objectReference: {fileID: 0}
+    - target: {fileID: 270982409512955605, guid: c20c1d13ee3d2a746993cf1d29eb3699, type: 3}
+      propertyPath: m_CellSize.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 270982409512955606, guid: c20c1d13ee3d2a746993cf1d29eb3699, type: 3}
       propertyPath: m_SizeDelta.y
       value: 266.9
