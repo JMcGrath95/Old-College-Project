@@ -43,7 +43,7 @@ public class UI_Keybind : MonoBehaviour
 
             KeyBind myNewKeyBind = new KeyBind(myKeyBind.actionName, keyCodePressed);
 
-            if(KeyBindsManager.AttemptToChangeKeybind(myNewKeyBind/*,AttemptToChangeKeybindCallback*/))
+            if(KeyBindsManager.AttemptToChangeKeybind(myNewKeyBind))
             {
                 myKeyBind = myNewKeyBind;
             }
@@ -51,17 +51,6 @@ public class UI_Keybind : MonoBehaviour
             DisableCheckingForKeybindChange();
         }
     }
-
-    //private void AttemptToChangeKeybindCallback(bool keyBindWasChanged,KeyBind newKeyBind)
-    //{
-    //    if(keyBindWasChanged)
-    //    {
-    //        myKeyBind = newKeyBind;
-    //    }
-
-    //    DisableCheckingForKeybindChange();
-
-    //}
 
     public void SetKeybind(KeyBind keyBind)
     {

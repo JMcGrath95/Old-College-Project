@@ -1,0 +1,1 @@
+{"Items":[{"actionName":"Interact","keyCode":114},{"actionName":"Attack","keyCode":323},{"actionName":"Dash","keyCode":32},{"actionName":"Camera Rotate Left","keyCode":113},{"actionName":"Camera Rotate Right","keyCode":101}]}
