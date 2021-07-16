@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CanvasController : MonoBehaviour
 {
-    public GameObject InteractPopup;
+    public UI_InteractPopup interactPopup;
 
     private void Start()
     {
@@ -21,16 +21,11 @@ public class CanvasController : MonoBehaviour
 
     private void InteractableArea_EnteredAreaEvent(InteractableArea obj)
     {
-        SetInteractPopup(true);
+        interactPopup.Show();
     }
 
     private void InteractableArea_LeftAreaEvent(InteractableArea obj)
     {
-        SetInteractPopup(false);
-    }
-
-    public void SetInteractPopup(bool value)
-    {
-        InteractPopup.SetActive(value);
+        interactPopup.Hide();
     }
 }
