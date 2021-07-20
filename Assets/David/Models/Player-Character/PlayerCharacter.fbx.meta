@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 7c0625ed4a001ed4ab8e299ddcb3e9ed
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -2877703813301315093
+    second: rig.004|Default Poses
+  - first:
+      74: -429822200436834869
+    second: rig.004|MainCharacter
+  - first:
+      74: -2480974104549567214
+    second: rig.004|Projectile_SpikeBall
+  - first:
+      74: 6299835751403856709
+    second: rig.004|WereWolfAnimations
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dagger_Normal
+    second: {fileID: 2800000, guid: ce6a76552b02a5d408816ac11de353b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dagger_Roughness
+    second: {fileID: 2800000, guid: faf7291909c0f6342921ea0895fa65e8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Body_BaseColor
+    second: {fileID: 2800000, guid: 57a54e20d4490a9488ff772db8dfd73a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Body_Metallic
+    second: {fileID: 2800000, guid: 085ca0d81600f2940b598507ebbdea37, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Body_Normal
+    second: {fileID: 2800000, guid: 40f68267586ba7c429e219dccae3e34c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Body_Roughness
+    second: {fileID: 2800000, guid: efd1c4f12ffcd264b9432b55f3f956ad, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Boots_BaseColor
+    second: {fileID: 2800000, guid: b076003949bacdc42abb2d1f3b85ea8f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Boots_Metallic
+    second: {fileID: 2800000, guid: e87de1f2ecf4bb8498e1115dbed8aa8d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Boots_Normal
+    second: {fileID: 2800000, guid: 21e549d7a332b124fa1699265d6903eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Boots_Roughness
+    second: {fileID: 2800000, guid: b44af5706bbdc6446b6adb633eabdccb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Eyes_BaseColor
+    second: {fileID: 2800000, guid: f498692b035ba4a43bb18202fd30a63a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Eyes_Metallic
+    second: {fileID: 2800000, guid: e6501297f433e3b45aa7efce1ad97dc7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Eyes_Normal
+    second: {fileID: 2800000, guid: 9ef02dd0ffc042a4caff22f4f4bef2c7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Eyes_Roughness
+    second: {fileID: 2800000, guid: 667713e5529709f4182f42870c30867b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hands_BaseColor
+    second: {fileID: 2800000, guid: 5a299471dae6a6148a2496f2e370fb6c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hands_Metallic
+    second: {fileID: 2800000, guid: 776d42625aafc2441afea052fa0d530f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hands_Normal
+    second: {fileID: 2800000, guid: 090c02f3c0745384185a0c8c210de2a7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hands_Roughness
+    second: {fileID: 2800000, guid: dcd2406f00268c3428f7388c9807803f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hat_BaseColor
+    second: {fileID: 2800000, guid: 09ca5912a52c0dc46a0d54cda93229ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hat_Metallic
+    second: {fileID: 2800000, guid: 96048655492cf034492f784f25d9ae31, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hat_Normal
+    second: {fileID: 2800000, guid: 36c720c24f5a74346bf05f02ca462569, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Hat_Roughness
+    second: {fileID: 2800000, guid: 9b206d7ba8cd74f4898acda754c1be36, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Legs_BaseColor
+    second: {fileID: 2800000, guid: d2a157aaaeecf7144bf8c725374ae48b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Legs_Metallic
+    second: {fileID: 2800000, guid: 2e9f771c1082f8e47a908115995a0e4e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Legs_Normal
+    second: {fileID: 2800000, guid: a29f4973e48834f4a98fa9159c8be5c2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Legs_Roughness
+    second: {fileID: 2800000, guid: d1ad4ee5bed442d448a4bf61904c0a6d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Placement_Project_Character_TheSecond_Mask_BaseColor
+    second: {fileID: 2800000, guid: 70d345bb844bec942b57b896aea89252, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
