@@ -77,7 +77,7 @@ ModelImporter:
       takeName: rig.005|Hedgehog
       internalID: 0
       firstFrame: 0
-      lastFrame: 12.299999
+      lastFrame: 8
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -105,7 +105,7 @@ ModelImporter:
       name: rig.005|Hedgehog UnCurlup Action
       takeName: rig.005|Hedgehog
       internalID: 0
-      firstFrame: 24.599998
+      firstFrame: 25.399998
       lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0
