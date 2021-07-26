@@ -20,137 +20,137 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Dagger_Normal
-    second: {fileID: 2800000, guid: ce6a76552b02a5d408816ac11de353b1, type: 3}
+    second: {fileID: 2800000, guid: 4170d02d2cdbc0f4a8dd731409fa0c29, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Dagger_Roughness
-    second: {fileID: 2800000, guid: faf7291909c0f6342921ea0895fa65e8, type: 3}
+    second: {fileID: 2800000, guid: abe5de7debf768842b739cd6e5dae4da, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Body_BaseColor
-    second: {fileID: 2800000, guid: 57a54e20d4490a9488ff772db8dfd73a, type: 3}
+    second: {fileID: 2800000, guid: d8d7f1df5f0be224a9237005e20f7410, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Body_Metallic
-    second: {fileID: 2800000, guid: 085ca0d81600f2940b598507ebbdea37, type: 3}
+    second: {fileID: 2800000, guid: 98886d5063280404f9451564cd4d5366, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Body_Normal
-    second: {fileID: 2800000, guid: 40f68267586ba7c429e219dccae3e34c, type: 3}
+    second: {fileID: 2800000, guid: 8938c9dbf4501734f9cb5bedb6aa4d31, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Body_Roughness
-    second: {fileID: 2800000, guid: efd1c4f12ffcd264b9432b55f3f956ad, type: 3}
+    second: {fileID: 2800000, guid: cfbf177a85a211744a4e6cfff1d93f93, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Boots_BaseColor
-    second: {fileID: 2800000, guid: b076003949bacdc42abb2d1f3b85ea8f, type: 3}
+    second: {fileID: 2800000, guid: 081bd8334775eb048a37f9f18b9882ac, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Boots_Metallic
-    second: {fileID: 2800000, guid: e87de1f2ecf4bb8498e1115dbed8aa8d, type: 3}
+    second: {fileID: 2800000, guid: e5b7a58df1b295449958b9331a337687, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Boots_Normal
-    second: {fileID: 2800000, guid: 21e549d7a332b124fa1699265d6903eb, type: 3}
+    second: {fileID: 2800000, guid: 460b8445d52abc047b55b4300a72be9a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Boots_Roughness
-    second: {fileID: 2800000, guid: b44af5706bbdc6446b6adb633eabdccb, type: 3}
+    second: {fileID: 2800000, guid: 282b0e538ac28bd46b187c94febe9ed7, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Eyes_BaseColor
-    second: {fileID: 2800000, guid: f498692b035ba4a43bb18202fd30a63a, type: 3}
+    second: {fileID: 2800000, guid: 331cd7d91a6302749afc193349076f0d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Eyes_Metallic
-    second: {fileID: 2800000, guid: e6501297f433e3b45aa7efce1ad97dc7, type: 3}
+    second: {fileID: 2800000, guid: d13c60ae96f353042b9afb35a8438feb, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Eyes_Normal
-    second: {fileID: 2800000, guid: 9ef02dd0ffc042a4caff22f4f4bef2c7, type: 3}
+    second: {fileID: 2800000, guid: 487d5c65308202247b2f56ca4c486f85, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Eyes_Roughness
-    second: {fileID: 2800000, guid: 667713e5529709f4182f42870c30867b, type: 3}
+    second: {fileID: 2800000, guid: 8eb76f7a8cb375740a721874d0e42d64, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hands_BaseColor
-    second: {fileID: 2800000, guid: 5a299471dae6a6148a2496f2e370fb6c, type: 3}
+    second: {fileID: 2800000, guid: 4cee07d60b3582345959ab0a58540c4a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hands_Metallic
-    second: {fileID: 2800000, guid: 776d42625aafc2441afea052fa0d530f, type: 3}
+    second: {fileID: 2800000, guid: 297ab1ab64d725e4eae8b5b0eb259b4a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hands_Normal
-    second: {fileID: 2800000, guid: 090c02f3c0745384185a0c8c210de2a7, type: 3}
+    second: {fileID: 2800000, guid: c9e2d6480b536fa45b6f798aaff2667c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hands_Roughness
-    second: {fileID: 2800000, guid: dcd2406f00268c3428f7388c9807803f, type: 3}
+    second: {fileID: 2800000, guid: 2f60edd52996ef843aff51c708b798ad, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hat_BaseColor
-    second: {fileID: 2800000, guid: 09ca5912a52c0dc46a0d54cda93229ee, type: 3}
+    second: {fileID: 2800000, guid: 0ea0bddaff151a24eae06db2fdb413ce, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hat_Metallic
-    second: {fileID: 2800000, guid: 96048655492cf034492f784f25d9ae31, type: 3}
+    second: {fileID: 2800000, guid: 4c18ac5f04b8daa4f959152827befca2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hat_Normal
-    second: {fileID: 2800000, guid: 36c720c24f5a74346bf05f02ca462569, type: 3}
+    second: {fileID: 2800000, guid: 99beca629a9713c4e9b345609854743c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Hat_Roughness
-    second: {fileID: 2800000, guid: 9b206d7ba8cd74f4898acda754c1be36, type: 3}
+    second: {fileID: 2800000, guid: 5ac39d411a3e4b147b56ed3261360807, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Legs_BaseColor
-    second: {fileID: 2800000, guid: d2a157aaaeecf7144bf8c725374ae48b, type: 3}
+    second: {fileID: 2800000, guid: cedb4ae0d20c7034ab2b7c2d0e0f20b0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Legs_Metallic
-    second: {fileID: 2800000, guid: 2e9f771c1082f8e47a908115995a0e4e, type: 3}
+    second: {fileID: 2800000, guid: ff4a994419fa01240910cec1721928c7, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Legs_Normal
-    second: {fileID: 2800000, guid: a29f4973e48834f4a98fa9159c8be5c2, type: 3}
+    second: {fileID: 2800000, guid: 8aadff43f98c8dd41b968ae066b33753, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Legs_Roughness
-    second: {fileID: 2800000, guid: d1ad4ee5bed442d448a4bf61904c0a6d, type: 3}
+    second: {fileID: 2800000, guid: b2250952919561440ad8a042eb4e50bf, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Placement_Project_Character_TheSecond_Mask_BaseColor
-    second: {fileID: 2800000, guid: 70d345bb844bec942b57b896aea89252, type: 3}
+    second: {fileID: 2800000, guid: 8294e1d4b578bee49b8892e76089bc41, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
