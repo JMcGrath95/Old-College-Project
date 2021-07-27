@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+//Attack speed modifier needs to be reworked!!
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationController : BaseAnimationController
 {
+    public static event Action<float> AttackSpeedModifierChangedEvent;
+
     private const string idleAnimation = "Idle";
     private const string walkingAnimation = "Walking";
     private const string meleeAttackAnimation = "Hit Action 2";
@@ -22,9 +27,18 @@ public class PlayerAnimationController : BaseAnimationController
         get { return currentAttackSpeedModifier; }
         set 
         {
+            float oldAttackSpeedModifier = currentAttackSpeedModifier;
+
             currentAttackSpeedModifier = value;
             currentAttackSpeedModifier = Mathf.Clamp(currentAttackSpeedModifier, minAttackSpeedModifier, maxAttackSpeedModifier);
             animator.SetFloat("AttackSpeedMultiplier", currentAttackSpeedModifier);
+
+            //Find how much percentage the attack speed modifier changed.
+            float increase = currentAttackSpeedModifier - oldAttackSpeedModifier;
+            float percentageChange = increase / oldAttackSpeedModifier * 100;
+
+            //Change melee cooldown in player attack.
+            AttackSpeedModifierChangedEvent(percentageChange);
         } 
     }
 
@@ -32,7 +46,6 @@ public class PlayerAnimationController : BaseAnimationController
     private void Start()
     {
         attackAnimationQueue = new Queue<string>(attackAnimations);
-        CurrentAttackSpeedModifier = 1f;
     }
 
     public void GoToIdle() => ChangeAnimationState(idleAnimation);
