@@ -12,7 +12,7 @@ public enum TrapType
 
 public class Base_Trap : MonoBehaviour
 {
-    public TrapType TrapType;
+    
     public int SpikeDamage;
     public bool IsActive = false;
 
@@ -27,8 +27,8 @@ public class Base_Trap : MonoBehaviour
 
     public void InitializeTrapMotion()
     {
-        spikeAnimtor.Play("Spike_Movement", 0,0.5f);
-        spikeAnimtor.Play("MiddleSpikes", 0,0.5f);
+        //spikeAnimtor.Play("Spike_Movement", 0,0.5f);
+        //spikeAnimtor.Play("MiddleSpikes", 0,0.5f);
     }
 
     public void DeactivateTrap()
