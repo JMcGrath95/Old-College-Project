@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &83649976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 595132105, guid: 41983ec71b18a514e896b0d2c90f540e, type: 3}
+  m_PrefabInstance: {fileID: 541432421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07d869064915c94795a13bcdb197ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &525277388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,11 +299,6 @@ PrefabInstance:
 --- !u!224 &541432422 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8734370000075578615, guid: 41983ec71b18a514e896b0d2c90f540e, type: 3}
-  m_PrefabInstance: {fileID: 541432421}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &541432423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8734370000075578612, guid: 41983ec71b18a514e896b0d2c90f540e, type: 3}
   m_PrefabInstance: {fileID: 541432421}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &633401879
@@ -707,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb197c888a76a9948bde9b582fa7ecfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractPopup: {fileID: 541432423}
+  interactPopup: {fileID: 83649976}
 --- !u!1001 &1980524364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -904,6 +910,14 @@ PrefabInstance:
     - target: {fileID: 4517032327482316607, guid: 06294c6476a7eec4ebd3179c9e8eeb24, type: 3}
       propertyPath: m_Name
       value: SkyBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517032327482316607, guid: 06294c6476a7eec4ebd3179c9e8eeb24, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517032327482316607, guid: 06294c6476a7eec4ebd3179c9e8eeb24, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06294c6476a7eec4ebd3179c9e8eeb24, type: 3}
