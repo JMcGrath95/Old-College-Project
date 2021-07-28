@@ -9,6 +9,8 @@ public class RoomController : MonoBehaviour
 
     public ItemController itemController;
 
+    public GameObject trapPrefab;
+
     public void StartEnemyRoom(Room room)
     {
         room.CloseDoors();
@@ -28,6 +30,13 @@ public class RoomController : MonoBehaviour
     public void StartTreasureRoom(Room room)
     {
         itemController.SpawnItemPrefab(room);
+        room.roomCleared = true;
+    }
+
+    public void StartTrapRoom(Room room)
+    {
+        itemController.SpawnItemPrefab(room);
+        Instantiate(trapPrefab, room.transform);
         room.roomCleared = true;
     }
 }

@@ -10,6 +10,7 @@ public enum RoomType
     EnemyRoom,
     EmptyRoom,
     TreasureRoom,
+    TrapRoom,
 }
 
 public class Room : MonoBehaviour
@@ -118,6 +119,9 @@ public class Room : MonoBehaviour
             case RoomType.TreasureRoom:
                 SetRoomColour(Color.yellow);
                 break;
+            case RoomType.TrapRoom:
+                SetRoomColour(Color.blue);
+                break;
             default:
                 break;
         }
@@ -176,6 +180,9 @@ public class Room : MonoBehaviour
                 break;
             case RoomType.TreasureRoom:
                 controller.StartTreasureRoom(this);
+                break;
+            case RoomType.TrapRoom:
+                controller.StartTrapRoom(this);
                 break;
             default:
                 break;

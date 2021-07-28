@@ -290,7 +290,6 @@ public class LevelGenerator : MonoBehaviour
         foreach (Room r in createdRooms)
         {
             r.OpenDoors();
-            r.SetRoomByType();
         }
 
         gameController.StartGame();
@@ -298,10 +297,11 @@ public class LevelGenerator : MonoBehaviour
 
     void DefineRoomTypes()
     {
+        int trapRoomCount = 0;
+        int random;
+
         for (int i = 0; i < createdRooms.Count; i++)
         {
-            int random;
-
             //setting first room as startRoom
             if (i == 0)
             {
@@ -316,15 +316,24 @@ public class LevelGenerator : MonoBehaviour
             }
             else
             {
-                //setting remaining rooms as empty or enemy rooms
-                random = Random.Range(0, 5);
-                if (random < 2)
+                //this is used to define chance of different rooms spawning
+                random = Random.Range(0, 10);
+
+                // 3/10 chance to spawn trap room
+                if (trapRoomCount < 2 && random < 2)
                 {
-                    createdRooms[i].roomType = RoomType.EmptyRoom;
+                    createdRooms[i].roomType = RoomType.TrapRoom;
+                    trapRoomCount++;
                 }
-                else
+                // 5/10 chance to spawn enemy room
+                else if (random >= 3 || random <= 7)
                 {
                     createdRooms[i].roomType = RoomType.EnemyRoom;
+                }
+                // 2/10 chance to spawn empty room
+                else
+                {
+                    createdRooms[i].roomType = RoomType.EmptyRoom;
                 }
             }
         }
@@ -343,10 +352,10 @@ public class LevelGenerator : MonoBehaviour
         tr.roomType = RoomType.TreasureRoom;
         treasureRoom = tr;
 
-        /*foreach (Room cr in createdRooms)
+        foreach (Room cr in createdRooms)
         {
             cr.SetRoomByType();
-        }*/
+        }
     }
 
     //checks if there is a hallway facing the position passed in and opposite the direction passed in

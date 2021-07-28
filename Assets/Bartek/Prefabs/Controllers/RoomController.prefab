@@ -46,3 +46,4 @@ MonoBehaviour:
   spawnerPrefab: {fileID: 6375186873447484759, guid: e40856a0546037244ac5c92838dc9778, type: 3}
   portalPrefab: {fileID: -8428931868024751098, guid: 99fdbefb26ad05947b6ff2ed0240b873, type: 3}
   itemController: {fileID: -4166390165471232660, guid: a687de7d61d49374c97ca165517061fa, type: 3}
+  trapPrefab: {fileID: 8451652408153872723, guid: 1e273e21d589ab442b261fe0cef3ced1, type: 3}
