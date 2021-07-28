@@ -108,7 +108,7 @@ public class AI_Boss : MonoBehaviour
     }
     void Rotation() 
     {
-        rigid_body.MoveRotation(rigid_body.rotation * Quaternion.Euler(new Vector3(180, 0, 0) * Time.fixedDeltaTime * Boss.Speed*0.5f));
+        rigid_body.MoveRotation(rigid_body.rotation * Quaternion.Euler(new Vector3(180, 0, 0) * Time.fixedDeltaTime * Boss.Speed / 5f));
     }
     void LookTowards()
     {
