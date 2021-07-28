@@ -13,6 +13,11 @@ public class KeyBindsManager : MonoBehaviour
     public static readonly KeyCode[] keyCodes = Enum.GetValues(typeof(KeyCode))
                                                  .Cast<KeyCode>().ToArray();
 
+
+    [Header("Testing")]
+    [Tooltip("Set keybinds as default instead of reading from json file settings. ")]
+    [SerializeField] private bool SetDefaultKeybinds;
+
     //Default keybinds in game. Set in inspector.
     [SerializeField] private List<KeyBind> defaultKeybindsList = new List<KeyBind>();
 
@@ -22,8 +27,7 @@ public class KeyBindsManager : MonoBehaviour
     //JSON Saving Keybind Settings To JSON File.
     public static readonly string keybindsJSONFolderPath = "/Shane/Keybinds.txt";
     public static string keybindsJSONFullPath;
-    KeyBind[] keyBindsArrayReadFromJSONFile;
-
+    KeyBind[] keyBindsArray;
 
     private void Awake()
     {
@@ -41,28 +45,34 @@ public class KeyBindsManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        //Keybinds settings file exists. Read from it and set keybinds to this.
-        if(File.Exists(keybindsJSONFullPath))
+        if(SetDefaultKeybinds) //
         {
-            //Attempt to convert from JSON.
-            try
+            keyBindsArray = defaultKeybindsList.ToArray();
+        }
+        else
+        {
+            if (File.Exists(keybindsJSONFullPath)) //Keybinds settings file exists. Read from it and set keybinds to this.
             {
-                keyBindsArrayReadFromJSONFile = JSONHelper.FromJson<KeyBind>(File.ReadAllText(keybindsJSONFullPath));
-            }
-            catch (Exception) //Json file not correct, revert to default keybind settings.
-            {
-                Debug.LogError("Could not convert Keybinds JSON Text File into keybinds array.");
+                //Attempt to convert from JSON.
+                try
+                {
+                    keyBindsArray = JSONHelper.FromJson<KeyBind>(File.ReadAllText(keybindsJSONFullPath));
+                }
+                catch (Exception) //Json file not correct, revert to default keybind settings.
+                {
+                    Debug.LogError("Could not convert Keybinds JSON Text File into keybinds array.");
 
+                    SaveDefaultKeybindsToJSON();
+                }
+            }
+            else //No keybinds settings file - create one and set settings to deafult.
+            {
                 SaveDefaultKeybindsToJSON();
             }
-        }
-        else //No keybinds settings file - create one and set settings to deafult.
-        {
-            SaveDefaultKeybindsToJSON();
-        }
+        }      
 
         //Add to Dictionary.
-        foreach (var keyBind in keyBindsArrayReadFromJSONFile)
+        foreach (var keyBind in keyBindsArray)
         {
             keyBinds.Add(keyBind.actionName, keyBind.keyCode);
         }
@@ -71,9 +81,9 @@ public class KeyBindsManager : MonoBehaviour
     #region Saving KeyBinds To JSON File
     private void SaveDefaultKeybindsToJSON()
     {
-        keyBindsArrayReadFromJSONFile = defaultKeybindsList.ToArray();
+        keyBindsArray = defaultKeybindsList.ToArray();
 
-        string deafultKeybindsJSON = JSONHelper.ToJson(keyBindsArrayReadFromJSONFile, true);
+        string deafultKeybindsJSON = JSONHelper.ToJson(keyBindsArray, true);
         File.WriteAllText(keybindsJSONFullPath, deafultKeybindsJSON);
     }
     public static void SaveKeybindsToJSON()

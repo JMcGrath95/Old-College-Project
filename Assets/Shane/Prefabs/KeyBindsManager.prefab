@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultKeybindsList:
   - actionName: Interact
-    keyCode: 114
+    keyCode: 102
   - actionName: Attack
     keyCode: 323
   - actionName: Dash
