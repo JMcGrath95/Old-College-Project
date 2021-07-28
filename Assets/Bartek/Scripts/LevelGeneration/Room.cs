@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum RoomType
 {
@@ -34,6 +35,7 @@ public class Room : MonoBehaviour
     {
         controller = GameObject.FindGameObjectWithTag("RoomController").GetComponent<RoomController>();
         roomCleared = false;
+        BuildFloorNavMesh();
     }
 
     //loops through children and assigns floor object if it finds an object named Floor
@@ -47,6 +49,11 @@ public class Room : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void BuildFloorNavMesh()
+    {
+        floor.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
     public void GetHallways()
@@ -92,7 +99,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    /*public void SetRoomByType()
+    public void SetRoomByType()
     {
         switch (roomType)
         {
@@ -114,7 +121,7 @@ public class Room : MonoBehaviour
             default:
                 break;
         }
-    }*/
+    }
     
     void SetRoomColour(Color colour)
     {
