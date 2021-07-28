@@ -13,6 +13,11 @@ public class Timer
     public float elapsed;
     public bool ended = false;
 
+    private Coroutine TimerCoroutine;
+
+
+    int[] testArrayGC = new int[1000];
+
     public Timer(MonoBehaviour monoBehaviour,float timeToStop)
     {
         this.monoBehaviour = monoBehaviour;
@@ -23,9 +28,25 @@ public class Timer
         this.monoBehaviour = monoBehaviour;
         this.timeToStop = timeToStop;
         this.callbacksOnTimerEnd = callbacksOnTimerEnd;
+
+        for (int i = 0; i < testArrayGC.Length; i++)
+        {
+            System.Random rng = new System.Random();
+
+            testArrayGC[i] = rng.Next(0, 300);
+        }
     }
 
-    public void Start() => monoBehaviour.StartCoroutine(StartTimerCoroutine(timeToStop, callbacksOnTimerEnd));
+    public void Start() => TimerCoroutine = monoBehaviour.StartCoroutine(StartTimerCoroutine(timeToStop, callbacksOnTimerEnd));
+
+    public void Reset()
+    {
+        if(TimerCoroutine != null)
+        {
+            monoBehaviour.StopCoroutine(TimerCoroutine);
+            TimerCoroutine = null;
+        }
+    }
 
     private IEnumerator StartTimerCoroutine(float timeToStop,params Action[] callbacks)
     {

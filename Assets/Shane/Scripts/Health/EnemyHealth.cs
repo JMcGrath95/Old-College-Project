@@ -2,6 +2,8 @@ using System;
 
 public class EnemyHealth : BaseHealth
 {
+    public static event Action<EnemyHealth> EnemyDeathEvent;
+
     public override event Action DamageTakenEvent;
     public override event Action DeathEvent;
     public override event Action HealthAddedEvent;
@@ -40,6 +42,8 @@ public class EnemyHealth : BaseHealth
 
         if(currentHealth <= 0)
         {
+            EnemyDeathEvent?.Invoke(this); //Static event.
+
             DeathEvent?.Invoke();
             Destroy(gameObject);
         }
