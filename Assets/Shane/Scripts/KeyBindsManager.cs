@@ -45,11 +45,11 @@ public class KeyBindsManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        if(SetDefaultKeybinds) //
+        if(SetDefaultKeybinds)
         {
             keyBindsArray = defaultKeybindsList.ToArray();
         }
-        else
+        else //Check if keybinds settings JSON exists.
         {
             if (File.Exists(keybindsJSONFullPath)) //Keybinds settings file exists. Read from it and set keybinds to this.
             {
@@ -65,7 +65,7 @@ public class KeyBindsManager : MonoBehaviour
                     SaveDefaultKeybindsToJSON();
                 }
             }
-            else //No keybinds settings file - create one and set settings to deafult.
+            else //No keybinds settings JSON - create one and set settings to deafult.
             {
                 SaveDefaultKeybindsToJSON();
             }

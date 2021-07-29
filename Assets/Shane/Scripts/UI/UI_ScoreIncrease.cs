@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,39 +5,42 @@ public class UI_ScoreIncrease : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private TextMeshProUGUI txtScoreIncrease;
-
+    [Header("Time for text to dissapear")]
     [SerializeField] private float timeToDissapear;
 
+    //Amount to increase.
     private int increaseValue;
+    //Timer to dissapear.
     private Timer dissapearTimer;
 
-    // Needs to be.... 
+    private UI_Score scoreDisplay;
 
-    // Notified of score increase. 
-    // Notified of when score display stops increasing - so it can start countdown to when it should dissapear.
 
     private void Awake()
     {
-        UI_ScoreController.TempScoreIncreaseEvent += OnPlayerScoreIncreased;
-        UI_Score.IncreaseDisplayEndedEvent += OnScoreDisplayStoppedIncreasing;
+        scoreDisplay = FindObjectOfType<UI_Score>();
+        scoreDisplay.IncreaseDisplayEndedEvent += OnScoreDisplayStoppedIncreasing;
+        PlayerScoreController.ScoreIncreasedEvent += OnPlayerScoreIncreased;
     }
 
-    private void OnScoreDisplayStoppedIncreasing()
-    {
-        dissapearTimer = new Timer(this, timeToDissapear, ResetDisplay);
-        dissapearTimer.Start();
-    }
-
+    //Display increase text when player score increases.
     private void OnPlayerScoreIncreased(int increase)
     {
         if (dissapearTimer != null)
             dissapearTimer.Reset();
 
-
         increaseValue += increase;
         txtScoreIncrease.text = increaseValue.ToString();
     }
 
+    //Start countdown to increase text dissapearing.
+    private void OnScoreDisplayStoppedIncreasing()
+    {
+        dissapearTimer = new Timer(this, timeToDissapear, ResetDisplay); 
+        dissapearTimer.Start();
+    }
+
+    //Hide text.
     private void ResetDisplay()
     {
         increaseValue = 0;
@@ -50,6 +51,7 @@ public class UI_ScoreIncrease : MonoBehaviour
 
     private void OnDestroy()
     {
-        UI_ScoreController.TempScoreIncreaseEvent -= OnPlayerScoreIncreased;        
+        scoreDisplay.IncreaseDisplayEndedEvent -= OnScoreDisplayStoppedIncreasing;
+        PlayerScoreController.ScoreIncreasedEvent -= OnPlayerScoreIncreased;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class EnemyHealth : BaseHealth
 {
@@ -8,6 +9,10 @@ public class EnemyHealth : BaseHealth
     public override event Action DeathEvent;
     public override event Action HealthAddedEvent;
     public override event Action MaxHealthChangedEvent;
+
+    [Header("Points to give on Death")]
+    [SerializeField] private int pointsReward;
+
 
     public override void Start()
     {
@@ -43,6 +48,8 @@ public class EnemyHealth : BaseHealth
         if(currentHealth <= 0)
         {
             EnemyDeathEvent?.Invoke(this); //Static event.
+
+            PlayerScoreController.PlayerScore -= pointsReward;
 
             DeathEvent?.Invoke();
             Destroy(gameObject);
