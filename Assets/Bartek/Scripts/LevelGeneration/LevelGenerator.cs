@@ -326,7 +326,7 @@ public class LevelGenerator : MonoBehaviour
                     trapRoomCount++;
                 }
                 // 5/10 chance to spawn enemy room
-                else if (random >= 3 || random <= 7)
+                else if (random >= 3 && random <= 7)
                 {
                     createdRooms[i].roomType = RoomType.EnemyRoom;
                 }
