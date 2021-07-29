@@ -428,7 +428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfProjectiles: 20
-  projectileSpeed: 2
+  projectileSpeed: 5
+  rotationSpeed: 5
   projectilePrefab: {fileID: 9093668935623490528, guid: 9b91d6351f789374986103c85d3cfc21, type: 3}
 --- !u!4 &703793939
 Transform:

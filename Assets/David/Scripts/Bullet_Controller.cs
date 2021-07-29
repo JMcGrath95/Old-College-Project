@@ -8,39 +8,53 @@ public class Bullet_Controller : MonoBehaviour
 
     public int numberOfProjectiles;
     public float projectileSpeed;
+    public float rotationSpeed = 5;
     public GameObject projectilePrefab;
 
     [Header("Private Variables")]
-    private Vector3 startPoint;
+
     private const float radius = 1f;
+
+
+
+    private void Start()
+    {
+        InvokeRepeating("SpawnProjectile", 2, 5);
+    }
 
     private void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            startPoint = transform.position;
-            SpawnProjectile(numberOfProjectiles);
-        }
+        transform.Rotate(new Vector3(0, 30 * Time.deltaTime, 0));
     }
 
-    private void SpawnProjectile(int _numberOfProjectiles)
+    
+
+    private void SpawnProjectile()
     {
-        float angleStep = 360f / _numberOfProjectiles;
+        float angleStep = 360f / numberOfProjectiles;
         float angle = 0f;
 
-        for (int i = 0; i < _numberOfProjectiles -1; i++)
+        for (int i = 0; i < numberOfProjectiles ; i++)
         {
             // Direction Calculations
-            float projectilesDirXPosition = startPoint.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
-            float projectilesDirYPosition = startPoint.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+            float projectilesDirXPosition = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
+            float projectilesDirYPosition = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
 
             Vector3 ProjectileVector = new Vector3(projectilesDirXPosition, projectilesDirYPosition, 0);
-            Vector3 projectileMoveDirection = (ProjectileVector - startPoint).normalized * projectileSpeed;
+            Vector3 projectileMoveDirection = (ProjectileVector - transform.position).normalized * projectileSpeed;
+            
 
-            GameObject tmpObj = Instantiate(projectilePrefab, startPoint, Quaternion.identity);
+            GameObject tmpObj = Instantiate(projectilePrefab, transform);
             tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.y);
+            //angle += 180;
 
-            angle += angleStep;
+            if(angle >= 360f)
+            {
+                angle = 0f;
+            }
+           angle += angleStep;
         }
     }
+
+    
 }
