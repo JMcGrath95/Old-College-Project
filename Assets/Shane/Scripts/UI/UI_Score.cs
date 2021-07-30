@@ -11,11 +11,11 @@ public class UI_Score : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtScore;
     [SerializeField] private TextMeshProUGUI txtScoreIncrease;
 
-    [Header("Score")]
-    [SerializeField] private float score;
+    [Header("Score Increase Speed")]
     [SerializeField] private float increaseSpeed;
-    [SerializeField] private float timeToDissapearScoreIncreaseText;
+
     private int scoreTarget;
+    private float score;
 
     private bool IncreaseScoreDisplay;
 
@@ -55,5 +55,10 @@ public class UI_Score : MonoBehaviour
 
             IncreaseScoreDisplay = false;
         }
+    }
+
+    private void OnDestroy()
+    { 
+        PlayerScoreController.ScoreIncreasedEvent -= OnPlayerScoreIncreased;
     }
 }

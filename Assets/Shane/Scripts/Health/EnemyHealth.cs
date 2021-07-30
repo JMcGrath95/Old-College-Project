@@ -49,7 +49,7 @@ public class EnemyHealth : BaseHealth
         {
             EnemyDeathEvent?.Invoke(this); //Static event.
 
-            PlayerScoreController.PlayerScore -= pointsReward;
+            PlayerScoreController.PlayerScore += pointsReward;
 
             DeathEvent?.Invoke();
             Destroy(gameObject);
