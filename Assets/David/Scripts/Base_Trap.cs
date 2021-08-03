@@ -13,15 +13,12 @@ public enum TrapType
 public class Base_Trap : MonoBehaviour
 {
     
-    public int SpikeDamage;
-    public bool IsActive = false;
-
-    public GameObject spike;
+    
     Animator spikeAnimtor;
 
     void Start()
     {
-        spikeAnimtor.GetComponent<Animator>();
+        //spikeAnimtor.GetComponent<Animator>();
         InitializeTrapMotion();
     }
 

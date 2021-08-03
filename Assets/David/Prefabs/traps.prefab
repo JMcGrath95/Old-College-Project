@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 8942767819752967319}
   - component: {fileID: 5800594583405337064}
   - component: {fileID: 409503304244492888}
-  - component: {fileID: 93525367311980144}
   - component: {fileID: 3141063833979210751}
   m_Layer: 0
   m_Name: Spikes
@@ -177,22 +176,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &93525367311980144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4593131551656749729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aec3c39884729cd44807add362581d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrapType: 0
-  SpikeDamage: 0
-  IsActive: 0
-  spike: {fileID: 0}
 --- !u!95 &3141063833979210751
 Animator:
   serializedVersion: 3
@@ -203,7 +186,7 @@ Animator:
   m_GameObject: {fileID: 4593131551656749729}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f50aec60d73761645aec57d0a8102d4f, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
