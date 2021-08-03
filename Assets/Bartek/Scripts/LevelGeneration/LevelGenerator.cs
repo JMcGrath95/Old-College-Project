@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelGenerator : MonoBehaviour
 {
     public GameController gameController;
+    public Minimap map;
 
     //prefab rooms to choose from in the generator
     public Room[] rooms_TRBL;
@@ -296,6 +297,8 @@ public class LevelGenerator : MonoBehaviour
         rooms.AddRange(createdRooms);
 
         DefineRoomTypes();
+
+        map.StartMinimap(RoomPositions);
 
         foreach (Room r in createdRooms)
         {

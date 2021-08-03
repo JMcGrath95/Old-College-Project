@@ -11,6 +11,8 @@ public class RoomController : MonoBehaviour
 
     public GameObject trapPrefab;
 
+    public Minimap map;
+
     public void StartEnemyRoom(Room room)
     {
         room.CloseDoors();

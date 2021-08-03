@@ -137,6 +137,7 @@ public class Room : MonoBehaviour
         if (other.tag == "Player")
         {
             inRoomTrigger = true;
+            controller.map.SetActiveRoom(transform.position);
         }
     }
 
