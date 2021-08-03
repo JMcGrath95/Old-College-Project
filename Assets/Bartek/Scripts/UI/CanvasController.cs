@@ -7,8 +7,6 @@ public class CanvasController : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
-
         InteractableArea.EnteredAreaEvent += InteractableArea_EnteredAreaEvent;
         InteractableArea.LeftAreaEvent += InteractableArea_LeftAreaEvent;
     }
