@@ -539,6 +539,10 @@ PrefabInstance:
       propertyPath: FollowPlayerAtStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7920202793074667693, guid: 091d179945a187541889ad49ad817458, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7920202794193176936, guid: 091d179945a187541889ad49ad817458, type: 3}
       propertyPath: m_Name
       value: 'Camera '

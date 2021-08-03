@@ -104,6 +104,7 @@ public class LevelGenerator : MonoBehaviour
             for (int i = 1; i < rooms.Count; i++)
             {
                 rooms.Remove(rooms[i]);
+                RoomPositions.RemoveAt(i);
             }
         }
 
@@ -156,9 +157,12 @@ public class LevelGenerator : MonoBehaviour
     //if they are remove those options from a list of rooms until a room that suits the position can be used
     void FixRoomsWithUnconnectedHallways()
     {
+        Debug.Log("Room positions : " + RoomPositions.Count);
+        Debug.Log("Rooms : " + rooms.Count);
+
         for (int i = 0; i < RoomPositions.Count; i++)
         {
-            //each loop resets values tso next loop wont have extra/broken values
+            //each loop resets values so next loop wont have extra/broken values
 
             //list of rooms to chop down for what room to change the room into
             List<Room> t = new List<Room>();
@@ -207,65 +211,67 @@ public class LevelGenerator : MonoBehaviour
                     hallwaysNeeded++;
                 }
             }
+            print(rooms[i].name + " hallways checked");
 
-            //loops through all the room presets
-            //checks room being checked against them and removes any that have a hallway that this room doesn't
-            foreach (Room room in allRooms)
-            {
-                //if room being checked doesn't have a hallway going up and this room does removes it
-                if (rooms[i].topHallway == false && room.topHallway == true)
-                {
-                    if (t.Contains(room))
-                    {
-                        Debug.Log("room to remove : " + room.name);
-                        t.Remove(room);
-                    }
-                }
-
-                //if room being checked doesn't have a hallway going right and this room does removes it
-                if (rooms[i].rightHallway == false && room.rightHallway == true)
-                {
-                    if (t.Contains(room))
-                    {
-                        Debug.Log("room to remove : " + room.name);
-                        t.Remove(room);
-                    }
-                }
-
-                //if room being checked doesn't have a hallway going down and this room does removes it
-                if (rooms[i].bottomHallway == false && room.bottomHallway == true)
-                {
-                    if (t.Contains(room))
-                    {
-                        Debug.Log("room to remove : " + room.name);
-                        t.Remove(room);
-                    }
-                }
-
-                //if room being checked doesn't have a hallway going left and this room does removes it
-                if (rooms[i].leftHallway == false && room.leftHallway == true)
-                {
-                    if (t.Contains(room))
-                    {
-                        Debug.Log("room to remove : " + room.name);
-                        t.Remove(room);
-                    }
-                }
-
-                //if this  room has a number of hallways that doesn't match the hallwaysNeeded counter remove it from the list 
-                if (room.hallways.Count != hallwaysNeeded)
-                {
-                    if (t.Contains(room))
-                    {
-                        Debug.Log("room to remove : " + room.name);
-                        t.Remove(room);
-                    }
-                }
-            }
-
-            //if this room has to be changed
             if (change)
             {
+                //loops through all the room presets
+                //checks room being checked against them and removes any that have a hallway that this room doesn't
+                foreach (Room room in allRooms)
+                {
+                    //if room being checked doesn't have a hallway going up and this room does removes it
+                    if (rooms[i].topHallway == false && room.topHallway == true)
+                    {
+                        if (t.Contains(room))
+                        {
+                            Debug.Log("room to remove : " + room.name);
+                            t.Remove(room);
+                        }
+                    }
+
+                    //if room being checked doesn't have a hallway going right and this room does removes it
+                    if (rooms[i].rightHallway == false && room.rightHallway == true)
+                    {
+                        if (t.Contains(room))
+                        {
+                            Debug.Log("room to remove : " + room.name);
+                            t.Remove(room);
+                        }
+                    }
+
+                    //if room being checked doesn't have a hallway going down and this room does removes it
+                    if (rooms[i].bottomHallway == false && room.bottomHallway == true)
+                    {
+                        if (t.Contains(room))
+                        {
+                            Debug.Log("room to remove : " + room.name);
+                            t.Remove(room);
+                        }
+                    }
+
+                    //if room being checked doesn't have a hallway going left and this room does removes it
+                    if (rooms[i].leftHallway == false && room.leftHallway == true)
+                    {
+                        if (t.Contains(room))
+                        {
+                            Debug.Log("room to remove : " + room.name);
+                            t.Remove(room);
+                        }
+                    }
+
+                    //if this  room has a number of hallways that doesn't match the hallwaysNeeded counter remove it from the list 
+                    if (room.hallways.Count != hallwaysNeeded)
+                    {
+                        if (t.Contains(room))
+                        {
+                            Debug.Log("room to remove : " + room.name);
+                            t.Remove(room);
+                        }
+                    }
+                }
+
+                Debug.Log(rooms[i].name + " list of rooms to change to finished");
+           
                 //destroy the room and remove it from the list
                 Destroy(createdRooms[i].gameObject);
                 createdRooms.RemoveAt(i);
@@ -276,9 +282,13 @@ public class LevelGenerator : MonoBehaviour
                 newRoom.GetHallways();
 
                 //insert new room into the postion of the list where the old room was
-                print(newRoom.name + " " + newRoom.transform.position);
                 createdRooms.Insert(i, newRoom);
+
+                Debug.Log(rooms[i].name + " room changed to " + newRoom.name + " Position " + RoomPositions[i]);
             }
+
+            Debug.Log(i + " " + rooms[i].name + " loop finished");
+            Debug.Log("room position list " + i + "\n --------------------------------------------------------------------");
         }
 
         //clears old room list and assigns created rooms to it
