@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  map: {fileID: 0}
   rooms_TRBL:
   - {fileID: -8223778227229998680, guid: d2ef12b7056300b4e91d35673bc6df4f, type: 3}
   rooms_T:
