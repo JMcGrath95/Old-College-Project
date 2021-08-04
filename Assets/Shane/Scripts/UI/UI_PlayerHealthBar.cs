@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class UI_PlayerHealthBar : UI_HealthBar
 {
-    protected override void Start()
+    private void Start()
     {
         healthEntity = FindObjectOfType<PlayerHealth>();
-        base.Start();
+        UpdateHealthEntity(healthEntity);
     }
 
     protected override void OnMyHealthEntityDeath()
     {
-        
+        //Hide if player dies?
     }
 }

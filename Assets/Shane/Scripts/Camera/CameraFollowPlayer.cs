@@ -18,6 +18,9 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+            return;
+
         playerLastPosition = player.position;
     }
 

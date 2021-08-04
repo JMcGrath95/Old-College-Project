@@ -11,7 +11,7 @@ public class EnemyHealth : BaseHealth
     public override event Action MaxHealthChangedEvent;
 
     [Header("Points to give on Death")]
-    [SerializeField] private int pointsReward;
+    [SerializeField] protected int pointsReward;
 
 
     public override void Start()

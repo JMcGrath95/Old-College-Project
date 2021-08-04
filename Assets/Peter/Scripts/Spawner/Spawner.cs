@@ -102,19 +102,21 @@ public class Spawner : MonoBehaviour
         _boss temp = Bosses.bosses.Find(b => b.ID == id);
         GameObject just_made_boss = Instantiate(temp.Boss_Prefab, roomAssignedTo.transform);
         just_made_boss.name = temp.Name;
+
         just_made_boss.GetComponent<AI_Boss>().Boss = new _boss
-        {
-            ID = temp.ID,
-            Health=temp.Health,
-            Name = temp.Name,
-            Speed = temp.Speed,
-            Attack = temp.Attack,
-            AttackSpeed = temp.AttackSpeed,
-            AttackRange = temp.AttackRange,
-            Projectile = temp.Projectile,
-            Boss_Prefab = temp.Boss_Prefab
-        };
-        just_made_boss.GetComponent<EnemyHealth>().SetMaxHealth((int)just_made_boss.GetComponent<AI_Boss>().Boss.Health);
+        (
+            iD: temp.ID,
+            name: temp.Name,
+            health: temp.Health,
+            speed: temp.Speed,
+            attack: temp.Attack,
+            attackSpeed: temp.AttackSpeed,
+            attackRange: temp.AttackRange,
+            projectile: temp.Projectile,
+            boss_Prefab: temp.Boss_Prefab
+        );
+
+        just_made_boss.GetComponent<BossHealth>().SetMaxHealth((int)just_made_boss.GetComponent<AI_Boss>().Boss.Health);
         GetBoss(just_made_boss);
     }
     //Splits the spawn string on ","
