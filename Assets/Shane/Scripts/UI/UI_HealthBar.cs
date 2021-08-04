@@ -12,13 +12,9 @@ public class UI_HealthBar : MonoBehaviour
     [Header("Object with health to display")]
     protected BaseHealth healthEntity;
 
-    protected virtual void Start()
+    protected void UpdateHealthEntity(BaseHealth healthEntity)
     {
-        if(healthEntity == null)
-        {
-            Debug.LogError($"Health bar object called - {gameObject.name} can't find health component to represent. Find health component before calling base.start in inheriting script.");
-            return;
-        }
+        this.healthEntity = healthEntity;
 
         healthBarSlider.maxValue = healthEntity.maxHealth;
         healthBarSlider.value = healthEntity.maxHealth;
@@ -34,9 +30,14 @@ public class UI_HealthBar : MonoBehaviour
     protected virtual void OnMyEntityHealthChanged() => healthBarSlider.value = healthEntity.GetCurrentHealth;
     protected virtual void OnMyHealthEntityDeath() { }
 
-    private void OnDestroy()
+    public virtual void OnDestroy()
     {
-        if(healthEntity)
+        StopListeningToHealthEntityEvents();
+    }
+
+    protected void StopListeningToHealthEntityEvents()
+    {
+        if (healthEntity)
         {
             healthEntity.DamageTakenEvent -= OnMyEntityHealthChanged;
             healthEntity.HealthAddedEvent -= OnMyEntityHealthChanged;
