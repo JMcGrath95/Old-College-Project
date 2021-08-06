@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class PlayerHealth : BaseHealth
 {
@@ -42,7 +43,11 @@ public class PlayerHealth : BaseHealth
         DamageTakenEvent?.Invoke();
 
         if(currentHealth <= 0)
-            DeathEvent?.Invoke();     
+        {
+            Time.timeScale = 0;
+            DeathEvent?.Invoke();
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()

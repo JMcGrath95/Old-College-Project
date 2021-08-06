@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance;
+
     [Header("Movement")]
     [SerializeField] private FixedJoystick fixedJoystick;
     public static bool IsMovementInput { get { return MovementInput != Vector3.zero; } }
@@ -21,16 +23,25 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Button btnInteract;
     private Func<KeyCode, bool> interactInputDelegate; //Not used yet. Need this if certain interaction areas you need to interact by holding button instead of single press.
     public static event Action InteractInputEvent;
+    public bool InteractButtonPressed { get { return Input.GetKeyDown(KeyBindsManager.keyBinds[interactKeyBindName]);} }
 
     [Header("Attacking")]
     [SerializeField] private string attackKeyBindName;
     [SerializeField] private Button btnAttack;
     public static event Action AttackInputEvent;
+    public bool AttackButtonPressed { get { return Input.GetKeyDown(KeyBindsManager.keyBinds[attackKeyBindName]);} }
 
     [Header("Dashing")]
     [SerializeField] private string dashKeyBindName;
     [SerializeField] private Button btnDash;
     public static event Action DashInputEvent;
+    public bool DashButtonPressed { get { return Input.GetKeyDown(KeyBindsManager.keyBinds[dashKeyBindName]);} }
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     private void Start()
     {
@@ -105,9 +116,14 @@ public class InputManager : MonoBehaviour
     private void OnDestroy()
     {
 
+        Delegate[] attackInputEventListeners = AttackInputEvent.GetInvocationList();
 
+        for (int i = 0; i < attackInputEventListeners.Length; i++)
+        {
+            Delegate listener = attackInputEventListeners[i];
 
-
+            AttackInputEvent -= (Action) attackInputEventListeners[i];
+        }
 
         //Unsub events if on mobile.
 #if UNITY_ANDROID || UNITY_IOS
@@ -118,5 +134,7 @@ public class InputManager : MonoBehaviour
 
 #endif
     }
+
+
 
 }

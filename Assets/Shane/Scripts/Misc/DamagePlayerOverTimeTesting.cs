@@ -11,11 +11,12 @@ public class DamagePlayerOverTimeTesting : MonoBehaviour
          playerHealth = FindObjectOfType<PlayerHealth>();
 
          //playerHealth.SetMaxHealth(150);
-         //InvokeRepeating("DamagePlayer", 2f, 3f);
+         InvokeRepeating("DamagePlayer", 2f, 3f);
     }
 
     private void DamagePlayer()
     {
-        playerHealth.TakeDamage(30);
+        if(playerHealth != null)
+            playerHealth.TakeDamage(60);
     }
 }
