@@ -10,9 +10,15 @@ public class PlayerStateIdle : iState
 
     public void UpdateComponents(PlayerStateMachine playerStateMachine) => this.playerStateMachine = playerStateMachine;
 
-    public void Enter() => InputManager.AttackInputEvent += OnAttackInputEvent;
+    public void Enter()
+    {
+        //InputManager.AttackInputEvent += OnAttackInputEvent;
+    }
 
-    public void Exit() => InputManager.AttackInputEvent -= OnAttackInputEvent;
+    public void Exit()
+    {
+        //InputManager.AttackInputEvent -= OnAttackInputEvent;
+    }
 
     private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
 
@@ -20,8 +26,12 @@ public class PlayerStateIdle : iState
     {
         playerStateMachine.playerAnimationController.GoToIdle();
 
-        if (InputManager.IsMovementInput)
+        if (InputManager.Instance.AttackButtonPressed)
+            playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
+
+        if (InputManager.Instance.IsMovementInput)
             playerStateMachine.ChangeState(playerStateMachine.playerStateWalking);
+
        
     }
 }

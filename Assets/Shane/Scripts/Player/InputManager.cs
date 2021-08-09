@@ -1,12 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-
-//Calls events for some inputs player can do - interact, attack, dash.
-//Other scripts can listen out for these events and do whatever in response.
 
 public class InputManager : MonoBehaviour
 {
@@ -14,8 +8,8 @@ public class InputManager : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private FixedJoystick fixedJoystick;
-    public static bool IsMovementInput { get { return MovementInput != Vector3.zero; } }
-    public static Vector3 MovementInput { get; private set; }
+    public bool IsMovementInput { get { return MovementInput != Vector3.zero; } }
+    public Vector3 MovementInput { get; private set; }
     private Camera mainCamera;
 
     [Header("Interacting")]
@@ -46,21 +40,6 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-
-#if UNITY_ANDROID || UNITY_IOS
-        btnInteract.onClick.AddListener(OnInteractInput);
-        btnAttack.onClick.AddListener(OnAttackInput);
-        btnDash.onClick.AddListener(OnDashInput);
-#endif
-    }
-
-    //Raising input events.
-    private void OnInteractInput() => InteractInputEvent?.Invoke();
-    private void OnAttackInput() => AttackInputEvent?.Invoke();
-    private void OnDashInput()
-    {
-        if(IsMovementInput)
-            DashInputEvent?.Invoke();
     }
 
     private void Update()
@@ -76,65 +55,53 @@ public class InputManager : MonoBehaviour
         MovementInput = mainCamera.transform.TransformDirection(MovementInput) * Time.deltaTime;
         MovementInput = new Vector3(MovementInput.x, 0, MovementInput.z).normalized;
         #endregion
-
-        #region Check For Attack
-
-#if UNITY_STANDALONE
-
-        if (Input.GetKeyDown(KeyBindsManager.keyBinds[attackKeyBindName]))
-            OnAttackInput();
-        //if (Input.GetKeyDown(keyAttack))
-        //    OnAttackInput();
-#endif
-
-        #endregion
-
-        #region Check For Dash
-
-#if UNITY_STANDALONE
-
-        if (Input.GetKeyDown(KeyBindsManager.keyBinds[dashKeyBindName]))
-            OnDashInput();
-        //if (Input.GetKeyDown(keyDash))
-        //    OnDashInput();
-#endif
-
-        #endregion
-
-        #region Check For Interaction
-
-
-        //if (Input.GetKeyDown(keyInteract))
-        //    OnInteractInput();
-
-        if (Input.GetKeyDown(KeyBindsManager.keyBinds[interactKeyBindName]))
-            OnInteractInput();
-
-        #endregion
     }
-
-    private void OnDestroy()
-    {
-
-        Delegate[] attackInputEventListeners = AttackInputEvent.GetInvocationList();
-
-        for (int i = 0; i < attackInputEventListeners.Length; i++)
-        {
-            Delegate listener = attackInputEventListeners[i];
-
-            AttackInputEvent -= (Action) attackInputEventListeners[i];
-        }
-
-        //Unsub events if on mobile.
-#if UNITY_ANDROID || UNITY_IOS
-
-        btnInteract.onClick.RemoveListener(OnInteractInput);
-        btnAttack.onClick.RemoveListener(OnAttackInput);
-        btnDash.onClick.RemoveListener(OnDashInput);
-
-#endif
-    }
-
-
-
 }
+
+
+
+//Old Code
+//        #region Check For Attack
+
+//#if UNITY_STANDALONE
+
+//        if (Input.GetKeyDown(KeyBindsManager.keyBinds[attackKeyBindName]))
+//            OnAttackInput();
+//        //if (Input.GetKeyDown(keyAttack))
+//        //    OnAttackInput();
+//#endif
+
+//        #endregion
+
+//        #region Check For Dash
+
+//#if UNITY_STANDALONE
+
+//        if (Input.GetKeyDown(KeyBindsManager.keyBinds[dashKeyBindName]))
+//            OnDashInput();
+//        //if (Input.GetKeyDown(keyDash))
+//        //    OnDashInput();
+//#endif
+
+//        #endregion
+
+//        #region Check For Interaction
+
+
+//        //if (Input.GetKeyDown(keyInteract))
+//        //    OnInteractInput();
+
+//        if (Input.GetKeyDown(KeyBindsManager.keyBinds[interactKeyBindName]))
+//            OnInteractInput();
+
+//        #endregion
+
+//Old Input raising methods
+//Raising input events.
+//private void OnInteractInput() => InteractInputEvent?.Invoke();
+//private void OnAttackInput() => AttackInputEvent?.Invoke();
+//private void OnDashInput()
+//{
+//    if (IsMovementInput)
+//        DashInputEvent?.Invoke();
+//}

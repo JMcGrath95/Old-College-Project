@@ -10,9 +10,15 @@ public class PlayerInteraction : MonoBehaviour
     //Start.
     void Start()
     {
-        InputManager.InteractInputEvent += OnInteractInput;
+       // InputManager.InteractInputEvent += OnInteractInput;
         InteractableArea.EnteredAreaEvent += OnEnteringInteractableArea;
         InteractableArea.LeftAreaEvent += OnLeavingInteractableArea;
+    }
+
+    private void Update()
+    {
+        if(InputManager.Instance.InteractButtonPressed)
+            OnInteractInput();
     }
 
     private void OnLeavingInteractableArea(InteractableArea interactableArea) => interactable = null;
@@ -25,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputManager.InteractInputEvent -= OnInteractInput;
+        //InputManager.InteractInputEvent -= OnInteractInput;
         InteractableArea.EnteredAreaEvent -= OnEnteringInteractableArea;
         InteractableArea.LeftAreaEvent -= OnLeavingInteractableArea;
     }

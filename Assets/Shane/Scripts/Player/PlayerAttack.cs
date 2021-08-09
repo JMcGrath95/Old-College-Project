@@ -49,8 +49,8 @@ public class PlayerAttack : MonoBehaviour
         timeOfLastAttack = Time.time;
 
         //Snap rotation to input direction if any.
-        if (InputManager.IsMovementInput)
-            transform.forward = InputManager.MovementInput;
+        if (InputManager.Instance.IsMovementInput)
+            transform.forward = InputManager.Instance.MovementInput;
 
         playerAnimationController.GoToNextAttack();
     }

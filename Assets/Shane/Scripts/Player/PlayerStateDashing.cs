@@ -47,7 +47,7 @@ public class PlayerStateDashing : iState
         DashStartedEvent?.Invoke();
 
         DashSuccessful = true;
-        directionToDash = InputManager.MovementInput;
+        directionToDash = InputManager.Instance.MovementInput;
         playerStateMachine.myTransform.forward = directionToDash;
 
         timeForDashToEnd = Time.time + dashDuration;

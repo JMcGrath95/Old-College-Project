@@ -37,29 +37,40 @@ public class PlayerStateWalking : iState
     //State Machine.
     public void Enter()
     {
-        InputManager.AttackInputEvent += OnAttackInputEvent;
-        InputManager.DashInputEvent += OnDashInputEvent;
+        //InputManager.AttackInputEvent += OnAttackInputEvent;
+        //InputManager.DashInputEvent += OnDashInputEvent;
     }
     public void Exit()
     {
-        InputManager.AttackInputEvent -= OnAttackInputEvent;
-        InputManager.DashInputEvent -= OnDashInputEvent;
+        //InputManager.AttackInputEvent -= OnAttackInputEvent;
+        //InputManager.DashInputEvent -= OnDashInputEvent;
     }
     public void Tick()
     {
-        if (!InputManager.IsMovementInput)
+        if (!InputManager.Instance.IsMovementInput)
         {
             playerStateMachine.ChangeState(playerStateMachine.playerStateIdle);
             return;
         }
+        if (InputManager.Instance.AttackButtonPressed)
+        {
+            playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
+            return;
+        }
+
+        if (InputManager.Instance.DashButtonPressed)
+        {
+            playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
+            return;
+        }
+
 
         playerStateMachine.playerAnimationController.GoToWalking();
 
-        characterController.SimpleMove(InputManager.MovementInput * MovementSpeed);
-        playerStateMachine.myTransform.rotation = Quaternion.Slerp(playerStateMachine.myTransform.rotation, Quaternion.LookRotation(InputManager.MovementInput), rotationSpeed);
-
+        characterController.SimpleMove(InputManager.Instance.MovementInput * MovementSpeed);
+        playerStateMachine.myTransform.rotation = Quaternion.Slerp(playerStateMachine.myTransform.rotation, Quaternion.LookRotation(InputManager.Instance.MovementInput), rotationSpeed);
     }
 
-    private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
-    private void OnDashInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
+    //private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
+    //private void OnDashInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
 }
