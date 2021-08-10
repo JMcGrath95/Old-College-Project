@@ -11,6 +11,7 @@ public class UI_BossHealthBar : UI_HealthBar
     {
         _boss.BossCreatedEvent += OnBossObjectCreated;
         BossHealth.BossHealthInitialisedEvent += OnBossSpawned;
+        gameObject.SetActive(false);
     }
 
     private void OnBossObjectCreated(_boss bossCreated) => txtBossName.text = bossCreated.Name;
