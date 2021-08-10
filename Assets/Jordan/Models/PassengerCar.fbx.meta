@@ -34,6 +34,36 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Windows
     second: {fileID: 2100000, guid: 57b17d264c1007e409c83ae73440ac63, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CarDoor
+    second: {fileID: 2800000, guid: 887ab656a988af54286250ba54c1e8be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coal
+    second: {fileID: 2800000, guid: 34501ca3f92d75848b036f7f60b9ccfb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DoorKnocker
+    second: {fileID: 2800000, guid: 95abeb5d6772b0341863ccc65364b6b6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Exhaust
+    second: {fileID: 2800000, guid: 2a7aa7607795c264fa34c9fdcee3fd11, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MainBody
+    second: {fileID: 2800000, guid: de46f057de4d1574688c14abb15de7cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: glass_texture_by_rcdezine_d5snuyo-fullview
+    second: {fileID: 2800000, guid: 9b3c8cc17d576f8418a0926320619074, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

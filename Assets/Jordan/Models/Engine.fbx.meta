@@ -3,7 +3,57 @@ guid: fc59e197e0301c9469c1595f9c3df534
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Engine
+    second: {fileID: 2100000, guid: d4a820b4652c18f448ea4c2cbd8d275d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Exhaust
+    second: {fileID: 2100000, guid: c753557d961e6c94b80f71d490e9d5c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 21928d722266a0d45a3ef40fd950f1e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 47a85650179bf3247b73b7399a4baae1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: c4224dd35e43bd14fba61df993d27bf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RearWheel
+    second: {fileID: 2100000, guid: 00e6e688b4c6d1547b25d4ff132b945b, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bolt
+    second: {fileID: 2800000, guid: 0fc307d5e8d88d447bfb0b0feda47b3d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Engine
+    second: {fileID: 2800000, guid: 364c614e6fe1f624aa116aa6d6efed6c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Exhaust
+    second: {fileID: 2800000, guid: 8dd226b6230ff72458a64c0020eb290a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: RearWheel
+    second: {fileID: 2800000, guid: b0d05199f0d106e4c928e782694a8a42, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
