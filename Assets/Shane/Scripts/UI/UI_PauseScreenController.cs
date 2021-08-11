@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class UI_PauseScreenController : MonoBehaviour
 {
+    public static event Action GamePausedEvent;
+    public static event Action GameUnpausedEvent;
+
     private Action escapeInputDelegate;
 
     [SerializeField] private GameObject mainPauseScreen;
@@ -22,6 +25,7 @@ public class UI_PauseScreenController : MonoBehaviour
 
         escapeInputDelegate = ResumeGame;
         Time.timeScale = 0;
+        GamePausedEvent?.Invoke();
     }
 
     public void ResumeGame()
@@ -30,6 +34,7 @@ public class UI_PauseScreenController : MonoBehaviour
         escapeInputDelegate = EnableMainPauseScreen;
         mainPauseScreen.SetActive(false);
         Time.timeScale = 1;
+        GameUnpausedEvent?.Invoke();
     }
 
     public void EnableOptionsScreen()

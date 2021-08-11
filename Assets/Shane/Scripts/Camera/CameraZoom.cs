@@ -14,6 +14,9 @@ public class CameraZoom : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerStateMachine.PlayerControlState != PlayerControlState.InControl)
+            return;
+
         //Camera Zoom.
         mainCamera.orthographicSize += -Input.mouseScrollDelta.y * cameraZoomSpeed;
         mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minCameraZoom, maxCameraZoom);

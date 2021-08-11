@@ -39,7 +39,7 @@ public abstract class StateMachine : MonoBehaviour
         InTransition = false;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (currentState != null && !InTransition)
             currentState.Tick();

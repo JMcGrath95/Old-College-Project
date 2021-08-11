@@ -1,9 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum PlayerControlState
+{ 
+    InControl,
+    Locked
+}
 
 public class PlayerStateMachine : StateMachine
 {
+    private static PlayerControlState playerControlState;
+    public static PlayerControlState PlayerControlState { get { return playerControlState; } set { playerControlState = value; } }
+
     //Declare states.
     public PlayerStateIdle playerStateIdle;
     public PlayerStateWalking playerStateWalking;
@@ -23,6 +30,19 @@ public class PlayerStateMachine : StateMachine
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
         characterController = GetComponentInParent<CharacterController>();
         playerAttack = GetComponent<PlayerAttack>();
+
+        UI_PauseScreenController.GamePausedEvent += OnGamePaused;
+        UI_PauseScreenController.GameUnpausedEvent += OnGameUnpaused;
+    }
+
+    private void OnGameUnpaused()
+    {
+        PlayerControlState = PlayerControlState.InControl;
+    }
+
+    private void OnGamePaused()
+    {
+        PlayerControlState = PlayerControlState.Locked;
     }
 
     private void Start()
@@ -33,6 +53,24 @@ public class PlayerStateMachine : StateMachine
         playerStateAttacking.UpdateComponents(this,playerAttack);
         playerStateDashing.UpdateComponents(this,characterController);
 
+        PlayerControlState = PlayerControlState.InControl;
+
         ChangeState(playerStateIdle);
+    }
+
+    //public static void ChangePlayerControlState(PlayerControlState newState) => playerControlState = newState;
+
+    public override void Update()
+    {
+        if(playerControlState == PlayerControlState.InControl)
+        {
+             base.Update();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        UI_PauseScreenController.GamePausedEvent -= OnGamePaused;
+        UI_PauseScreenController.GameUnpausedEvent -= OnGameUnpaused;
     }
 }

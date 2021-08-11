@@ -42,7 +42,7 @@ public class CameraRotation : MonoBehaviour
 
     private void Update()
     {
-        if (player == null)
+        if (player == null || PlayerStateMachine.PlayerControlState != PlayerControlState.InControl)
             return;
 
         transform.RotateAround(player.position,Vector3.up,rotationInput * rotationSpeed);
