@@ -10,7 +10,7 @@ public class PlayerAnimationController : BaseAnimationController
     public static event Action<float> AttackSpeedModifierChangedEvent;
 
     private const string idleAnimation = "Idle";
-    private const string walkingAnimation = "Walking";
+    private const string walkingAnimation = "Walking_with_Lantern 0";
     private const string meleeAttackAnimation = "Hit Action 2";
     private const string dashAnimation = "Dashing Action 001";
 

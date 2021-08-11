@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Projectile
   - Spikes
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Ground
   - 
   - Outlined
-  - 
-  - 
+  - Player
+  - PlayerWeapon
   - 
   - 
   - 

@@ -13,18 +13,15 @@ public class InputManager : MonoBehaviour
 
     [Header("Interacting")]
     [SerializeField] private string interactKeyBindName;
-    [SerializeField] private Button btnInteract;
     private Func<KeyCode, bool> interactInputDelegate; //Not used yet. Need this if certain interaction areas you need to interact by holding button instead of single press.
     public bool InteractButtonPressed { get { return Input.GetKeyDown(KeyBindsManager.keyBinds[interactKeyBindName]);} }
 
     [Header("Attacking")]
     [SerializeField] private string attackKeyBindName;
-    [SerializeField] private Button btnAttack;
     public bool AttackButtonPressed { get { return Input.GetKeyDown(KeyBindsManager.keyBinds[attackKeyBindName]);} }
 
     [Header("Dashing")]
     [SerializeField] private string dashKeyBindName;
-    [SerializeField] private Button btnDash;
     public bool DashButtonPressed { get { return Input.GetKeyDown(KeyBindsManager.keyBinds[dashKeyBindName]);} }
 
     private void Awake()
