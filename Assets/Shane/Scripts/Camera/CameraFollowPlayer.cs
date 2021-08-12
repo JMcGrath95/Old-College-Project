@@ -16,7 +16,7 @@ public class CameraFollowPlayer : MonoBehaviour
             FindPlayer();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (player == null)
             return;
@@ -24,14 +24,6 @@ public class CameraFollowPlayer : MonoBehaviour
         transform.position += player.position - playerLastPosition;
         playerLastPosition = player.position;
     }
-
-    //private void LateUpdate()
-    //{
-    //    if (player == null)
-    //        return;
-
-    //    transform.position += player.position - playerLastPosition;
-    //}
 
     public void FindPlayer()
     {
