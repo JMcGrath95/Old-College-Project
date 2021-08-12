@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public enum PlayerControlState
-{ 
+{
     InControl,
     Locked
 }
@@ -24,6 +24,9 @@ public class PlayerStateMachine : StateMachine
     //Private Components.
     private CharacterController characterController;
     private PlayerAttack playerAttack;
+
+    public GameObject lantern;
+    bool switched = false;
 
     private void Awake()
     {
@@ -50,8 +53,8 @@ public class PlayerStateMachine : StateMachine
         //Update components.
         playerStateIdle.UpdateComponents(this);
         playerStateWalking.UpdateComponents(this, characterController);
-        playerStateAttacking.UpdateComponents(this,playerAttack);
-        playerStateDashing.UpdateComponents(this,characterController);
+        playerStateAttacking.UpdateComponents(this, playerAttack);
+        playerStateDashing.UpdateComponents(this, characterController);
 
         PlayerControlState = PlayerControlState.InControl;
 
@@ -62,9 +65,21 @@ public class PlayerStateMachine : StateMachine
 
     public override void Update()
     {
-        if(playerControlState == PlayerControlState.InControl)
+        if (playerControlState == PlayerControlState.InControl)
         {
-             base.Update();
+            base.Update();
+        }
+
+        if (currentState == playerStateIdle && switched)
+        {
+            switched = false;
+            lantern.transform.localRotation = Quaternion.Euler(0, 85, -180);
+        }
+
+        if (currentState == playerStateWalking && !switched)
+        {
+            switched = true;
+            lantern.transform.localRotation = Quaternion.Euler(lantern.transform.rotation.x, lantern.transform.rotation.y, lantern.transform.rotation.z - 90);
         }
     }
 
