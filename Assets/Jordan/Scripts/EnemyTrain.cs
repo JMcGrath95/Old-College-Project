@@ -6,14 +6,23 @@ public class EnemyTrain : MonoBehaviour
 {
     GameObject Player;
     public ChargeLine chargeLinePrefab;
+   
     MeshRenderer mesh;
-    Vector3 playerPos;
-    private void Start()
+    Vector3 pPos;
+    float Starttime, ToDis;
+    bool repeat = false;
+    public float speed = 1.0f;
+    
+     
+    
+   
+    IEnumerator Start ()
     {
-
+        Starttime = Time.time;
         
         FindPlayerPos();
-        SpawnTrain(ChargeLineSpawn());
+            yield return SpawnLine();
+        
         
     }
     private void Update()
@@ -23,29 +32,44 @@ public class EnemyTrain : MonoBehaviour
     public void FindPlayerPos()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
-        playerPos = p.transform.position;
+        
         if (p != null)
             Debug.Log("PLayer Found");
-        
-    }
-    public ChargeLine ChargeLineSpawn()
-    {
-        ChargeLine pre = Instantiate(chargeLinePrefab, playerPos,Quaternion.Euler(new Vector3(0,Random.Range(0f,360f),0)));
 
-        
-        return pre;
+        pPos = p.transform.position;
+
 
     }
-    public void SpawnTrain(ChargeLine c)
+    IEnumerator SpawnLine()
     {
-        gameObject.transform.position = c.Point1.transform.position;
-        Debug.Log("Point1");
-        gameObject.transform.LookAt(c.Point2.transform, Vector3.left);
-        Debug.Log("Looking At");
-        gameObject.transform.position = Vector3.Lerp(c.Point1.transform.position, c.Point2.transform.position, .5f);
-        Debug.Log("Lerped");
-        Destroy(c);
-       
+        ChargeLine c = Instantiate(chargeLinePrefab,pPos,Quaternion.Euler(new Vector3(0,Random.Range(0f,360f),0)));
+        Vector3 a = c.Point1.transform.position;
+        Vector3 b = c.Point2.transform.position;
+        ToDis = Vector3.Distance(c.Point1.transform.position, c.Point2.transform.position);
+        StartCoroutine(RunCharge(2,a,b));
+        yield return null;
+    }
+    
+    
+    IEnumerator RunCharge(float time,Vector3 a,Vector3 b)
+    {
+        if(GameObject.FindGameObjectWithTag("Line"))
+        {
+            ChargeLine c = GameObject.FindGameObjectWithTag("Line").GetComponent<ChargeLine>();
+            float i = 0.0f;
+            float rate = (1.0f / time) * speed;
+            while(i < 1.0f)
+            {
+                i += Time.deltaTime * rate;
+                this.transform.position = Vector3.Lerp(a, b, 1);
+                
+                yield return null;
+            }
+        }
+        else
+        {
+            yield return null;
+        }
     }
     
 }
