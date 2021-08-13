@@ -20,6 +20,5 @@ public class CameraZoom : MonoBehaviour
         //Camera Zoom.
         mainCamera.orthographicSize += -Input.mouseScrollDelta.y * cameraZoomSpeed;
         mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minCameraZoom, maxCameraZoom);
-
     }
 }

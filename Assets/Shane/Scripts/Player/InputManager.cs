@@ -38,16 +38,13 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         #region Check For Movement
-#if UNITY_ANDROID || UNITY_IOS
-        MovementInput = new Vector3(fixedJoystick.Horizontal, 0, fixedJoystick.Vertical);
 
-#elif UNITY_STANDALONE
         MovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        #endif
-
         MovementInput = mainCamera.transform.TransformDirection(MovementInput) * Time.deltaTime;
         MovementInput = new Vector3(MovementInput.x, 0, MovementInput.z).normalized;
+
         #endregion
+
     }
 }
 

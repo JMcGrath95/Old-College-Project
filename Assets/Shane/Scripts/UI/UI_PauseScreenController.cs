@@ -53,7 +53,7 @@ public class UI_PauseScreenController : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(6); //Main menu scene. May need to change later.
+        SceneManager.LoadScene("Main Menu"); 
         Time.timeScale = 1;
     }
 
