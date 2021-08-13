@@ -11,6 +11,12 @@ public class UI_GameOverScreen : MonoBehaviour
 
     private void Awake()
     {
+        
+        GameController.GameStarted += GameController_GameStarted;
+    }
+
+    private void GameController_GameStarted()
+    {
         playerHealth = FindObjectOfType<PlayerHealth>();
         playerHealth.DeathEvent += OnPlayerDeath;
     }
@@ -23,13 +29,13 @@ public class UI_GameOverScreen : MonoBehaviour
 
     public void OnMainMenuButtonClicked()
     {
-        SceneManager.LoadScene(6); //Choose correct scene later.
+        SceneManager.LoadScene(6); 
         Time.timeScale = 1;
     }
 
     public void OnPlayAgainButtonClicked()
     {
-        SceneManager.LoadScene(5); //Choose correct scene later.
+        SceneManager.LoadScene(1); 
         Time.timeScale = 1;
     }
 }

@@ -12,6 +12,7 @@ public class UI_HealthBar : MonoBehaviour
     [Header("Object with health to display")]
     protected BaseHealth healthEntity;
 
+
     protected void UpdateHealthEntity(BaseHealth healthEntity)
     {
         this.healthEntity = healthEntity;

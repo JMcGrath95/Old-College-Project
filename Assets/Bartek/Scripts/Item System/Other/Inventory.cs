@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
         foreach (Transform transform in Player.transform)
         {
-            if(transform.gameObject.name == "Player Model")
+            if(transform.gameObject.name == "PlayerModel")
             {
                 playerModel = transform.gameObject;
                 continue;

@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class UI_PlayerHealthBar : UI_HealthBar
 {
+
     private void Start()
+    {
+        GameController.GameStarted += GameController_GameStarted;
+    }
+
+    private void GameController_GameStarted()
     {
         healthEntity = FindObjectOfType<PlayerHealth>();
         UpdateHealthEntity(healthEntity);

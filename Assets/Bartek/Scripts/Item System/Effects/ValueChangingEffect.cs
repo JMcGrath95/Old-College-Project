@@ -58,14 +58,14 @@ public class ValueChangingEffect : BaseEffect
 
             case ValueToChange.AttackSpeed:
                 if (ForPlayer)
-                    Owner.GetComponent<PlayerAnimationController>().CurrentAttackSpeedModifier += Value;
+                    Owner.GetComponentInChildren<PlayerAnimationController>().CurrentAttackSpeedModifier += Value;
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.AttackSpeed += Value;
                 break;
 
             case ValueToChange.Damage:
                 if (ForPlayer)
-                    Owner.GetComponent<PlayerAttack>().currentWeapon.Damage += (int)Value;
+                    Owner.GetComponentInChildren<PlayerAttack>().currentWeapon.Damage += (int)Value;
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.Attack += Value;
                 break;
