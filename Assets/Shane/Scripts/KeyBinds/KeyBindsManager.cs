@@ -25,7 +25,12 @@ public class KeyBindsManager : MonoBehaviour
     public static Dictionary<string, KeyCode> keyBinds = new Dictionary<string, KeyCode>();
 
     //JSON Saving Keybind Settings To JSON File.
+#if UNITY_EDITOR
     public static readonly string keybindsJSONFolderPath = "/Shane/Keybinds.txt";
+#else
+public static readonly string keybindsJSONFolderPath = "Keybinds.txt";
+#endif
+
     public static string keybindsJSONFullPath;
     KeyBind[] keyBindsArray;
 
@@ -78,7 +83,7 @@ public class KeyBindsManager : MonoBehaviour
         }
     }
 
-    #region Saving KeyBinds To JSON File
+#region Saving KeyBinds To JSON File
     private void SaveDefaultKeybindsToJSON()
     {
         keyBindsArray = defaultKeybindsList.ToArray();
@@ -107,9 +112,9 @@ public class KeyBindsManager : MonoBehaviour
             Debug.LogError("Could not save keybinds to JSON file.");
         }
     }
-    #endregion
+#endregion
 
-    #region Change Keybind - Alters Keybind Dictionary
+#region Change Keybind - Alters Keybind Dictionary
     public static bool AttemptToChangeKeybind(KeyBind keyBind)
     {
         //Does this action exist in game?
@@ -141,7 +146,7 @@ public class KeyBindsManager : MonoBehaviour
     //Is a key already used in a keybind?
     public static bool KeyAlreadyInUse(KeyCode keyCodeToCheck) => keyBinds.ContainsValue(keyCodeToCheck);
 
-    #endregion
+#endregion
 
 
     public static KeyCode GetCurrentKeyDown()
