@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Projectile
   - Spikes
+  - Line
   layers:
   - Default
   - TransparentFX

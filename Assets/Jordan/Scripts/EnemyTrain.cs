@@ -60,8 +60,9 @@ public class EnemyTrain : MonoBehaviour
             float rate = (1.0f / time) * speed;
             while(i < 1.0f)
             {
+                gameObject.transform.LookAt(c.Point2.transform.position);
                 i += Time.deltaTime * rate;
-                this.transform.position = Vector3.Lerp(a, b, 1);
+                this.transform.position = Vector3.Lerp(a, b, .01f);
                 
                 yield return null;
             }
