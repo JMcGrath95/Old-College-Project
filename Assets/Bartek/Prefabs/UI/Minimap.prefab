@@ -268,8 +268,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 725, y: 275}
-  m_SizeDelta: {x: -1550, y: -650}
+  m_AnchoredPosition: {x: 587.5, y: 187.5}
+  m_SizeDelta: {x: -1225, y: -425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2574594327383009447
 CanvasRenderer:
@@ -322,5 +322,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 2004770283932776469, guid: 9900f72d26002d146bf25859ed815916, type: 3}
-  hallwayPrefab: {fileID: 0}
   contentPosition: {fileID: 2574594326497377143}
