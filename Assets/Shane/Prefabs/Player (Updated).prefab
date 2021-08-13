@@ -2662,12 +2662,12 @@ GameObject:
   - component: {fileID: 4809145876489524157}
   - component: {fileID: 4809145876489524156}
   - component: {fileID: 4809145876489524158}
-  - component: {fileID: 4809145876489524159}
   - component: {fileID: 4809145876489524153}
   - component: {fileID: 4809145876489524152}
   - component: {fileID: 4809145876489524154}
   - component: {fileID: 4809145876489524155}
   - component: {fileID: 4809145876489524149}
+  - component: {fileID: 4166287250650662072}
   m_Layer: 9
   m_Name: Player (Updated)
   m_TagString: Player
@@ -2717,19 +2717,6 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   canTakeDamage: 1
---- !u!114 &4809145876489524159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4809145876489524130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 822fac5907c79df41882e0b1203cded7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currency: 0
 --- !u!114 &4809145876489524153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2805,6 +2792,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ea14bd38393ef489bb124ad1dff09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4166287250650662072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4809145876489524130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48492656b9152b4aa9398d667b81583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  Money: 0
 --- !u!1 &4842396940532620613
 GameObject:
   m_ObjectHideFlags: 0

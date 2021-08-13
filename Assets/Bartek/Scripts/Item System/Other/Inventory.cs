@@ -13,8 +13,6 @@ public class Inventory : MonoBehaviour
 
     void Start() 
     {
-        DontDestroyOnLoad(this);
-
         Player = GameObject.FindGameObjectWithTag("Player");
 
         foreach (Transform transform in Player.transform)
@@ -56,5 +54,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
+    private void OnDestroy()
+    {
+        PlayerAttack.PlayerAttackedEvent -= PlayerAttack_PlayerAttackedEvent;
+    }
 }
