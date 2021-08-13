@@ -24,6 +24,7 @@ public class PlayerStateMachine : StateMachine
     //Private Components.
     private CharacterController characterController;
     private PlayerAttack playerAttack;
+    private PlayerHealth playerHealth;
 
     public GameObject lantern;
     bool switched = false;
@@ -33,17 +34,19 @@ public class PlayerStateMachine : StateMachine
         playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
         characterController = GetComponentInParent<CharacterController>();
         playerAttack = GetComponent<PlayerAttack>();
+        playerHealth = GetComponentInParent<PlayerHealth>();
 
-        UI_PauseScreenController.GamePausedEvent += OnGamePaused;
-        UI_PauseScreenController.GameUnpausedEvent += OnGameUnpaused;
+        playerHealth.DeathEvent += LockPlayerControl;
+        UI_PauseScreenController.GamePausedEvent += LockPlayerControl;
+        UI_PauseScreenController.GameUnpausedEvent += EnablePlayerControl;
     }
 
-    private void OnGameUnpaused()
+    private void EnablePlayerControl()
     {
         PlayerControlState = PlayerControlState.InControl;
     }
 
-    private void OnGamePaused()
+    private void LockPlayerControl()
     {
         PlayerControlState = PlayerControlState.Locked;
     }
@@ -60,8 +63,6 @@ public class PlayerStateMachine : StateMachine
 
         ChangeState(playerStateIdle);
     }
-
-    //public static void ChangePlayerControlState(PlayerControlState newState) => playerControlState = newState;
 
     public override void Update()
     {
@@ -85,7 +86,8 @@ public class PlayerStateMachine : StateMachine
 
     private void OnDestroy()
     {
-        UI_PauseScreenController.GamePausedEvent -= OnGamePaused;
-        UI_PauseScreenController.GameUnpausedEvent -= OnGameUnpaused;
+        playerHealth.DeathEvent -= LockPlayerControl;
+        UI_PauseScreenController.GamePausedEvent -= LockPlayerControl;
+        UI_PauseScreenController.GameUnpausedEvent -= EnablePlayerControl;
     }
 }

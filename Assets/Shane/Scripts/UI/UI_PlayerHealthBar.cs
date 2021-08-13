@@ -8,10 +8,10 @@ public class UI_PlayerHealthBar : UI_HealthBar
 
     private void Start()
     {
-        GameController.GameStarted += GameController_GameStarted;
+        GameController.GameStarted += OnGameStartedEvent;
     }
 
-    private void GameController_GameStarted()
+    private void OnGameStartedEvent()
     {
         healthEntity = FindObjectOfType<PlayerHealth>();
         UpdateHealthEntity(healthEntity);
@@ -20,5 +20,11 @@ public class UI_PlayerHealthBar : UI_HealthBar
     protected override void OnMyHealthEntityDeath()
     {
         //Hide if player dies?
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        GameController.GameStarted -= OnGameStartedEvent;
     }
 }
