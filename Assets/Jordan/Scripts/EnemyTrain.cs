@@ -42,7 +42,7 @@ public class EnemyTrain : MonoBehaviour
     }
     IEnumerator SpawnLine()
     {
-        ChargeLine c = Instantiate(chargeLinePrefab,pPos,Quaternion.Euler(new Vector3(0,Random.Range(0f,360f),0)));
+        ChargeLine c = Instantiate(chargeLinePrefab,pPos,Quaternion.Euler(new Vector3(90,Random.Range(0f,360f),0)));
         Vector3 a = c.Point1.transform.position;
         Vector3 b = c.Point2.transform.position;
         ToDis = Vector3.Distance(c.Point1.transform.position, c.Point2.transform.position);
@@ -62,7 +62,7 @@ public class EnemyTrain : MonoBehaviour
             {
                 gameObject.transform.LookAt(c.Point2.transform.position);
                 i += Time.deltaTime * rate;
-                this.transform.position = Vector3.Lerp(a, b, .01f);
+                this.transform.position = Vector3.Lerp(a, b, i);
                 
                 yield return null;
             }

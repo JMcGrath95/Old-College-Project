@@ -420,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3410426572689074124, guid: d0be289c98f884441b0d43465dfc6118, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45.78978
+      value: 44.3
       objectReference: {fileID: 0}
     - target: {fileID: 3410426572689074124, guid: d0be289c98f884441b0d43465dfc6118, type: 3}
       propertyPath: m_LocalRotation.w
@@ -470,6 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeLinePrefab: {fileID: 6079378873124085256, guid: 21d13608e30de774e9fe62a397850730, type: 3}
+  speed: 1
 --- !u!1 &2009453509
 GameObject:
   m_ObjectHideFlags: 0
