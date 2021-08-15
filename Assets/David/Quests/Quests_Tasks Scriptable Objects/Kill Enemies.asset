@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Kill Enemies
   m_EditorClassIdentifier: 
   objectives:
-  - 
-  - 
+  - 1
+  - 2

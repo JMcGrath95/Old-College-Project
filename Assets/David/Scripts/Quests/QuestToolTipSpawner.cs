@@ -1,3 +1,4 @@
+using DaveCore.UI.Objectives.Task;
 using DaveCore.UI.Tooltips;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace DaveCore.UI.Objectives
 
         public override void UpdateTooltip(GameObject tooltip)
         {
-            throw new System.NotImplementedException();
+            Quest Task = GetComponent<TaskItemUITool>().GetQuest();
+            tooltip.GetComponent<TaskTooltipUI>().Setup(Task);
         }
 
     }

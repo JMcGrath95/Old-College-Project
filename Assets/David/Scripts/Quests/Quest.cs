@@ -19,6 +19,11 @@ namespace DaveCore.UI.Objectives.Task
         {
             return objectives.Length;
         }
+
+        public IEnumerable<string> GetObjectives()
+        {
+            return objectives;
+        }
     }
 }
 
