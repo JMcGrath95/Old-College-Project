@@ -32,23 +32,19 @@ public class AI_Boss : MonoBehaviour
     float shoot_count=0;
     float rollcount = 0;
     Animator animator;
-    const string RollUp = "RollUpAnim";
-    const string Standing = "StandingAnim";
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    const string RollUp = "rig_005|Hedgehog Curlup Action";
+    //const string Standing = "StandingAnim";
+    const string UnWrapping = "rig_005|Hedgehog UnCurlup Action";
+
+    //Speeds for the animator
+    float default_speed = 1f;
+    float stop_speed = 0f;
+  
     void Update()
-    {
-        //Nova Spit(Bart's Effects)             <<
-        //Roll                                  ##
-        
-        //Gets up                               ##
-        //Jumps up                              ##
-        //Lands in the middle                   >>
+    {        
         switch (currentstate)
         {
-            case Boss_States.Spitting:
+            case Boss_States.Spitting:                
                 LookTowards();
                 if (shoot_count <= 5 && CanFire==true)
                 {
@@ -64,8 +60,12 @@ public class AI_Boss : MonoBehaviour
             case Boss_States.Rolling:
                 if (!IsRolling&&rollcount<=3)
                 {
-                    animator.Play(RollUp);
-                    StartCoroutine(RollTo());                    
+                    StartCoroutine(RollUP());                                        
+                }
+                else if(rollcount>=3)
+                {
+                    StartCoroutine(UnRoll());
+                    currentstate = Boss_States.Spitting;
                 }
                 Rotation();
                 Move(currenttarget);
@@ -103,8 +103,9 @@ public class AI_Boss : MonoBehaviour
         rigid_body = GetComponent<Rigidbody>();        
         boss_agent = GetComponent<NavMeshAgent>();
         _collider = GetComponent<Collider>();
-        animator = GetComponentInChildren<Animator>();
-        animator.Play(Standing);
+        animator = GetComponent<Animator>();
+        animator.speed = stop_speed;
+        rigid_body.constraints = RigidbodyConstraints.FreezePositionY;
         //bullet.InitializeEffect(BulletSource.gameObject);
         //currentstate = Boss_States.Spitting;
     }
@@ -123,7 +124,7 @@ public class AI_Boss : MonoBehaviour
     }
     void Rotation() 
     {
-        rigid_body.MoveRotation(rigid_body.rotation * Quaternion.Euler(new Vector3(180, 0, 0) * Time.fixedDeltaTime * Boss.Speed / 5f));
+        rigid_body.MoveRotation(rigid_body.rotation * Quaternion.Euler(new Vector3(180, 0, 0) * Time.fixedDeltaTime * Boss.Speed));
     }
     void LookTowards()
     {
@@ -210,6 +211,7 @@ public class AI_Boss : MonoBehaviour
         rigid_body.velocity = new Vector3(0,0,0);
         rigid_body.angularVelocity = new Vector3(0, 0, 0);
         rigid_body.isKinematic = true;
+        rigid_body.isKinematic = false;
         LookTowards();
     }
 
@@ -217,5 +219,21 @@ public class AI_Boss : MonoBehaviour
     {
         Vector3 _player_pos = player_pos;
         rigid_body.MovePosition(transform.position + _player_pos * Time.deltaTime * Boss.Speed);
-    }    
+    }
+    IEnumerator RollUP() 
+    {
+        animator.Play(RollUp);
+        animator.speed = default_speed;
+        yield return new WaitForSeconds(4f);
+        animator.speed = stop_speed;
+        StartCoroutine(RollTo());
+    }
+    IEnumerator UnRoll() 
+    {
+        animator.Play(UnWrapping);
+        animator.speed = default_speed;
+        yield return new WaitForSeconds(4f);
+        animator.speed = stop_speed;
+    }
+    
 }
