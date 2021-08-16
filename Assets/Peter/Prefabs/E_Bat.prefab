@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 3407257956794442420}
   - component: {fileID: 3188790082275400526}
   - component: {fileID: -4598269384088239527}
+  - component: {fileID: -7969881490470389259}
   m_Layer: 0
   m_Name: E_Bat
   m_TagString: Enemy
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3327239811954624554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 634ebdde63cc3d34fb5c93b53732e325, type: 3}
   m_Name: 
@@ -142,6 +143,23 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   canTakeDamage: 0
+--- !u!114 &-7969881490470389259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327239811954624554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa1e514a7d86f449b6da5ee102ffc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  meshAgent: {fileID: 0}
+  Player: {fileID: 0}
+  Enemy: {fileID: 0}
+  Fly: rig_003|Flying
 --- !u!1001 &2369701649932882516
 PrefabInstance:
   m_ObjectHideFlags: 0
