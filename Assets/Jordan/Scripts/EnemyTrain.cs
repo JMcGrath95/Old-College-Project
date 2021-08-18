@@ -22,16 +22,14 @@ public class EnemyTrain : MonoBehaviour
         Starttime = Time.time;
        
         FindPlayerPos();
-        yield return SpawnLine(timer);
+        yield return SpawnLine();
         
         
     }
-    private void Update()
+    private void FixedUpdate()
     {
         
-        
-            StartCoroutine(ResetAll());
-        
+            
     }
     public void FindPlayerPos()
     {
@@ -44,14 +42,14 @@ public class EnemyTrain : MonoBehaviour
 
 
     }
-    IEnumerator SpawnLine(float time)
+    IEnumerator SpawnLine()
     {
         ChargeLine c = Instantiate(chargeLinePrefab,pPos,Quaternion.Euler(new Vector3(90,Random.Range(0f,360f),0)));
         Vector3 a = c.Point1.transform.position;
         Vector3 b = c.Point2.transform.position;
-        yield return new WaitForSeconds(time);
-        StartCoroutine(RunCharge(2,a,b));
-        yield return null;
+        yield return new WaitForSeconds(3);
+        yield return RunCharge(2,a,b);
+        
     }
     
     
@@ -73,6 +71,7 @@ public class EnemyTrain : MonoBehaviour
                 yield return null;
             }
             reset = true;
+            yield return ResetAll();
         }
         else
         {
@@ -85,13 +84,18 @@ public class EnemyTrain : MonoBehaviour
         {
             gameObject.transform.position = starpos;
             Destroy(GameObject.FindGameObjectWithTag("Line"));
+            FindPlayerPos();
+            yield return new WaitForSeconds(5);
             reset = false;
+            yield return SpawnLine();
+            
+            yield return null;
         }
-        yield return null;
+        
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         
     }
