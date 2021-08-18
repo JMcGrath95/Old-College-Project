@@ -13,15 +13,23 @@ namespace DaveCore.UI.Objectives
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] Transform objectiveContainer;
         [SerializeField] GameObject objectivePrefab;
+        [SerializeField] GameObject objectiveInCompletePrefab;
 
-        public void Setup(Quest quest)
+        public void Setup(TaskStatus status)
         {
+            Quest quest = status.GetQuest();
             title.text = quest.GetTitle();
             objectiveContainer.DetachChildren();
 
             foreach (string objective in quest.GetObjectives())
             {
-                GameObject objectiveInstance = Instantiate(objectivePrefab, objectiveContainer);
+                GameObject prefab = objectiveInCompletePrefab;
+                if(status.IsComplete(objective))
+                {
+                    prefab = objectivePrefab;
+                }
+
+                GameObject objectiveInstance = Instantiate(prefab, objectiveContainer);
                 TextMeshProUGUI objectiveText = objectiveInstance.GetComponentInChildren<TextMeshProUGUI>();
                 objectiveText.text = objective;
             }

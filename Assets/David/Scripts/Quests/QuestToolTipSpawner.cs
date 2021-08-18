@@ -17,8 +17,8 @@ namespace DaveCore.UI.Objectives
 
         public override void UpdateTooltip(GameObject tooltip)
         {
-            Quest Task = GetComponent<TaskItemUITool>().GetQuest();
-            tooltip.GetComponent<TaskTooltipUI>().Setup(Task);
+            TaskStatus status = GetComponent<TaskItemUITool>().GetQuestStatus();
+            tooltip.GetComponent<TaskTooltipUI>().Setup(status);
         }
 
     }
