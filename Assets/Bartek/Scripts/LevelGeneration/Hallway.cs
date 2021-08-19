@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Hallway : MonoBehaviour
 {
-    public GameObject door;
+    public Door door;
 
     //1 = up, 2 = right, 3 = down, 4 = left
     public int direction;
 
     public void OpenDoor()
     {
-        door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y - 70, door.transform.position.z);
+        door.OpenDoor();
     }
 
     public void CloseDoor()
     {
-        door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y + 70, door.transform.position.z);
+        door.CloseDoor();
     }
 
     private void OnTriggerExit(Collider other)
