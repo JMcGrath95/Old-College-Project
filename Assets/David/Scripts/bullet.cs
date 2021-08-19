@@ -5,7 +5,7 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public float despawnTimer = 1;
-    
+    GameObject controller;
     
     void Start()
     {
@@ -14,18 +14,27 @@ public class bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        iDamageable iDamageable;
-
-        if (other.TryGetComponent(out iDamageable))
+        if(other.gameObject != controller)
         {
-            iDamageable.TakeDamage(10);
-            Destroy(gameObject);
-            Debug.Log("Damaged Object");
+            iDamageable iDamageable;
+
+            if (other.TryGetComponent(out iDamageable))
+            {
+                iDamageable.TakeDamage(10);
+                Destroy(gameObject);
+                Debug.Log("Damaged Object");
+            }
         }
+       
     }
 
     private void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void SetController(GameObject gameObject)
+    {
+        controller = gameObject;
     }
 }

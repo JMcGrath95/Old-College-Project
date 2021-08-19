@@ -45,6 +45,8 @@ public class Bullet_Controller : MonoBehaviour
             
 
             GameObject tmpObj = Instantiate(projectilePrefab, transform);
+            tmpObj.GetComponent<bullet>().SetController(this.gameObject);
+
             tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.y);
             //angle += 180;
 
