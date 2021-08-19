@@ -300,11 +300,6 @@ public class LevelGenerator : MonoBehaviour
 
         map.StartMinimap(RoomPositions);
 
-        foreach (Room r in createdRooms)
-        {
-            r.OpenDoors();
-        }
-
         gameController.StartGame();
     }
 
