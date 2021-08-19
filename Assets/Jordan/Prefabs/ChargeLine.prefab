@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4859732195520638696}
   - component: {fileID: 4859732195520638679}
   - component: {fileID: 6079378873124085256}
+  - component: {fileID: 5471770254547936418}
   m_Layer: 0
   m_Name: ChargeLine
   m_TagString: Line
@@ -92,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15493d7069a70b64c89eb232973794d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,6 +129,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Point1: {fileID: 2423282513560497586}
   Point2: {fileID: 8948892357610010086}
+--- !u!114 &5471770254547936418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859732195520638677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd353b4c7a21064a8b43a6107d918df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrlX: 0.6
+  scrlY: 0.6
 --- !u!1 &8948892357610010086
 GameObject:
   m_ObjectHideFlags: 0

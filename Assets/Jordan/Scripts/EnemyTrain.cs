@@ -26,11 +26,7 @@ public class EnemyTrain : MonoBehaviour
         
         
     }
-    private void FixedUpdate()
-    {
-        
-            
-    }
+    
     public void FindPlayerPos()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -47,7 +43,7 @@ public class EnemyTrain : MonoBehaviour
         ChargeLine c = Instantiate(chargeLinePrefab,pPos,Quaternion.Euler(new Vector3(90,Random.Range(0f,360f),0)));
         Vector3 a = c.Point1.transform.position;
         Vector3 b = c.Point2.transform.position;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         yield return RunCharge(2,a,b);
         
     }
@@ -85,7 +81,7 @@ public class EnemyTrain : MonoBehaviour
             gameObject.transform.position = starpos;
             Destroy(GameObject.FindGameObjectWithTag("Line"));
             FindPlayerPos();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(15);
             reset = false;
             yield return SpawnLine();
             
