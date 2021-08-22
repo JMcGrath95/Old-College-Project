@@ -10,7 +10,8 @@ namespace RPG.Dialogue
     {
         public string DialogueUniqueID;
         public string text;
-        public string[] childern;
+        public List<string> childern = new List<string>();
+        public Rect rect = new Rect(0,0,200,100);
     }
 
 }

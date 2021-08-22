@@ -13,18 +13,40 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   nodes:
-  - DialogueUniqueID: 1
-    text: hello
-    childern: []
-  - DialogueUniqueID: 
+  - DialogueUniqueID: 2
     text: HI yourself
+    childern:
+    - 
+    rect:
+      serializedVersion: 2
+      x: 89
+      y: 389
+      width: 200
+      height: 100
+  - DialogueUniqueID: 3
+    text: Sup
     childern: []
+    rect:
+      serializedVersion: 2
+      x: 323
+      y: 251
+      width: 200
+      height: 100
   - DialogueUniqueID: 
     text: hello
     childern: []
-  - DialogueUniqueID: 
-    text: Go Die
+    rect:
+      serializedVersion: 2
+      x: 317
+      y: 542
+      width: 200
+      height: 100
+  - DialogueUniqueID: 55bb0436-409a-44b9-ace1-5f2ffe190494
+    text: 
     childern: []
-  - DialogueUniqueID: 
-    text: hello
-    childern: []
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 383
+      width: 200
+      height: 100
