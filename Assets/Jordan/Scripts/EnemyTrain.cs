@@ -6,7 +6,6 @@ public class EnemyTrain : MonoBehaviour
 {
     GameObject Player;
     public ChargeLine chargeLinePrefab;
-    public float timer;
     MeshRenderer mesh;
     Vector3 pPos,starpos= new Vector3(-1000,-1000,-1000);
     float Starttime;
@@ -16,34 +15,38 @@ public class EnemyTrain : MonoBehaviour
      
     
    
-    IEnumerator Start ()
+    void Start ()
+    {
+        GameController.GameStarted += GameController_GameStarted;
+    }
+
+    private void GameController_GameStarted()
+    {
+        StartCoroutine(StartTrain());
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    IEnumerator StartTrain()
     {
         gameObject.transform.position = starpos;
         Starttime = Time.time;
-       
+
+        yield return new WaitForSeconds(15);
         FindPlayerPos();
         yield return SpawnLine();
-        
-        
     }
-    
+
     public void FindPlayerPos()
     {
-        GameObject p = GameObject.FindGameObjectWithTag("Player");
-        
-        if (p != null)
-            Debug.Log("PLayer Found");
-
-        pPos = p.transform.position;
-
-
+        pPos = Player.transform.position;
     }
+
     IEnumerator SpawnLine()
     {
         ChargeLine c = Instantiate(chargeLinePrefab,pPos,Quaternion.Euler(new Vector3(90,Random.Range(0f,360f),0)));
         Vector3 a = c.Point1.transform.position;
         Vector3 b = c.Point2.transform.position;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         yield return RunCharge(2,a,b);
         
     }
@@ -93,7 +96,16 @@ public class EnemyTrain : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        iDamageable iDamageable;
+        Debug.Log("Hit");
+
+        if (other.gameObject == Player)
+        {
+            if (other.TryGetComponent(out iDamageable))
+            {
+                iDamageable.TakeDamage(20);
+            }
+        }
     }
 
 }
