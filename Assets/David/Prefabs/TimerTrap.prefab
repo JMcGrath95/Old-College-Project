@@ -12458,6 +12458,7 @@ GameObject:
   - component: {fileID: 8451652408001087321}
   - component: {fileID: 8451652408001087322}
   - component: {fileID: 8451652408001087323}
+  - component: {fileID: 1493430200993109328}
   m_Layer: 0
   m_Name: CenterTraps
   m_TagString: Untagged
@@ -12518,7 +12519,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652408001087398}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.96792, y: 1.7204572, z: 21.31652}
@@ -12531,7 +12532,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652408001087398}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.96792, y: 1.7204572, z: 21.31652}
@@ -12544,7 +12545,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652408001087398}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.394351, y: 1.7204573, z: 4.751222}
@@ -12557,11 +12558,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652408001087398}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.394351, y: 1.7204573, z: 4.751222}
   m_Center: {x: 0, y: -0.2702609, z: 8.47}
+--- !u!114 &1493430200993109328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451652408001087398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ebfbfc469928446b3f43bd938cdbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
 --- !u!1 &8451652408153872723
 GameObject:
   m_ObjectHideFlags: 0
@@ -12608,9 +12622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93c1359152c2af408ee1640a96c76aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpikeDamage: 0
-  IsActive: 0
-  spike: {fileID: 0}
 --- !u!1 &8451652408284902786
 GameObject:
   m_ObjectHideFlags: 0
@@ -12730,6 +12741,7 @@ GameObject:
   - component: {fileID: 8451652409091340712}
   - component: {fileID: 8451652409091340713}
   - component: {fileID: 8451652409091340714}
+  - component: {fileID: 3125614362754426383}
   m_Layer: 0
   m_Name: OuterSpikes
   m_TagString: Untagged
@@ -12800,7 +12812,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409091340726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.9451025, y: 2.101476, z: 16.109457}
@@ -12839,7 +12851,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409091340726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.9451025, y: 2.101476, z: 16.109457}
@@ -12865,7 +12877,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409091340726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.229399, y: 2.101476, z: 4.591706}
@@ -12878,7 +12890,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409091340726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.229399, y: 2.101476, z: 4.591706}
@@ -12891,11 +12903,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409091340726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.229399, y: 2.101476, z: 4.591706}
   m_Center: {x: 10.66, y: -0.3223677, z: -20.1}
+--- !u!114 &3125614362754426383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451652409091340726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ebfbfc469928446b3f43bd938cdbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
 --- !u!1 &8451652409135505514
 GameObject:
   m_ObjectHideFlags: 0
@@ -12953,6 +12978,7 @@ GameObject:
   - component: {fileID: 8451652409408467385}
   - component: {fileID: 8451652409408467386}
   - component: {fileID: 8451652409408467387}
+  - component: {fileID: 1799871719543733282}
   m_Layer: 0
   m_Name: MiddleSpikes
   m_TagString: Untagged
@@ -13018,7 +13044,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409408467334}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.7770424, y: 1.8809717, z: 21.364986}
@@ -13031,7 +13057,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409408467334}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.7770424, y: 1.8809717, z: 21.364986}
@@ -13044,7 +13070,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409408467334}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 19.644615, y: 1.8809717, z: 4.8320165}
@@ -13057,11 +13083,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451652409408467334}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 19.644615, y: 1.8809717, z: 4.8320165}
   m_Center: {x: 0.19397967, y: -0.47083896, z: 14.34}
+--- !u!114 &1799871719543733282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451652409408467334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ebfbfc469928446b3f43bd938cdbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
 --- !u!1 &8703030446095628671
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public enum PlayerControlState
 
 public class PlayerStateMachine : StateMachine
 {
-    private static PlayerControlState playerControlState;
+    private static PlayerControlState playerControlState = PlayerControlState.Locked;
     public static PlayerControlState PlayerControlState { get { return playerControlState; } set { playerControlState = value; } }
 
     //Declare states.
