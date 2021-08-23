@@ -96,6 +96,11 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                         {
                             Move(target_hold);
                         }
+
+                        if (Vector3.Distance(target_hold,transform.position)<=0.2f)
+                        {
+                            NeedNewTarget = true;
+                        }
                     }
                 }
                 else
@@ -108,6 +113,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                 Vector3 vector = room.floor.transform.position + new Vector3(0, 3, 0);
                 if (Vector3.Distance(transform.position,vector)<=0.1f)
                 {
+                    HedgeHod_Animator.enabled = false;
                     Stop();
                     if (timer>=0)
                     {
@@ -118,6 +124,8 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                     {
                         timer = 10f;
                         current_state = Boss_States.Rolling;
+                        Bullet_Controller.enabled = false;
+                        HedgeHod_Animator.enabled = true;
                     }
                     
                 }
