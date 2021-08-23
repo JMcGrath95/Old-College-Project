@@ -13,6 +13,8 @@ public class RoomController : MonoBehaviour
 
     public Minimap map;
 
+    public TrapRoomController trapRoomControllerPrefab;
+
     public void StartEnemyRoom(Room room)
     {
         room.CloseDoors();
@@ -37,8 +39,10 @@ public class RoomController : MonoBehaviour
 
     public void StartTrapRoom(Room room)
     {
-        itemController.SpawnItemPrefab(room);
+        room.CloseDoors();
         Instantiate(trapPrefab, room.transform);
-        room.roomCleared = true;
+        TrapRoomController trc = Instantiate(trapRoomControllerPrefab, room.transform.position, Quaternion.identity);
+        trc.InitializeController(itemController, room);
+        trc.StartController();
     }
 }

@@ -48,3 +48,4 @@ MonoBehaviour:
   itemController: {fileID: -4166390165471232660, guid: a687de7d61d49374c97ca165517061fa, type: 3}
   trapPrefab: {fileID: 8451652408153872723, guid: 1e273e21d589ab442b261fe0cef3ced1, type: 3}
   map: {fileID: 0}
+  trapRoomControllerPrefab: {fileID: 8422055871106935188, guid: 8bce800f326e3e745a256b33053ad3e5, type: 3}

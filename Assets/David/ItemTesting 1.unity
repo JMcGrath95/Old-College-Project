@@ -264,56 +264,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5febcab155962d54881026574ce8f1df, type: 2}
   - {fileID: 11400000, guid: bedb9c37f88636b4781e2275441bba70, type: 2}
   Money: 0
---- !u!1 &481133881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9172697168009050088, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
-  m_PrefabInstance: {fileID: 9172697167324396793}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &481133884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481133881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32090931cff80ad42a3d3296869d6965, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
-  canTakeDamage: 1
-  pointsReward: 0
---- !u!135 &481133885
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481133881}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.21
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &481133886
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481133881}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &495109335
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,7 +5896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabdf078c26682448a47b50a7b7571a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 2902825620442280185}
+  door: {fileID: 0}
   direction: 0
 --- !u!108 &2954612582600871641
 Light:
@@ -6823,7 +6773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabdf078c26682448a47b50a7b7571a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 6244351800739630464}
+  door: {fileID: 0}
   direction: 0
 --- !u!1 &6530635875919943727
 GameObject:
@@ -7015,7 +6965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabdf078c26682448a47b50a7b7571a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 8036196868041984682}
+  door: {fileID: 0}
   direction: 0
 --- !u!23 &8036196867005240440
 MeshRenderer:
@@ -8026,15 +7976,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9172697168009050090, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.18000007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9172697168009050090, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.41
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9172697168009050090, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.099999905
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9172697168009050090, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
       propertyPath: m_LocalRotation.w
