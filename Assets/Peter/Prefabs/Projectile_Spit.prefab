@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 741180529795797813}
   - component: {fileID: 1123518842766963306}
   - component: {fileID: 1333563225181134446}
-  - component: {fileID: -7798921888760875555}
   - component: {fileID: -6646332556107378945}
+  - component: {fileID: -8480453807837570655}
   m_Layer: 0
   m_Name: Projectile_Spit
   m_TagString: Untagged
@@ -92,23 +92,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6192541625579368567}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7798921888760875555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192541625579368567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6864ba0b1291d8047ac1c6d60dc12714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &-6646332556107378945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,3 +113,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8480453807837570655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192541625579368567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6864ba0b1291d8047ac1c6d60dc12714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

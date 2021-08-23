@@ -41,7 +41,7 @@ public class AI_Bat : AI_Pawn
             Vector3 shootDir = (Player.position - transform.position).normalized;
             GameObject Temp = Instantiate(Enemy.Enemy.projectile_prefab, gameObject.transform.position, Quaternion.identity);
             AI_Bullet bullet = Temp.GetComponent<AI_Bullet>();
-            bullet.SetDir(shootDir, transform.position, Enemy.Enemy.AttackRange,(int)Enemy.Enemy.Attack,Enemy.Enemy.AttackSpeed,transform);
+            //bullet.SetDir(shootDir, transform.position, Enemy.Enemy.AttackRange,(int)Enemy.Enemy.Attack,Enemy.Enemy.AttackSpeed,transform);
             animator.Play(MeleeAttackAnim);
             timer = 2f;
         }

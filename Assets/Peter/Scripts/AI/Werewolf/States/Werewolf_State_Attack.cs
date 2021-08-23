@@ -14,11 +14,7 @@ public class Werewolf_State_Attack : iState
     private Werewolf_StateMachine _StateMachine;
     float timer=0f;
     public void Enter()
-    {       
-        animator = _StateMachine.animator;
-        meshAgent = _StateMachine.meshAgent;
-        Player = _StateMachine.Player;
-        Enemy = _StateMachine.Enemy;
+    {  
         animator.Play(_StateMachine.Attack);
         meshAgent.isStopped = true;
     }
@@ -45,5 +41,12 @@ public class Werewolf_State_Attack : iState
             }
         }
     }
-    
+    public void UpdateComponents(NavMeshAgent agent, Transform player, Enemy_Stats stats, Animator Animator, Werewolf_StateMachine stateMachine) 
+    {
+        meshAgent = agent;
+        Player = player;
+        Enemy = stats;
+        animator = Animator;
+        _StateMachine = stateMachine;
+    }
 }

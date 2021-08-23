@@ -22,17 +22,22 @@ public class Werewolf_StateMachine : StateMachine
         meshAgent = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         Enemy = gameObject.GetComponent<Enemy_Stats>();
+        movement_state.UpdateComponent(meshAgent,Player,Enemy,animator,this);
+        attack_state.UpdateComponents(meshAgent, Player, Enemy, animator, this);
         ChangeState(movement_state);       
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        Debug.Log(currentState.ToString());
         if (IsInRange())
         {
+            
             ChangeState(attack_state);
         }
         else ChangeState(movement_state);
+        base.Update();
     }
     bool IsInRange()
     {

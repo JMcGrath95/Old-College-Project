@@ -13,26 +13,29 @@ public class Werewolf_State_Movement : iState
     public Enemy_Stats Enemy;
     private Werewolf_StateMachine _StateMachine;
     public void Enter()
-    {        
-        meshAgent = _StateMachine.meshAgent;
-        Player = _StateMachine.Player;
-        Enemy = _StateMachine.Enemy;
-        animator = _StateMachine.animator;
-        animator.Play(_StateMachine.Attack);
-    }
-
-    public void Exit()
-    {
-        throw new System.NotImplementedException();
-    }
+    { 
+        animator.Play(_StateMachine.Walking);
+    }   
 
     public void Tick()
     {
         Move();
     }
+    public void Exit()
+    {
+        //throw new System.NotImplementedException();
+    }
     public void Move() 
     {
         meshAgent.isStopped = false;
         meshAgent.destination = Player.position;
+    }
+    public void UpdateComponent(NavMeshAgent agent,Transform player,Enemy_Stats stats,Animator Animator,Werewolf_StateMachine stateMachine) 
+    {
+        meshAgent = agent;
+        Player = player;
+        Enemy = stats;
+        animator = Animator;
+        _StateMachine = stateMachine;
     }
 }
