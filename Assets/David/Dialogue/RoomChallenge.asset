@@ -1,71 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8632029876191437533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
-  m_Name: 18d8e29a-83eb-4b96-845f-fa2780148634
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: 
-  childern:
-  - 7c729c8a-b799-48cf-82e3-d3eb84b16e60
-  - 28c853c9-0506-42b0-a043-d85f93272198
-  - ddd1d02f-a727-467f-9dba-df8d2b007465
-  rect:
-    serializedVersion: 2
-    x: 387
-    y: 306
-    width: 200
-    height: 100
---- !u!114 &-8006530377420325170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
-  m_Name: 7c729c8a-b799-48cf-82e3-d3eb84b16e60
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: 
-  childern: []
-  rect:
-    serializedVersion: 2
-    x: 656
-    y: 224
-    width: 200
-    height: 100
---- !u!114 &-6803408450160916228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
-  m_Name: 28c853c9-0506-42b0-a043-d85f93272198
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: 
-  childern: []
-  rect:
-    serializedVersion: 2
-    x: 657
-    y: 340
-    width: 200
-    height: 100
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6d7b7d9fd765dc4c89db69d1e392915, type: 3}
-  m_Name: New Dialogue
+  m_Name: RoomChallenge
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 1412403111782428959}
-  - {fileID: -8632029876191437533}
-  - {fileID: -8006530377420325170}
-  - {fileID: -6803408450160916228}
-  - {fileID: 776097267692003290}
+  - {fileID: 3958289957867851769}
+  - {fileID: 5755422757383876349}
+  - {fileID: 4379341639231076416}
+  - {fileID: 1482636124460894850}
+  - {fileID: 5825987095664900176}
   newNodeOffSet: {x: 250, y: 0}
---- !u!114 &776097267692003290
+--- !u!114 &1482636124460894850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,18 +29,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
-  m_Name: ddd1d02f-a727-467f-9dba-df8d2b007465
+  m_Name: 84318449-803c-4545-8669-e04859eb302c
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: 
+  text: Good luck
   childern: []
   rect:
     serializedVersion: 2
-    x: 653
-    y: 466
+    x: 610
+    y: 282
     width: 200
     height: 100
---- !u!114 &1412403111782428959
+--- !u!114 &3958289957867851769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,15 +50,82 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
-  m_Name: 0b281d8a-17d4-4ead-a746-6409724ed962
+  m_Name: 2b799ea1-ba14-4ceb-9346-6ed6ae92ac17
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: 
+  text: Special Reward here if you can defeat all enemies on time
   childern:
-  - 18d8e29a-83eb-4b96-845f-fa2780148634
+  - 31e0c48f-f09b-4de5-905c-10912690ad6f
+  - 91c2b45a-2b98-4ffa-978e-8ea2987a965a
   rect:
     serializedVersion: 2
-    x: 80
-    y: 306
+    x: 37
+    y: 387
+    width: 200
+    height: 100
+--- !u!114 &4379341639231076416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
+  m_Name: a0d48dce-65b4-481f-9e86-bcb1cd00a27f
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Gotta go
+  childern: []
+  rect:
+    serializedVersion: 2
+    x: 614
+    y: 488
+    width: 200
+    height: 100
+--- !u!114 &5755422757383876349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
+  m_Name: 31e0c48f-f09b-4de5-905c-10912690ad6f
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Sure thing lets try it
+  childern:
+  - a0d48dce-65b4-481f-9e86-bcb1cd00a27f
+  - 84318449-803c-4545-8669-e04859eb302c
+  rect:
+    serializedVersion: 2
+    x: 282
+    y: 387
+    width: 200
+    height: 100
+--- !u!114 &5825987095664900176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d28e8469d278e40922d63db0bf1333, type: 3}
+  m_Name: 91c2b45a-2b98-4ffa-978e-8ea2987a965a
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: No Thanks Im good
+  childern:
+  - a0d48dce-65b4-481f-9e86-bcb1cd00a27f
+  rect:
+    serializedVersion: 2
+    x: 280
+    y: 482
     width: 200
     height: 100
