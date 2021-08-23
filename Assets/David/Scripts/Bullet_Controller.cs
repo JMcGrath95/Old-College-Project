@@ -41,7 +41,7 @@ public class Bullet_Controller : MonoBehaviour
             float projectilesDirYPosition = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
 
             Vector3 ProjectileVector = new Vector3(projectilesDirXPosition, projectilesDirYPosition, 0);
-            Vector3 projectileMoveDirection = (ProjectileVector - transform.position).normalized * projectileSpeed;
+            Vector3 projectileMoveDirection = (ProjectileVector - transform.position) * projectileSpeed;
             
 
             GameObject tmpObj = Instantiate(projectilePrefab, transform);

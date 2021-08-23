@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f4597244437d640b246ea30c9c392c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapRoomSentryPrefab: {fileID: 9172697168009050091, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
+  trapRoomSentryPrefab: {fileID: 9172697168009050088, guid: c5a9584fd74a9954d91a23822500a747, type: 3}
