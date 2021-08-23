@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AI_Bullet : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class AI_Bullet : MonoBehaviour
     private Vector3 origin;
     private float range;
     private int damage;
+    Transform source2;
     float distance_traveled;
     float attack_speed;
     Transform source;
@@ -22,7 +24,7 @@ public class AI_Bullet : MonoBehaviour
     {
 
     }
-    public void SetDir(Vector3 shootDir, Vector3 origin, float range, int damage, float attack_speed, Transform source)
+    public void SetDir(Vector3 shootDir, Vector3 origin, float range, int damage, float attack_speed, Transform source,Transform source2)
     {
         this.shootDir = shootDir;
         this.origin = origin;
@@ -30,6 +32,7 @@ public class AI_Bullet : MonoBehaviour
         this.damage = damage;
         this.attack_speed = attack_speed;
         this.source = source;
+        this.source2 = source2;
         transform.eulerAngles = new Vector3(0, 0, GetAngle(shootDir));
     }
     // Update is called once per frame
@@ -40,7 +43,8 @@ public class AI_Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.position += (shootDir + new Vector3(0, 0.2f)) * attack_speed * Time.deltaTime;
+        transform.position += (shootDir /*+ new Vector3(0, 0.2f)*/) * attack_speed * Time.deltaTime;
+        
     }
     float GetAngle(Vector3 dir)
     {
@@ -52,20 +56,28 @@ public class AI_Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(damage);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.transform != source)
+        else if (collision.collider.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
-        else if (collision.gameObject.tag == "Enemy" && collision.gameObject.transform != source)
-        {
-            collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
+        //else if (collision.gameObject.transform != source||collision.gameObject.transform!=source2)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else if (collision.collider.tag=="Enemy" && collision.gameObject.transform != source)
+        //{
+        //    collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(damage);
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
 
 
         //}
@@ -86,5 +98,17 @@ public class AI_Bullet : MonoBehaviour
         //        Destroy(gameObject);
         //    }
         //}
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Wall"))
+        {
+            Destroy(this);
+        }
     }
 }

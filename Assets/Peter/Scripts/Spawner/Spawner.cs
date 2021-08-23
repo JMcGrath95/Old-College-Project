@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     void GetBoss(GameObject boss)
     {
         spawnedBoss = boss;
-        spawnedBoss.GetComponent<EnemyHealth>().DeathEvent += Boss_DeathEvent;
+        spawnedBoss.GetComponentInChildren<EnemyHealth>().DeathEvent += Boss_DeathEvent;
     }
 
     private void Boss_DeathEvent()
@@ -103,7 +103,7 @@ public class Spawner : MonoBehaviour
         GameObject just_made_boss = Instantiate(temp.Boss_Prefab, roomAssignedTo.transform);
         just_made_boss.name = temp.Name;
 
-        just_made_boss.GetComponent<AI_Boss>().Boss = new _boss
+        just_made_boss.GetComponentInChildren<AI_Boss_HedgeHog>().Boss_Data = new _boss
         (
             iD: temp.ID,
             name: temp.Name,
@@ -114,9 +114,9 @@ public class Spawner : MonoBehaviour
             attackRange: temp.AttackRange,
             projectile: temp.Projectile,
             boss_Prefab: temp.Boss_Prefab
-        );
+        );       
 
-        just_made_boss.GetComponent<BossHealth>().SetMaxHealth((int)just_made_boss.GetComponent<AI_Boss>().Boss.Health);
+        just_made_boss.GetComponentInChildren<BossHealth>().SetMaxHealth((int)just_made_boss.GetComponentInChildren<AI_Boss_HedgeHog>().Boss_Data.Health);
         GetBoss(just_made_boss);
     }
     //Splits the spawn string on ","
