@@ -46,6 +46,7 @@ public class ValueChangingEffect : BaseEffect
         {
             case ValueToChange.Health:
                     Owner.GetComponentInParent<BaseHealth>().AddHealth((int)Value);
+                UI_NotificationMessageController.Instance.ShowMessage($"Health increased by {Value}");
                 Debug.Log(Owner.name);
                 break;
 
@@ -58,14 +59,21 @@ public class ValueChangingEffect : BaseEffect
 
             case ValueToChange.AttackSpeed:
                 if (ForPlayer)
+                {
                     Owner.GetComponentInChildren<PlayerAnimationController>().CurrentAttackSpeedModifier += Value;
+                    UI_NotificationMessageController.Instance.ShowMessage($"Attack speed increased by {Value}");
+                }
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.AttackSpeed += Value;
                 break;
 
             case ValueToChange.Damage:
                 if (ForPlayer)
+                {
                     Owner.GetComponentInChildren<PlayerAttack>().currentWeapon.Damage += (int)Value;
+                    UI_NotificationMessageController.Instance.ShowMessage($"Weapon damage increased by {Value}");
+                }
+
                 else
                     Owner.GetComponent<Enemy_Stats>().Enemy.Attack += Value;
                 break;

@@ -1003,7 +1003,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7231937843035920482}
-  - component: {fileID: 7231937843035920481}
   m_Layer: 5
   m_Name: Level Stats Controller
   m_TagString: Untagged
@@ -1032,18 +1031,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7231937843035920481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231937843035920483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f819be4503ff324dbd6ffb3e7270483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7231937843406768361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,6 +1642,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5342305368450236283, guid: ff36d84bff861aa4b83b528f32638809, type: 3}
+      propertyPath: messageSpawnDelay
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff36d84bff861aa4b83b528f32638809, type: 3}
 --- !u!224 &7231937843633477821 stripped
@@ -1669,6 +1660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7231937842361442881}
     m_Modifications:
+    - target: {fileID: 5861080036317981620, guid: afc420891b689104a8af9abc72b9ea3a, type: 3}
+      propertyPath: m_Value
+      value: 61.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5861080036640901789, guid: afc420891b689104a8af9abc72b9ea3a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

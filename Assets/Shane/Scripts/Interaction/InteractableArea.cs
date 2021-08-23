@@ -35,6 +35,5 @@ public abstract class InteractableArea : MonoBehaviour, iInteractable
     {
         if (PlayerIsInArea)
             LeftAreaEvent?.Invoke(this);
-
     }
 }

@@ -37,13 +37,11 @@ public class PlayerStateWalking : iState
     //State Machine.
     public void Enter()
     {
-        //InputManager.AttackInputEvent += OnAttackInputEvent;
-        //InputManager.DashInputEvent += OnDashInputEvent;
+
     }
     public void Exit()
     {
-        //InputManager.AttackInputEvent -= OnAttackInputEvent;
-        //InputManager.DashInputEvent -= OnDashInputEvent;
+
     }
     public void Tick()
     {
@@ -63,14 +61,10 @@ public class PlayerStateWalking : iState
             playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
             return;
         }
-
-
+      
         playerStateMachine.playerAnimationController.GoToWalking();
 
         characterController.SimpleMove(InputManager.Instance.MovementInput * MovementSpeed);
         playerStateMachine.myTransform.rotation = Quaternion.Slerp(playerStateMachine.myTransform.rotation, Quaternion.LookRotation(InputManager.Instance.MovementInput), rotationSpeed);
     }
-
-    //private void OnAttackInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateAttacking);
-    //private void OnDashInputEvent() => playerStateMachine.ChangeState(playerStateMachine.playerStateDashing);
 }
