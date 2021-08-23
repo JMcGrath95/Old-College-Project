@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TrapRoomController : MonoBehaviour
 {
-    public Bullet_Controller trapRoomSentryPrefab;
-    Bullet_Controller trapRoomSentry;
+    public GameObject trapRoomSentryPrefab;
+    GameObject trapRoomSentry;
 
     ItemController iController;
     Room room;
@@ -18,7 +18,7 @@ public class TrapRoomController : MonoBehaviour
 
     public void StartController()
     {
-        trapRoomSentry = Instantiate(trapRoomSentryPrefab, room.transform.position + new Vector3(0,2.5f,0), Quaternion.identity);
+        trapRoomSentry = Instantiate(trapRoomSentryPrefab, room.transform.position + new Vector3(0, 2.5f, 0), Quaternion.identity);
         trapRoomSentry.GetComponent<BaseHealth>().DeathEvent += TrapRoomController_DeathEvent;
     }
 
