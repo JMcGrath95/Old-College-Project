@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Attack speed modifier needs to be reworked!!
+//Attack speed modifier needs to be reworked
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationController : BaseAnimationController

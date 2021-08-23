@@ -22,6 +22,7 @@ public class UI_GameOverScreen : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        Time.timeScale = 0;
         gameOverScreen.SetActive(true);
         playerHealth.DeathEvent -= OnPlayerDeath;
     }

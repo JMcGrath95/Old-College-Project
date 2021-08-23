@@ -20,6 +20,8 @@ public class ProjectileItem : BaseItem
         {
             effect.InitializeEffect(Owner);
         }
+
+        UI_NotificationMessageController.Instance.ShowMessage($"Projectile added to attack");
     }
 
     public override void UseItem()

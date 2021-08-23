@@ -7,7 +7,6 @@ public class BossHealth : EnemyHealth
 {
     public static Action<BossHealth> BossHealthInitialisedEvent;
 
-
     public override void Start()
     {
         base.Start();
