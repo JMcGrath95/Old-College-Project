@@ -14,16 +14,15 @@ public class Inventory : MonoBehaviour
     void Start() 
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        playerModel = Player;
 
-        //foreach (Transform transform in Player.transform)
-        //{
-        //    if(transform.gameObject.name == "PlayerModel")
-        //    {
-        //        playerModel = transform.gameObject;
-        //        continue;
-        //    }
-        //}
+        foreach (Transform transform in Player.transform)
+        {
+            if (transform.gameObject.name == "PlayerModel")
+            {
+                playerModel = transform.gameObject;
+                continue;
+            }
+        }
 
         PlayerAttack.PlayerAttackedEvent += PlayerAttack_PlayerAttackedEvent;
 
@@ -47,11 +46,15 @@ public class Inventory : MonoBehaviour
     public void AddItem(BaseItem itemToAdd)
     {
         items.Add(itemToAdd);
-        itemToAdd.InitializeItem(playerModel);
 
         if(itemToAdd.ItemType == ItemUseType.InstantUse)
         {
+            itemToAdd.InitializeItem(Player);
             itemToAdd.UseItem();
+        }
+        else
+        {
+            itemToAdd.InitializeItem(playerModel);
         }
     }
 

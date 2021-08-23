@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6655731e3e8bebb4397c64655104004e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: {x: 0, y: 0, z: 1}
   Mesh: {fileID: 0}
   Size: 1
   Damage: 10

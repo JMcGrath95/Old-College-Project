@@ -17,10 +17,13 @@ public class ProjectilePrefab : MonoBehaviour
 
     bool canhit = false;                                    //bool which prevents projectile from doing damage(used to prevent owner getting hit before owner value is set - might change)
 
+    GameObject Player;
+
     private void Start()
     {
         origin = transform.position;
         canhit = true;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     //moves projectile every frame
@@ -41,7 +44,7 @@ public class ProjectilePrefab : MonoBehaviour
             iDamageable iDamageable;
             Debug.Log("Hit");
 
-            if (other.gameObject != Owner && other.GetComponent<ProjectilePrefab>() == false)
+            if (other.gameObject != Player && other.GetComponent<ProjectilePrefab>() == false)
             {
                 if (other.TryGetComponent(out iDamageable))
                 {

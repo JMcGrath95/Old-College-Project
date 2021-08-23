@@ -20,7 +20,7 @@ public class bullet : MonoBehaviour
 
             if (other.TryGetComponent(out iDamageable))
             {
-                iDamageable.TakeDamage(10);
+                iDamageable.TakeDamage(3);
                 Destroy(gameObject);
                 Debug.Log("Damaged Object");
             }
