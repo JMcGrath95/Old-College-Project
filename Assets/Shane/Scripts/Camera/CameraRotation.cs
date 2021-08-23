@@ -6,8 +6,6 @@ public class CameraRotation : MonoBehaviour
 {
     private Transform player;
 
-    [SerializeField] private bool EnableRotationFromStart;
-
     [Header("Speed To Rotate")]
     [SerializeField] private float rotationSpeed;
 
@@ -39,7 +37,7 @@ public class CameraRotation : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerStateMachine.PlayerControlState != PlayerControlState.InControl)
+        if (player == null || PlayerStateMachine.PlayerControlState != PlayerControlState.InControl)
             return;
 
         transform.RotateAround(player.position,Vector3.up,rotationInput * rotationSpeed);

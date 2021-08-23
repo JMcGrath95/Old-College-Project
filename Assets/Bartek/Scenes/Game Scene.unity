@@ -365,6 +365,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7231937842475887084, guid: a4f6299f5388adf41a6140c379d8c603, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231937843432262718, guid: a4f6299f5388adf41a6140c379d8c603, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -140.39844
+      objectReference: {fileID: 0}
     - target: {fileID: 7231937843633477820, guid: a4f6299f5388adf41a6140c379d8c603, type: 3}
       propertyPath: messageSpawnDelay
       value: 0.6
