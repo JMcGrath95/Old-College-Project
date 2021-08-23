@@ -105,6 +105,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9172697168009050090}
   - component: {fileID: 9172697168009050091}
+  - component: {fileID: 481133885}
+  - component: {fileID: 481133884}
   m_Layer: 0
   m_Name: BulletController
   m_TagString: Untagged
@@ -143,3 +145,32 @@ MonoBehaviour:
   projectileSpeed: 5
   rotationSpeed: 5
   projectilePrefab: {fileID: 9093668935623490528, guid: 9b91d6351f789374986103c85d3cfc21, type: 3}
+--- !u!135 &481133885
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172697168009050088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.21
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &481133884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172697168009050088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32090931cff80ad42a3d3296869d6965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  maxHealth: 100
+  canTakeDamage: 1
+  pointsReward: 0
