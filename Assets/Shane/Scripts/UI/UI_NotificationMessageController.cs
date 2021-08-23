@@ -55,13 +55,4 @@ public class UI_NotificationMessageController : MonoBehaviour
         notificationMessage.SetMessage(message);
         notificationMessage.MoveToTargetAndFade(targetPosForMessage.position);
     }
-
-    //Testing.
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowMessage("Message");
-        }
-    }
 }

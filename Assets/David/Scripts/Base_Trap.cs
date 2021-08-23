@@ -39,4 +39,14 @@ public class Base_Trap : MonoBehaviour
     {
         spikeAnimtor.SetBool(name: "Spike_Movement", true);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print($"ggg {collision.gameObject.name}");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
 }

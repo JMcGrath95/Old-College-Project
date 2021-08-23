@@ -29,11 +29,8 @@ public class CameraRotation : MonoBehaviour
         } 
     }
 
-    private void Start()
-    {
-        if (EnableRotationFromStart)
-            FindPlayer();
-    }
+    private void Awake() => GameController.GameStarted += OnGameStarted;
+    private void OnGameStarted() => FindPlayer();
 
     public void FindPlayer()
     {
@@ -42,9 +39,14 @@ public class CameraRotation : MonoBehaviour
 
     private void Update()
     {
-        if (player == null || PlayerStateMachine.PlayerControlState != PlayerControlState.InControl)
+        if (PlayerStateMachine.PlayerControlState != PlayerControlState.InControl)
             return;
 
         transform.RotateAround(player.position,Vector3.up,rotationInput * rotationSpeed);
+    }
+
+    private void OnDestroy()
+    {
+        GameController.GameStarted -= OnGameStarted;
     }
 }
