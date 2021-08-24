@@ -11,9 +11,7 @@ public class EnemyTrain : MonoBehaviour
     float Starttime;
     bool reset = false;
     public float speed = 1.0f;
-
-
-
+    public int dmg = 10;
 
     void Start()
     {
@@ -96,9 +94,14 @@ public class EnemyTrain : MonoBehaviour
         {
             if (other.TryGetComponent(out iDamageable))
             {
-                iDamageable.TakeDamage(20);
+                iDamageable.TakeDamage(dmg);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameController.GameStarted -= GameController_GameStarted;
     }
 
 }

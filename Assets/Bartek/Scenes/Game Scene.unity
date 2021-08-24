@@ -606,14 +606,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 5282223783038272963, guid: 51d65bd24c4a1d540a78ef8fc597a91e, type: 3}
-      propertyPath: speed
-      value: 2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5282223783038272963, guid: 51d65bd24c4a1d540a78ef8fc597a91e, type: 3}
-      propertyPath: timer
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d65bd24c4a1d540a78ef8fc597a91e, type: 3}
 --- !u!1001 &1377362961

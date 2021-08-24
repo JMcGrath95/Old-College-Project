@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeLinePrefab: {fileID: 6079378873124085256, guid: 21d13608e30de774e9fe62a397850730, type: 3}
-  speed: 1
+  speed: 2.25
 --- !u!136 &9050904216973937299
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -839,7 +839,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586076434547195995}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 6
   m_Height: 65
