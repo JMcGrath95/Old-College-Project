@@ -3510,6 +3510,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 858307396}
     m_Modifications:
     - target: {fileID: 5807901349947591757, guid: eb2d5eb6e52213a449b4abdb3ab436eb, type: 3}
+      propertyPath: testDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 839fe0a665beeb4449d673eae15fd60b, type: 2}
+    - target: {fileID: 5807901349947591757, guid: eb2d5eb6e52213a449b4abdb3ab436eb, type: 3}
       propertyPath: currentDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 839fe0a665beeb4449d673eae15fd60b, type: 2}
