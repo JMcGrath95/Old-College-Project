@@ -12,6 +12,7 @@ public class Werewolf_State_Attack : iState
     public Transform Player;
     public Enemy_Stats Enemy;
     private Werewolf_StateMachine _StateMachine;
+    public LayerMask mask;
     float timer=0f;
     public void Enter()
     {  
@@ -30,7 +31,7 @@ public class Werewolf_State_Attack : iState
         timer -= Time.deltaTime;
         if (timer<=0f)
         {
-            if (Physics.Raycast(meshAgent.transform.position,Player.position-meshAgent.transform.position,out hit,Enemy.Enemy.AttackRange))
+            if (Physics.Raycast(meshAgent.transform.position,Player.position-meshAgent.transform.position,out hit,Enemy.Enemy.AttackRange,mask))
             {
                 if (hit.collider.tag=="Player")
                 {

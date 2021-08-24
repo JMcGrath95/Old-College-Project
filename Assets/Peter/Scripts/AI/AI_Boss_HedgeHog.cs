@@ -47,7 +47,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     {
         Player_Obj = GameObject.FindGameObjectWithTag("Player");
         HedgeHod_Animator = GetComponent<Animator>();
-        Bullet_Controller = GetComponent<Bullet_Controller>();
+        //Bullet_Controller = GetComponent<Bullet_Controller>();
         current_state = Boss_States.Spitting;        
         RolledUP = false;
         HasHitWall = false;
@@ -58,8 +58,9 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         room = GetComponentInParent<Room>();
         ignore = ~ignore;
         roll_count = 0;
-        Bullet_Controller.enabled = false;
+        //Bullet_Controller.enabled = false;
         timer = 10f;
+        HedgeHod_Animator.SetBool("HasUnrolled", true);
     }
     private void Health_DeathEvent()
     {
@@ -70,6 +71,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         velocity_track();
         HedgeHod_Animator.SetFloat("Velocity",velocity);
         HedgeHod_Animator.speed = 1f;        
@@ -108,8 +110,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                 
                 break;
             case Boss_States.Spitting:
-               
-                Move(room.floor.transform.position+new Vector3(0,3,0));
+                
                 Vector3 vector = room.floor.transform.position + new Vector3(0, 3, 0);
                 if (Vector3.Distance(transform.position,vector)<=0.1f)
                 {
@@ -117,17 +118,22 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                     Stop();
                     if (timer>=0)
                     {
-                        Bullet_Controller.enabled = true;
+                        //Bullet_Controller.enabled = true;
                         timer -= Time.deltaTime;
                     }
                     else
                     {
                         timer = 10f;
                         current_state = Boss_States.Rolling;
-                        Bullet_Controller.enabled = false;
+                        //Bullet_Controller.enabled = false;
                         HedgeHod_Animator.enabled = true;
+                        roll_count = 0f;
                     }
                     
+                }
+                else
+                {
+                    Move(room.floor.transform.position + new Vector3(0, 3, 0));
                 }
                 Debug.Log("Spitting State");
                 break;
@@ -145,6 +151,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         //transform.Translate(Direction * Time.deltaTime*0.1f);
         transform.position += Direction * (Time.deltaTime);
         Collider.isTrigger = true;
+        HedgeHod_Animator.Play(Roll);
         
         
         //Looking towards the movement direction
@@ -154,18 +161,17 @@ public class AI_Boss_HedgeHog : MonoBehaviour
 
     IEnumerator RollUP() 
     {
-        //Playing Rolling Up animation and waiting until its finished(Currently 4 seconds)
-        //Changing state
-        //HedgeHod_Animator.Play(RollUp);
-        yield return new WaitForSeconds(3f);
+        HedgeHod_Animator.Play(RollUp);
+        yield return new WaitForSeconds(2f);
         current_state = Boss_States.Rolling;
         RolledUP = true;
     }
     IEnumerator UNRoll() 
     {
         //Playing UnRolling animation and changing state after animation has finished playing(Currently 4 seconds)
-        //HedgeHod_Animator.Play(UnRoll);
+        HedgeHod_Animator.Play(UnRoll);
         Stop();
+        StopRotation();
         yield return new WaitForSeconds(3f);
         RolledUP = false;
         HedgeHod_Animator.SetBool("HasUnrolled",true);
@@ -191,7 +197,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         if (Physics.Raycast(transform.position, RayDir, out hit, Mathf.Infinity, ignore))
         {
             //Debug.DrawRay(transform.position, RayDir, Color.green, 30f);
-            if (hit.collider.CompareTag("Wall")||hit.collider.gameObject.GetComponent<Hallway>()!=null)
+            if (hit.collider.CompareTag("Wall")||hit.collider.gameObject.GetComponent<Door>()!=null)
             {
                 Debug.DrawLine(transform.position, hit.point, Color.blue, 24f);
                 NeedNewTarget = false;
@@ -219,13 +225,13 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         } 
         
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(20);//To be changed after boss_data implementation
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        collision.collider.gameObject.GetComponentInChildren<iDamageable>().TakeDamage(20);//To be changed after boss_data implementation
+    //    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -238,5 +244,10 @@ public class AI_Boss_HedgeHog : MonoBehaviour
             NeedNewTarget = true;
             roll_count++;
         }        
+    }
+    void StopRotation() 
+    {
+        HedgeHod_Animator.SetBool("NeedsStop", true);
+        HedgeHod_Animator.Play("HedgeHogStanding");
     }
 }
