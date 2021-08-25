@@ -48,7 +48,7 @@ public class Bat_Machine_State : StateMachine
         Vector3 shootDir = (Player.transform.position - meshAgent.transform.position).normalized;
         GameObject Temp = Instantiate(Enemy.Enemy.projectile_prefab, gameObject.transform.position+new Vector3(0,2,0), Quaternion.identity);
         AI_Bullet bullet = Temp.GetComponent<AI_Bullet>();
-        bullet.SetDir(shootDir, transform.position, Enemy.Enemy.AttackRange, (int)Enemy.Enemy.Attack, Enemy.Enemy.AttackSpeed, source.transform,transform);
+        bullet.SetDir(shootDir, transform.position, Enemy.Enemy.AttackRange, (int)Enemy.Enemy.Attack, Enemy.Enemy.AttackSpeed, transform);
         Debug.DrawRay(transform.position,shootDir,Color.yellow,Mathf.Infinity);
     }
 }

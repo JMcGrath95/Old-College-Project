@@ -14,6 +14,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     public _boss Boss_Data;
     Collider Collider;
     Room room;
+    public List<Vector3> vector3s;
     public Bullet_Controller Bullet_Controller;
     bool 
         RolledUP,
@@ -33,7 +34,8 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     public float 
         roll_count,
         velocity,
-        timer;
+        timer,
+        fireCount;
 
     Vector3
         Vector_velocity,
@@ -48,7 +50,9 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         Player_Obj = GameObject.FindGameObjectWithTag("Player");
         HedgeHod_Animator = GetComponent<Animator>();
         //Bullet_Controller = GetComponent<Bullet_Controller>();
-        current_state = Boss_States.Spitting;        
+        current_state = Boss_States.Spitting;
+        StopRotation();
+        HedgeHod_Animator.speed = 0f;
         RolledUP = false;
         HasHitWall = false;
         NeedNewTarget = true;
@@ -58,6 +62,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         room = GetComponentInParent<Room>();
         ignore = ~ignore;
         roll_count = 0;
+        fireCount = 0;
         //Bullet_Controller.enabled = false;
         timer = 10f;
         HedgeHod_Animator.SetBool("HasUnrolled", true);
@@ -73,8 +78,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     {
         
         velocity_track();
-        HedgeHod_Animator.SetFloat("Velocity",velocity);
-        HedgeHod_Animator.speed = 1f;        
+        Debug.Log(velocity);
         switch (current_state)
         {
             case Boss_States.Rolling:
@@ -82,6 +86,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                 {
                     if (!RolledUP)
                     {
+                        HedgeHod_Animator.speed = 1f;
                         StartCoroutine(RollUP());
                     }
                     if (RolledUP)
@@ -91,10 +96,9 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                             target_hold = Cast();
                             HasHitWall = false;
                         }
-
                         //Playing rolling animation
                         //Calling moving method                    
-                        if (target_hold != Vector3.zero)
+                        if (!NeedNewTarget)
                         {
                             Move(target_hold);
                         }
@@ -109,25 +113,29 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                     StartCoroutine(UNRoll());                   
                 
                 break;
-            case Boss_States.Spitting:
-                
+            case Boss_States.Spitting:                               
                 Vector3 vector = room.floor.transform.position + new Vector3(0, 3, 0);
+                transform.rotation = Quaternion.identity;
                 if (Vector3.Distance(transform.position,vector)<=0.1f)
                 {
-                    HedgeHod_Animator.enabled = false;
                     Stop();
-                    if (timer>=0)
-                    {
                         //Bullet_Controller.enabled = true;
-                        timer -= Time.deltaTime;
+                    if (fireCount<=3)
+                    {
+                        timer += Time.deltaTime;
+                        if (timer>=2f)
+                        {
+                            FireInPattern();
+                            fireCount++;
+                            timer = 0f;
+                        }
                     }
                     else
                     {
-                        timer = 10f;
                         current_state = Boss_States.Rolling;
-                        //Bullet_Controller.enabled = false;
-                        HedgeHod_Animator.enabled = true;
+                        //Bullet_Controller.enabled = false;                        
                         roll_count = 0f;
+                        fireCount = 0f;
                     }
                     
                 }
@@ -162,6 +170,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     IEnumerator RollUP() 
     {
         HedgeHod_Animator.Play(RollUp);
+        transform.rotation = Quaternion.identity;
         yield return new WaitForSeconds(2f);
         current_state = Boss_States.Rolling;
         RolledUP = true;
@@ -171,11 +180,13 @@ public class AI_Boss_HedgeHog : MonoBehaviour
         //Playing UnRolling animation and changing state after animation has finished playing(Currently 4 seconds)
         HedgeHod_Animator.Play(UnRoll);
         Stop();
-        StopRotation();
+        //StopRotation();
         yield return new WaitForSeconds(3f);
+        transform.rotation = Quaternion.identity;
         RolledUP = false;
         HedgeHod_Animator.SetBool("HasUnrolled",true);
         current_state = Boss_States.Spitting;
+        timer = 0f;
     }
     void Stop() 
     {
@@ -248,6 +259,17 @@ public class AI_Boss_HedgeHog : MonoBehaviour
     void StopRotation() 
     {
         HedgeHod_Animator.SetBool("NeedsStop", true);
+        transform.rotation = Quaternion.identity;
         HedgeHod_Animator.Play("HedgeHogStanding");
+    }
+
+    void FireInPattern() 
+    {
+        foreach (Vector3 vector3 in vector3s)
+        {
+            GameObject Temp = Instantiate(Boss_Data.Projectile, gameObject.transform.position, Quaternion.identity);
+            AI_Bullet bullet = Temp.GetComponent<AI_Bullet>();
+            bullet.SetDir(vector3.normalized, transform.position, Boss_Data.AttackRange, (int)Boss_Data.Attack, Boss_Data.AttackSpeed, transform);
+        }
     }
 }

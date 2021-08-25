@@ -24,15 +24,14 @@ public class AI_Bullet : MonoBehaviour
     {
 
     }
-    public void SetDir(Vector3 shootDir, Vector3 origin, float range, int damage, float attack_speed, Transform source,Transform source2)
+    public void SetDir(Vector3 shootDir, Vector3 origin, float range, int damage, float attack_speed, Transform source)
     {
         this.shootDir = shootDir;
         this.origin = origin;
         this.range = range;
         this.damage = damage;
         this.attack_speed = attack_speed;
-        this.source = source;
-        this.source2 = source2;
+        this.source = source;        
         transform.eulerAngles = new Vector3(0, 0, GetAngle(shootDir));
     }
     // Update is called once per frame
@@ -63,7 +62,7 @@ public class AI_Bullet : MonoBehaviour
         }
         else if (collision.collider.CompareTag("Wall"))
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         //else if (collision.gameObject.transform != source||collision.gameObject.transform!=source2)
         //{
@@ -108,7 +107,7 @@ public class AI_Bullet : MonoBehaviour
         }
         else if (other.CompareTag("Wall"))
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

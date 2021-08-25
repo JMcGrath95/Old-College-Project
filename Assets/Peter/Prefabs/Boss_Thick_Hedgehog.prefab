@@ -72,8 +72,8 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 286d58b6aed894f468582c3e3569d2ec, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -102,10 +102,20 @@ MonoBehaviour:
     AttackRange: 0
     Projectile: {fileID: 0}
     Boss_Prefab: {fileID: 0}
+  vector3s:
+  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
+  - {x: -1, y: 0, z: 1}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: -1, y: 0, z: -1}
+  - {x: 0, y: 0, z: -1}
+  - {x: 1, y: 0, z: -1}
   Bullet_Controller: {fileID: 0}
   roll_count: 0
   velocity: 0
   timer: 0
+  fireCount: 0
   ignore:
     serializedVersion: 2
     m_Bits: 512
