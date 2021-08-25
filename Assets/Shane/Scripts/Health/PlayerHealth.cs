@@ -45,6 +45,7 @@ public class PlayerHealth : BaseHealth
         {
             DeathEvent?.Invoke();
             Destroy(gameObject);
+            PlayerStateMachine.PlayerControlState = PlayerControlState.Locked;
         }
     }
 

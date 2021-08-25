@@ -14,6 +14,22 @@ public class UI_PauseScreenController : MonoBehaviour
     [SerializeField] private GameObject quitConfirmationScreen;
     private GameObject currentPauseScreen;
 
+    private void Awake()
+    {
+        GameController.GameStarted += OnGameStarted;
+    }
+
+    private void OnGameStarted()
+    {
+        //Find player.
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().DeathEvent += OnPlayerDeath;
+    }
+
+    private void OnPlayerDeath()
+    {
+        Destroy(gameObject);
+    }
+
     private void Start()
     {
         escapeInputDelegate = EnableMainPauseScreen;
@@ -98,5 +114,14 @@ public class UI_PauseScreenController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(0);
+    }
+
+    private void OnDestroy()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player != null)
+            player.GetComponent<PlayerHealth>().DeathEvent -= OnPlayerDeath;
+
+        GameController.GameStarted -= OnGameStarted;
     }
 }
