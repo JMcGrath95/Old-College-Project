@@ -25,6 +25,9 @@ public class UI_GameOverScreen : MonoBehaviour
         Time.timeScale = 0;
         gameOverScreen.SetActive(true);
         playerHealth.DeathEvent -= OnPlayerDeath;
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void OnMainMenuButtonClicked()
