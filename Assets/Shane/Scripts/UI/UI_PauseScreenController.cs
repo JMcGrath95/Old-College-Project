@@ -17,11 +17,17 @@ public class UI_PauseScreenController : MonoBehaviour
     private void Start()
     {
         escapeInputDelegate = EnableMainPauseScreen;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void EnableMainPauseScreen()
     {
         EnableScreen(mainPauseScreen);
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
 
         escapeInputDelegate = ResumeGame;
         Time.timeScale = 0;
@@ -35,6 +41,9 @@ public class UI_PauseScreenController : MonoBehaviour
         mainPauseScreen.SetActive(false);
         Time.timeScale = 1;
         GameUnpausedEvent?.Invoke();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void EnableOptionsScreen()

@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7231937842809066400, guid: a4f6299f5388adf41a6140c379d8c603, type: 3}
+      propertyPath: increaseSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7231937843432262718, guid: a4f6299f5388adf41a6140c379d8c603, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -140.39844
@@ -622,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 962506114, guid: 091d179945a187541889ad49ad817458, type: 3}
       propertyPath: FollowPlayerAtStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 962506115, guid: 091d179945a187541889ad49ad817458, type: 3}
+      propertyPath: zoomAtLevelGeneration
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7920202793074667693, guid: 091d179945a187541889ad49ad817458, type: 3}
       propertyPath: m_Enabled
