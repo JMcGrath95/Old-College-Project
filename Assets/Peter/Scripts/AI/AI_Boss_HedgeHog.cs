@@ -123,7 +123,7 @@ public class AI_Boss_HedgeHog : MonoBehaviour
                     if (fireCount<=3)
                     {
                         timer += Time.deltaTime;
-                        if (timer>=2f)
+                        if (timer>=5f)
                         {
                             FireInPattern();
                             fireCount++;
@@ -272,4 +272,15 @@ public class AI_Boss_HedgeHog : MonoBehaviour
             bullet.SetDir(vector3.normalized, transform.position, Boss_Data.AttackRange, (int)Boss_Data.Attack, Boss_Data.AttackSpeed, transform);
         }
     }
+    //IEnumerator FireInPatter() 
+    //{
+
+    //    yield return new WaitForSeconds(5f);
+    //    foreach (Vector3 vector3 in vector3s)
+    //    {
+    //        GameObject Temp = Instantiate(Boss_Data.Projectile, gameObject.transform.position, Quaternion.identity);
+    //        AI_Bullet bullet = Temp.GetComponent<AI_Bullet>();
+    //        bullet.SetDir(vector3.normalized, transform.position, Boss_Data.AttackRange, (int)Boss_Data.Attack, Boss_Data.AttackSpeed, transform);
+    //    }
+    //}
 }

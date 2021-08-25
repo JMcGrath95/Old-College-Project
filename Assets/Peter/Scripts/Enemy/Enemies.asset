@@ -16,7 +16,7 @@ MonoBehaviour:
   - ID: 0
     Health: 100
     Speed: 10
-    Attack: 10
+    Attack: 7
     AttackSpeed: 10
     AttackRange: 3
     Name: Werewolf

@@ -17,7 +17,7 @@ MonoBehaviour:
     Name: Thick Hedgehog
     Health: 250
     Speed: 25
-    Attack: 15
+    Attack: 10
     AttackSpeed: 3
     AttackRange: 30
     Projectile: {fileID: 6192541625579368567, guid: d05913c137f50754ea4662182082598c, type: 3}
