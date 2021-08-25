@@ -134,7 +134,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   canTakeDamage: 0
-  pointsReward: 0
+  pointsReward: 50
 --- !u!114 &8431333537971859634
 MonoBehaviour:
   m_ObjectHideFlags: 0

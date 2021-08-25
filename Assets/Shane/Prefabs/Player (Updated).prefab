@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 250
   canTakeDamage: 1
 --- !u!114 &4809145876489524153
 MonoBehaviour:
@@ -3454,7 +3454,7 @@ MonoBehaviour:
     maxMovementSpeed: 20
     rotationSpeed: 0.15
   playerStateDashing:
-    forceToApply: 22
+    forceToApply: 35
     dashDuration: 0.25
     dashCooldown: 1
   lantern: {fileID: 3147997449317799813}

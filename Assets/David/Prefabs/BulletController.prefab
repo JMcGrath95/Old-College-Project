@@ -173,4 +173,4 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   canTakeDamage: 1
-  pointsReward: 0
+  pointsReward: 25

@@ -2264,7 +2264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title
+  m_text: Dungeon Delver
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12190d53493805448af97a7bbfddbcdf, type: 2}
   m_sharedMaterial: {fileID: -6290344119402853212, guid: 12190d53493805448af97a7bbfddbcdf, type: 2}

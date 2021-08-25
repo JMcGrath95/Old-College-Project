@@ -16,6 +16,6 @@ MonoBehaviour:
   EffectSound: {fileID: 0}
   Owner: {fileID: 0}
   valueToChange: 3
-  Value: 10
+  Value: 20
   Add: 1
   ForPlayer: 1

@@ -99,33 +99,6 @@ public class Room : MonoBehaviour
             }
         }
     }
-
-    public void SetRoomByType()
-    {
-        switch (roomType)
-        {
-            case RoomType.StartRoom:
-                SetRoomColour(Color.green);
-                break;
-            case RoomType.BossRoom:
-                SetRoomColour(Color.red);
-                break;
-            case RoomType.EnemyRoom:
-                SetRoomColour(Color.grey);
-                break;
-            case RoomType.EmptyRoom:
-                SetRoomColour(Color.white);
-                break;
-            case RoomType.TreasureRoom:
-                SetRoomColour(Color.yellow);
-                break;
-            case RoomType.TrapRoom:
-                SetRoomColour(Color.blue);
-                break;
-            default:
-                break;
-        }
-    }
     
     void SetRoomColour(Color colour)
     {
