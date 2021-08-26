@@ -3902,7 +3902,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 1
-    light: {fileID: 0}
+    light: {fileID: 7478771202522045207}
     randomDistribution: 1
     color: 1
     range: 1
@@ -3963,7 +3963,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4013,7 +4013,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 5
+    maxLights: 10
   TrailModule:
     enabled: 0
     mode: 0
@@ -5115,7 +5115,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -2.0860469e-10, z: 4.5904e-41, w: 4.0385675e+10}
+  m_BoundingSphereOverride: {x: 0, y: -2.0860469e-10, z: 4.5904e-41, w: 5.1828575}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

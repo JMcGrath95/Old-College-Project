@@ -25,7 +25,7 @@ public class Werewolf_StateMachine : StateMachine
         Enemy = gameObject.GetComponent<Enemy_Stats>();
         movement_state.UpdateComponent(meshAgent,Player,Enemy,animator,this);
         attack_state.UpdateComponents(meshAgent, Player, Enemy, animator, this);
-        GetComponent<EnemyHealth>().DeathEvent += D_Event;
+        //GetComponent<EnemyHealth>().DeathEvent += D_Event;
         ChangeState(movement_state);       
     }
 
@@ -49,10 +49,10 @@ public class Werewolf_StateMachine : StateMachine
         }
         else return false;
     }
-    private void D_Event() 
-    {
-        //item.item.ItemType = ItemUseType.InstantUse;
-        item.testItem = true;
-        Instantiate(item.gameObject,transform.position,Quaternion.identity);
-    }
+    //private void D_Event() 
+    //{
+    //    //item.item.ItemType = ItemUseType.InstantUse;
+    //    item.testItem = true;
+    //    Instantiate(item.gameObject,transform.position,Quaternion.identity);
+    //}
 }
