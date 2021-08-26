@@ -173,6 +173,7 @@ MonoBehaviour:
   meshAgent: {fileID: 0}
   Player: {fileID: 0}
   Enemy: {fileID: 0}
+  item: {fileID: 1376387153948779652, guid: 9ac1195b95223fc4eae8ea877869fc3b, type: 3}
   Walking: Walking
   Attack: Melee Hit Action 1
 --- !u!1001 &1343393629244660081

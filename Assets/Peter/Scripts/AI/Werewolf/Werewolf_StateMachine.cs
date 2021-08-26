@@ -11,6 +11,7 @@ public class Werewolf_StateMachine : StateMachine
     public NavMeshAgent meshAgent;
     public Transform Player;
     public Enemy_Stats Enemy;
+    public PickupItem item;
     public string Walking ="Walking";
     public string Attack = "Melee Hit Action 1";
     
@@ -24,6 +25,7 @@ public class Werewolf_StateMachine : StateMachine
         Enemy = gameObject.GetComponent<Enemy_Stats>();
         movement_state.UpdateComponent(meshAgent,Player,Enemy,animator,this);
         attack_state.UpdateComponents(meshAgent, Player, Enemy, animator, this);
+        GetComponent<EnemyHealth>().DeathEvent += D_Event;
         ChangeState(movement_state);       
     }
 
@@ -46,5 +48,11 @@ public class Werewolf_StateMachine : StateMachine
             return true;
         }
         else return false;
+    }
+    private void D_Event() 
+    {
+        //item.item.ItemType = ItemUseType.InstantUse;
+        item.testItem = true;
+        Instantiate(item.gameObject,transform.position,Quaternion.identity);
     }
 }

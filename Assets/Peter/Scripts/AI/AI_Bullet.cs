@@ -43,7 +43,9 @@ public class AI_Bullet : MonoBehaviour
             Destroy(gameObject);
         }
         transform.position += (shootDir /*+ new Vector3(0, 0.2f)*/) * attack_speed * Time.deltaTime;
-        
+        Vector3 MovementDir = Vector3.RotateTowards(transform.forward, shootDir, 10 * Time.deltaTime, 10f);
+        transform.rotation = Quaternion.LookRotation(MovementDir);
+
     }
     float GetAngle(Vector3 dir)
     {
