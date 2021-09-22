@@ -21,17 +21,20 @@ namespace DaveCore.UI.Objectives
             title.text = quest.GetTitle();
             objectiveContainer.DetachChildren();
 
-            foreach (string objective in quest.GetObjectives())
+            foreach (Transform item in objectiveContainer)
+            {
+                Destroy(item.gameObject);
+            }
+            foreach (var objective in quest.GetObjectives())
             {
                 GameObject prefab = objectiveInCompletePrefab;
-                if(status.IsComplete(objective))
+                if (status.IsObjectiveComplete(objective.reference))
                 {
                     prefab = objectivePrefab;
                 }
-
                 GameObject objectiveInstance = Instantiate(prefab, objectiveContainer);
                 TextMeshProUGUI objectiveText = objectiveInstance.GetComponentInChildren<TextMeshProUGUI>();
-                objectiveText.text = objective;
+                objectiveText.text = objective.description;
             }
         }
     }

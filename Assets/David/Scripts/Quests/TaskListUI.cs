@@ -8,21 +8,28 @@ public class TaskListUI : MonoBehaviour
 {
     //[SerializeField] Quest[] tempTasks;
     [SerializeField] TaskItemUITool TaskPrefab;
+    QuestList questList;
 
     void Start()
     {
         //This is to clear quest List that would clear any of the existing children
         //So any test UI that was being used as a placeholder would be reset.
 
-        transform.DetachChildren();
-        QuestList questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+        questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+        questList.onUpdate += Redraw;
+        Redraw();
+    }
 
-        foreach (TaskStatus status in questList.GetStatus())
+    private void Redraw()
+    {
+        foreach (Transform item in transform)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (TaskStatus status in questList.GetStatuses())
         {
             TaskItemUITool uiInstance = Instantiate<TaskItemUITool>(TaskPrefab, transform);
             uiInstance.Setup(status);
         }
     }
-
-    
 }
