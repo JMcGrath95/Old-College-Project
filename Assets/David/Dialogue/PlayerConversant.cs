@@ -10,7 +10,7 @@ namespace RPG.Dialogue
     {
         
         Dialogue currentDialogue;
-        DialogueNode currentNode;
+        DialogueNode currentNode = null;
         bool isChoosing = false;
 
         public event Action onConversationUpdated;
